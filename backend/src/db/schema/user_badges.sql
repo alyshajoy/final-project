@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS user_badges CASCADE;
+
 CREATE TABLE user_badges (
     user_badge_id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,

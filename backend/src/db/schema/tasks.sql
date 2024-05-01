@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS tasks CASCADE;
+
 CREATE TABLE tasks (
     task_id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
