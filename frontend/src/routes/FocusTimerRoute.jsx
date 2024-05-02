@@ -1,4 +1,4 @@
-import FocusTimer from "../components/FocusTimer";
+import FocusTimer from "../components/timer/FocusTimer";
 
 const FocusTimerRoute = function() {
 
