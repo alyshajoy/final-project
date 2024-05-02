@@ -1,0 +1,24 @@
+/* BadgeNotification.scss, Basic just for testing. */
+
+.badge-notification {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f4f4f9;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: fixed;
+  top: -100px;
+  right: 20px;
+  transition: top 0.5s ease;
+}
+
+.badge-notification.active {
+  top: 20px; /* Slide into view, figure out state management first. */
+}
+
+.badge-image {
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height */
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+}
