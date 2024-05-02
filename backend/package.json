@@ -5,6 +5,7 @@
     "pg": "^8.11.5"
   },
   "scripts": {
+    "start": "node ./src/server.js",
     "db:reset": "node src/bin/resetdb.js"
   }
 }
