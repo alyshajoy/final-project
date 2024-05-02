@@ -8,10 +8,6 @@ import Timer from './pages/Timer.jsx';
 import Calendar from './pages/Calendar.jsx';
 import Tasks from './pages/Tasks.jsx';
 
-
-
-
-// import BadgeCollection from './components/BadgeCollection.jsx';
 function App() {
   return (
     <div className="App">
@@ -23,20 +19,15 @@ function App() {
         <Link to="/tasks">Tasks</Link> <br/>
       
 
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/badges" element={<Badges />} />
-        <Route path="/timer" element={<Timer />} />
-        <Route path="/calendar" element={<Calendar />} />
-        <Route path="/tasks" element={<Tasks />} />
-      </Routes>
-      </BrowserRouter>
-
-      {/* <header className="App-header">
-        <h1>Achievement Notifications Demo</h1>
-        <BadgeCollection />
-      </header> */}
-    
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/badges" element={<Badges />} />
+          <Route path="/timer" element={<Timer />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="*" element={<h2>404 Page not found</h2>} />
+        </Routes>
+      </BrowserRouter>   
       
     </div>
   );
