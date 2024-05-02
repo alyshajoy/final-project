@@ -8,10 +8,10 @@ import Timer from './pages/Timer.jsx';
 import Calendar from './pages/Calendar.jsx';
 import Tasks from './pages/Tasks.jsx';
 
-import Main from './components/Main';
-import FocusTimerRoute from './routes/FocusTimerRoute';
 
-import BadgeCollection from './components/BadgeCollection.jsx';
+
+
+// import BadgeCollection from './components/BadgeCollection.jsx';
 function App() {
   return (
     <div className="App">
@@ -32,17 +32,12 @@ function App() {
       </Routes>
       </BrowserRouter>
 
-      <header className="App-header">
+      {/* <header className="App-header">
         <h1>Achievement Notifications Demo</h1>
         <BadgeCollection />
-      </header>
-      <div>
-        <Main></Main>
-      </div>
-      <main>Hello World!
-      <FocusTimerRoute />
-
-    </main>
+      </header> */}
+    
+      
     </div>
   );
 }
