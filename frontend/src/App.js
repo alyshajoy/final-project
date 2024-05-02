@@ -1,8 +1,13 @@
 import './App.css';
 
+import FocusTimerRoute from './routes/FocusTimerRoute';
+
 function App() {
   return (
-    <main>Hello World!</main>
+    <main>Hello World!
+      <FocusTimerRoute />
+
+    </main>
   );
 }
 
