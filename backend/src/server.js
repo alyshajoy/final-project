@@ -16,10 +16,19 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-
+// Tasks Route
+app.get('/tasks', (req, res) => {
+    res.send('Hello tasks');
+});
 
 // Start the server
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+   // db.query(`
+    //     SELECT * FROM tasks
+    // `).then((res) => {
+    //     return res.rows[0];
+    // });
