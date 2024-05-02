@@ -10,6 +10,9 @@ const db = require('./db/connection'); // Assuming you have a db module for data
 // Initialize Express
 const app = express();
 
+//Middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Index Route
 app.get('/', (req, res) => {
