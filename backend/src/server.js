@@ -16,12 +16,15 @@ app.use(express.json());
 
 // Index Route
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+  res.send('Hello World!');
 });
 
 // Tasks Route
 app.get('/tasks', (req, res) => {
-    res.send('Hello tasks');
+  db.query(`SELECT * FROM tasks`)
+  .then(({rows}) => {
+      res.json(rows);
+    });
 });
 
 // Start the server
@@ -30,8 +33,4 @@ app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
-   // db.query(`
-    //     SELECT * FROM tasks
-    // `).then((res) => {
-    //     return res.rows[0];
-    // });
+  
