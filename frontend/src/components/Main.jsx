@@ -1,18 +1,18 @@
 import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import ListHeader from "./ListHeader";
+import ListFooter from "./ListFooter";
 
 const Main = () => {
   return (
     <>
       <div>
-        <Header />
+        <ListHeader />
       </div>
       <div>
         <h1>I am the Tasks page</h1>
       </div>
       <div>
-        <Footer />
+        <ListFooter />
       </div>
     </>
   );
