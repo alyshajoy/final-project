@@ -2,15 +2,13 @@ import React from "react";
 import ListHeader from "./ListHeader";
 import ListFooter from "./ListFooter";
 
-const Main = () => {
+const ListContainer = () => {
   return (
     <>
       <div>
         <ListHeader />
       </div>
-      <div>
-        <h1>I am the Tasks page</h1>
-      </div>
+      
       <div>
         <ListFooter />
       </div>
@@ -18,4 +16,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default ListContainer;
