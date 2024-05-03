@@ -1,9 +1,23 @@
 import React from "react";
+import ListItem from "./ListItem";
 
-const ListItems = () => {
+const ListItems = (props) => {
+
+
+  const mappedList = (items) => {
+    return items.map(item => (
+      <ListItem 
+        item={item}
+        
+      />
+    ));
+  };
+
   return (
     <div>
-      <h1>I am the ListItems</h1>
+      <ul>
+        {mappedList(props.items)}
+      </ul>
     </div>
   );
 };

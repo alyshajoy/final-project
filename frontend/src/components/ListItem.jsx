@@ -1,9 +1,9 @@
 import React from "react";
 
-const ListItem = () => {
+const ListItem = (props) => {
   return (
     <div>
-      <h1>I am the ListItem</h1>
+      <h1>{props.item}</h1>
     </div>
   );
 };
