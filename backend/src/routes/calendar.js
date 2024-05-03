@@ -3,14 +3,11 @@ const db = require('../db/connection'); // Assuming you have a db module for dat
 
 const router = express.Router();
 
-//Prefix '/api/tasks' for endpoint
+//Prefix '/api/calendar' for endpoint
 
-// Tasks Routes
+// Calendar Routes
 router.get('/', (req, res) => {
-  db.query(`SELECT * FROM tasks`)
-  .then(({rows}) => {
-      res.json(rows);
-    });
+  res.send('Hello Calendar Api')
 });
 
 module.exports = router;
