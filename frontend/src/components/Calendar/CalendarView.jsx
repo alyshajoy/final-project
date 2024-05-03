@@ -6,9 +6,11 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 function CalendarView() {
     const [currentView, setCurrentView] = useState('dayGridMonth');
+    const [selectedDate, setSelectedDate] = useState(null);
 
-    function handleDateClick(arg) {
-        alert('Date clicked: ' + arg.dateStr);
+    function handleDateSelect(selectInfo) {
+      const date = selectInfo.startStr; // Get the start string, which is the selected date
+      setSelectedDate(date); // Save the selected date to state
     }
 
     return (
@@ -25,7 +27,9 @@ function CalendarView() {
                 initialView={currentView}
                 weekends={true}
                 events={[{ title: 'Sample Event', start: new Date() }]}
-                dateClick={handleDateClick}
+                selectable={true}
+                selectMirror={true}
+                select={handleDateSelect}
             />
         </div>
     );
