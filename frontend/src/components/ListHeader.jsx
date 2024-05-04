@@ -1,9 +1,10 @@
 import React from "react";
+import '../styles/ListContainer.scss'
 
 const ListHeader = () => {
   return (
-    <div>
-      <h1>I am the Header</h1>
+    <div className="header-container">
+      <h1 className="list-title">Things To Do</h1>
     </div>
   );
 };

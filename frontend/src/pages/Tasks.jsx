@@ -1,12 +1,11 @@
 import React from "react";
-import Main from "../components/Main";
+import ListContainer from "../components/ListContainer";
 
 const Tasks = () => {
   return (
     <div>
-      <h1>I am the Tasks page</h1>
       <div>
-        <Main></Main>
+        <ListContainer/>
       </div>
     </div>
   );
