@@ -9,9 +9,14 @@ const Calendar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
 
   const handleAddEvent = (eventData) => {
-    setEvents([...events, eventData]); // Add new event to the existing events
+    const { title, date, startTime, endTime } = eventData;
+    const start = `${date}T${startTime}:00`; // Combine date and start time
+    const end = `${date}T${endTime}:00`; // Combine date and end time
+    const newEvent = { title, start, end };
+    setEvents([...events, newEvent]); // Add new event to the existing events
     setIsModalOpen(false); // Close modal after adding event
-  };
+};
+
 
   const handleOpenModal = () => {
     setIsModalOpen(true); // Function to open the modal
