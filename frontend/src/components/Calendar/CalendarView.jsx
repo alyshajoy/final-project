@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
-function CalendarView() {
+function CalendarView({ events }) {
     const [currentView, setCurrentView] = useState('dayGridMonth');
     const [selectedDate, setSelectedDate] = useState(null);
 
@@ -26,7 +26,7 @@ function CalendarView() {
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                 initialView={currentView}
                 weekends={true}
-                events={[{ title: 'Sample Event', start: new Date() }]}
+                events={events}
                 selectable={true}
                 selectMirror={true}
                 select={handleDateSelect}
