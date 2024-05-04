@@ -7,6 +7,7 @@ const Calendar = () => {
 
   const [events, setEvents] = useState([]); // State to store events
   const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+  const [selectedDate, setSelectedDate] = useState(null); // Date selected in CalendarView
 
   const handleAddEvent = (eventData) => {
     const { title, date, startTime, endTime } = eventData;
@@ -30,8 +31,12 @@ const Calendar = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleAddEvent}
+        initialDate={selectedDate}
       />
-      <CalendarView events={events}/>
+      <CalendarView
+        events={events}
+        setSelectedDate={setSelectedDate}
+      />
     </div>
   );
 };

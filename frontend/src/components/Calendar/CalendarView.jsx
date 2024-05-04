@@ -4,9 +4,8 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
-function CalendarView({ events }) {
+function CalendarView({ events, setSelectedDate }) {
     const [currentView, setCurrentView] = useState('dayGridMonth');
-    const [selectedDate, setSelectedDate] = useState(null);
 
     function handleDateSelect(selectInfo) {
       const date = selectInfo.startStr; // Get the start string, which is the selected date

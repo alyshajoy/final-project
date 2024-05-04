@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function EventForm({ isOpen, onClose, onSubmit }) {
+function EventForm({ isOpen, onClose, onSubmit, initialDate }) {
     const [title, setTitle] = useState('');
-    const [date, setDate] = useState('');
+    const [date, setDate] = useState(initialDate);
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
+
+    useEffect(() => {
+        setDate(initialDate);
+    }, [initialDate]);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
