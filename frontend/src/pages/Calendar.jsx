@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CalendarView from "../components/Calendar/CalendarView";
 import AddEventButton from "../components/Calendar/AddEventButton";
 import EventForm from "../components/Calendar/EventForm";
-import CalendarFormModal from "../styles/CalendarFormModal.scss";
 
 const Calendar = () => {
 
