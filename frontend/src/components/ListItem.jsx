@@ -1,9 +1,12 @@
 import React from "react";
+import Checkbox from "../pages/tasks/Checkbox";
 
 const ListItem = (props) => {
   return (
     <div>
-      <h1>{props.item}</h1>
+      
+      <h3><Checkbox/> {props.item}</h3>
+      <span></span>
     </div>
   );
 };
