@@ -1,9 +1,9 @@
 import React from "react";
+import '../styles/ListContainer.scss'
 
 const ListFooter = () => {
   return (
-    <div>
-      <h1>I am the Footer</h1>
+    <div className="footer-container">
     </div>
   );
 };

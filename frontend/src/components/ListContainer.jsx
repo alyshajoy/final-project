@@ -1,15 +1,19 @@
 import React from "react";
 import ListHeader from "./ListHeader";
 import ListFooter from "./ListFooter";
+import ListItems from "./ListItems";
 
-const Main = () => {
+const ListContainer = () => {
+
+  const items = ['Banana', 'Chocolate', 'Strawberry'];
+
   return (
     <>
       <div>
         <ListHeader />
       </div>
       <div>
-        <h1>I am the Tasks page</h1>
+        <ListItems items={items}/>
       </div>
       <div>
         <ListFooter />
@@ -18,4 +22,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default ListContainer;
