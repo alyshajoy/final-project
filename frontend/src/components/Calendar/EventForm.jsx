@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
-function EventForm({ isOpen, onClose, onSubmit, initialDate }) {
+function EventForm({ isOpen, onClose, onSubmit, initialDate, initialStartTime, initialEndTime }) {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState(initialDate);
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
 
+    // Update date whenever initialDate changes
     useEffect(() => {
         setDate(initialDate);
     }, [initialDate]);
+
+    // Update startTime whenever initialStartTime changes
+    useEffect(() => {
+        setStartTime(initialStartTime);
+    }, [initialStartTime]);
+
+    // Update endTime whenever initialEndTime changes
+    useEffect(() => {
+        setEndTime(initialEndTime);
+    }, [initialEndTime]);
     
 
     const handleSubmit = (e) => {
