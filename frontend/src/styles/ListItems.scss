@@ -3,11 +3,23 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 50%;
-  margin: 0 auto
+  width: 90%;
+  margin: 0 auto;
 }
 
 .list-item-title {
   background-color: lightcyan;
   height: 40px;
+}
+
+
+
+.list-items-container{
+  margin: 0;
+  padding: 0;
+}
+
+.list-items-container-inner {
+  margin: 0;
+  padding: 0;
 }
