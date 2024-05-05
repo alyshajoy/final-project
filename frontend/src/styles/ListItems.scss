@@ -1,5 +1,10 @@
 .list-item-container {
   border: black solid 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto
 }
 
 .list-item-title {

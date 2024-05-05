@@ -6,9 +6,10 @@ import RemoveTask from "./buttons/RemoveTask";
 const ListItem = (props) => {
   return (
     <div className="list-item-container">
-      <span><Checkbox/></span>
+      <div><Checkbox/></div>
       <h3 className="list-item-title"> {props.item}</h3>
-      <span><RemoveTask/></span>
+      <div><RemoveTask/></div>
+      
     </div>
   );
 };
