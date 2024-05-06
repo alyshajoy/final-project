@@ -7,9 +7,17 @@ import ListItems from "./ListItems";
 const ListContainer = () => {
 
   const [value, setValue] = useState("");
+  const [todo, setTodo] = useState([]);
+
+  const handleAdd = () => {
+    console.log('Add');
+    const copy = [...todo, value];
+    setTodo(copy);
+    setValue("");
+  }
 
   const handleDelete = (id) => {
-    console.log('Deleted!')
+    // console.log('Deleted!')
   }
 
   const items = [
@@ -23,7 +31,10 @@ const ListContainer = () => {
       <div>
         <ListHeader />
       </div>
-      <input value={value} onChange={e => setValue(e.target.value)}/>
+      <form>
+        <input value={value} onChange={e => setValue(e.target.value)}/>
+        <button type="button" onClick={handleAdd}>Submit</button>
+      </form>
       <div>
         <ListItems items={items} handleDelete={handleDelete}/>
       </div>
