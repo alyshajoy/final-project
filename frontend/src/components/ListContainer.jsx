@@ -5,6 +5,10 @@ import ListItems from "./ListItems";
 
 const ListContainer = () => {
 
+  const handleDelete = (id) => {
+    console.log('Deleted!')
+  }
+
   const items = [
     {id: 1, title:'Banana'}, 
     {id: 2,title:'Chocolate'}, 
@@ -17,7 +21,7 @@ const ListContainer = () => {
         <ListHeader />
       </div>
       <div>
-        <ListItems items={items}/>
+        <ListItems items={items} handleDelete={handleDelete}/>
       </div>
       <div>
         <ListFooter />

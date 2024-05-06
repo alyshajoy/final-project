@@ -9,6 +9,7 @@ const ListItems = (props) => {
       <ListItem 
         item={item}
         key={item.id}
+        handleDelete={props.handleDelete}
       />
     ));
   };

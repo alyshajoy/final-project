@@ -4,11 +4,16 @@ import '../styles/ListItems.scss';
 import RemoveTask from "./buttons/RemoveTask";
 
 const ListItem = (props) => {
+
+  // const handleDelete = (id) => {
+  //   console.log('Deleted!')
+  // }
+
   return (
     <div className="list-item-container">
       <div><Checkbox/></div>
       <h3 className="list-item-title"> {props.item.title}</h3>
-      <div><RemoveTask/></div>
+      <div><RemoveTask handleDelete={props.handleDelete}/></div>
       
     </div>
   );
