@@ -1,9 +1,12 @@
 import React from "react";
+import { useState } from "react";
 import ListHeader from "./ListHeader";
 import ListFooter from "./ListFooter";
 import ListItems from "./ListItems";
 
 const ListContainer = () => {
+
+  const [value, setValue] = useState("");
 
   const handleDelete = (id) => {
     console.log('Deleted!')
@@ -20,6 +23,7 @@ const ListContainer = () => {
       <div>
         <ListHeader />
       </div>
+      <input value={value} onChange={e => setValue(e.target.value)}/>
       <div>
         <ListItems items={items} handleDelete={handleDelete}/>
       </div>
