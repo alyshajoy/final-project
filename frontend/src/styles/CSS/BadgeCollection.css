@@ -1,0 +1,41 @@
+.badge-collection {
+  padding: 20px;
+}
+.badge-collection .badge-collection-title {
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+.badge-collection .badge-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+.badge-collection .badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: transform 0.3s ease;
+}
+.badge-collection .badge-item:hover {
+  transform: scale(1.05);
+}
+.badge-collection .badge-item .badge-image {
+  width: 10px;
+  height: 10px;
+  margin-bottom: 5px;
+}
+.badge-collection .badge-item .badge-details h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.badge-collection .badge-item .badge-details p {
+  font-size: 14px;
+  color: #666;
+}
+
+/*# sourceMappingURL=BadgeCollection.css.map */

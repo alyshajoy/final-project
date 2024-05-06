@@ -1,7 +1,7 @@
 // User's badge collection here
 
 import React, { useState, useEffect } from 'react';
-import '../styles/BadgeCollection.scss';
+import '../styles/CSS/BadgeCollection.css';
 
 const badgesData = [
   {
