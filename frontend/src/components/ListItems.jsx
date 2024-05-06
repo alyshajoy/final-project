@@ -8,7 +8,7 @@ const ListItems = (props) => {
     return items.map(item => (
       <ListItem 
         item={item}
-        
+        key={item.id}
       />
     ));
   };

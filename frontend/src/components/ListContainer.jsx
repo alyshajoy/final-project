@@ -5,7 +5,11 @@ import ListItems from "./ListItems";
 
 const ListContainer = () => {
 
-  const items = ['Banana', 'Chocolate', 'Strawberry'];
+  const items = [
+    {id: 1, title:'Banana'}, 
+    {id: 2,title:'Chocolate'}, 
+    {id: 3,title:'Strawberry'}
+  ];
 
   return (
     <>
