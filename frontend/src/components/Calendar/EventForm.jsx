@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../styles/CSS/CalendarFormModal.css'
 
 function EventForm({ isOpen, onClose, onSubmit, initialDate, initialStartTime, initialEndTime }) {
     const [title, setTitle] = useState('');
