@@ -11,7 +11,7 @@ const ListContainer = () => {
 
   const handleAdd = () => {
     console.log('Add');
-    const copy = [...todo, value];
+    const copy = [...todo, {title: value}];
     setTodo(copy);
     setValue("");
   }
@@ -33,10 +33,10 @@ const ListContainer = () => {
       </div>
       <form>
         <input value={value} onChange={e => setValue(e.target.value)}/>
-        <button type="button" onClick={handleAdd}>Submit</button>
+        <button type="button" onClick={handleAdd}>Add</button>
       </form>
       <div>
-        <ListItems items={items} handleDelete={handleDelete}/>
+        <ListItems items={items} handleDelete={handleDelete} todo={todo}/>
       </div>
       <div>
         <ListFooter />

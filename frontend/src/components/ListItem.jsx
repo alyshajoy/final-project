@@ -12,7 +12,7 @@ const ListItem = (props) => {
   return (
     <div className="list-item-container">
       <div><Checkbox/></div>
-      <h3 className="list-item-title"> {props.item.title}</h3>
+      <h3 className="list-item-title"> {props.todo.title}</h3>
       <div><RemoveTask handleDelete={props.handleDelete}/></div>
       
     </div>
