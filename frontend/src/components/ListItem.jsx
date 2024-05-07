@@ -1,7 +1,7 @@
 import React from "react";
-import Checkbox from "./buttons/Checkbox";
-import '../styles/ListItems.scss';
 import RemoveTask from "./buttons/RemoveTask";
+import Checkbox from "../pages/tasks/Checkbox";
+import '../styles/CSS/ListItems.css';
 
 const ListItem = (props) => {
 
