@@ -55,7 +55,12 @@ const ListContainer = () => {
         <button type="button" onClick={handleAdd}>Add</button>
       </form>
       <div>
-        <ListItems handleDelete={handleDelete} tasks={tasks} value={value} setValue={setValue} handleAdd={handleAdd}/>
+        <ListItems 
+        handleDelete={handleDelete} 
+        tasks={tasks} value={value} 
+        setValue={setValue} 
+        setTasks={setTasks}
+        handleAdd={handleAdd}/>
       </div>
       <div>
         <ListFooter />

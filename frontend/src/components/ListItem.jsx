@@ -16,6 +16,12 @@ const ListItem = (props) => {
     setEdit(true);
   }
 
+  const handleSubmit = (e) => {
+    console.log('submitted')
+    e.preventDefault();
+    props.handleAdd();
+  }
+
   return (
     <div className="list-item-container">
       <div><Checkbox/></div>
@@ -28,7 +34,7 @@ const ListItem = (props) => {
           autoFocus 
           onBlur={() => setEdit(false)}
           onChange={e => props.setValue(e.target.value)}
-          onSubmit={e => props.handleAdd}
+          onSubmit={e => e.preventDefault()}
           />
         </form>
       </div>
