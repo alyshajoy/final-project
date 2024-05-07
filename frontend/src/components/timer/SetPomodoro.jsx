@@ -27,7 +27,7 @@ const SetPomodoro = () => {
           shortbreak: parseInt(value)
         })
         break;
-        
+
       case 'longbreak':
         setNewTimer({
           ...newTimer,
@@ -39,16 +39,21 @@ const SetPomodoro = () => {
         break;
     }
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <div className="pomodoro-form-container">
 
       <form noValidate>
         <div className="pomodoro-input-wrapper">
-          <input className="input" name="work" onChange={handleChange} />
-          <input className="input" name="shortbreak" onChange={handleChange} />
-          <input className="input" name="longbreak" onChange={handleChange} />
+          <input className="input" name="work" onChange={handleChange} value={newTimer.work}/>
+          <input className="input" name="shortbreak" onChange={handleChange} value={newTimer.shortbreak}/>
+          <input className="input" name="longbreak" onChange={handleChange} value={newTimer.longbreak}/>
         </div>
-        <TimerButton title="Set_Timer" _callback={handleSubmit} />
+        <TimerButton title="Set Timer" _callback={handleSubmit} />
       </form>
     </div>
   )
