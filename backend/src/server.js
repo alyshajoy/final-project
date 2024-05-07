@@ -11,6 +11,7 @@ const tasksRoutes = require('./routes/tasks');
 const timerRoutes = require('./routes/timer');
 const calendarRoutes = require('./routes/calendar');
 const badgesRoutes = require('./routes/badges');
+const userRoutes = require('./routes/user');
 
 // Initialize Express
 const app = express();
@@ -20,10 +21,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Define endpoints
-app.use('/api/tasks', tasksRoutes)
-app.use('/api/timer', timerRoutes)
-app.use('/api/calendar', calendarRoutes)
-app.use('/api/badges', badgesRoutes)
+app.use('/api/tasks', tasksRoutes);
+app.use('/api/timer', timerRoutes);
+app.use('/api/calendar', calendarRoutes);
+app.use('/api/badges', badgesRoutes);
+app.use('/api/user', userRoutes);
 
 // Index Route
 app.get('/', (req, res) => {
