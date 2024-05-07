@@ -7,7 +7,7 @@ import ListItems from "./ListItems";
 const ListContainer = () => {
 
   useEffect (() => {
-    fetch('http://localhost:3001/api/tasks')
+    fetch('/api/tasks')
     .then((res) => res.json())
     .then((data) => {
       setTodo(data);
