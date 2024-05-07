@@ -1,12 +1,19 @@
 import React from "react";
+import RemoveTask from "./buttons/RemoveTask";
 import Checkbox from "../pages/tasks/Checkbox";
 import '../styles/CSS/ListItems.css';
 
 const ListItem = (props) => {
+
+  // const handleDelete = (id) => {
+  //   console.log('Deleted!')
+  // }
+
   return (
     <div className="list-item-container">
-      <span><Checkbox/></span>
-      <h3 className="list-item-title"> {props.item}</h3>
+      <div><Checkbox/></div>
+      <h3 className="list-item-title"> {props.task.title}</h3>
+      <div><RemoveTask handleDelete={props.handleDelete} task_id={props.task.task_id}/></div>
       
     </div>
   );
