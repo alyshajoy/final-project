@@ -1,7 +1,9 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import TimerButton from "./TimerButton"
+import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
 
 const SetPomodoro = () => {
+  const { updateExecute } = useContext(TimerSettingsContext)
   // Default vaulues for pomodoro timer, active key determines which time will run
   const [newTimer, setNewTimer] = useState({
     work: 0.3,
@@ -42,7 +44,7 @@ const SetPomodoro = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // updateExecute(newTimer);
+    updateExecute(newTimer);
   }
 
   return (

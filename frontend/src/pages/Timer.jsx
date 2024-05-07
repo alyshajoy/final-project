@@ -1,6 +1,6 @@
 import React from "react";
 import FocusTimer from '../components/timer/FocusTimer'
-import TimerSettingsContextProvider from "../context/TimerSettingsContext";
+import TimerSettingsContextProvider from "../contexts/TimerSettingsContext";
 
 const Timer = () => {
   return (

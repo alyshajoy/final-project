@@ -12,11 +12,11 @@ const TimerSettingsContextProvider = (props) => {
   const pauseTimer = () => setStartAnimate(false);
   const stopTimer = () => setStartAnimate(false);
 
-
+  const updateExecute = (updatedSettings) => setExecuting(updatedSettings)
   
   return (
     <div>
-      <TimerSettingsContext.Provider value={{stopTimer}}>
+      <TimerSettingsContext.Provider value={{stopTimer, updateExecute}}>
         {props.children}
       </TimerSettingsContext.Provider>
     </div>

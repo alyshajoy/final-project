@@ -6,7 +6,7 @@ const FocusTimer = () => {
     <div className="container">
       <h1>Pomodoro</h1>
       <small>Be Productive the right way.</small>
-      {/* <SetPomodoro /> */}
+      <SetPomodoro />
       <CountdownAnimation />
     </div>
   );
