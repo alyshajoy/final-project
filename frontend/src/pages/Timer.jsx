@@ -4,8 +4,7 @@ import FocusTimer from '../components/timer/FocusTimer'
 const Timer = () => {
   return (
     <div>
-      <h1>I am the Timer page</h1>
-      <main>Hello World!
+      <main>
         <FocusTimer />
       </main>
     </div>
