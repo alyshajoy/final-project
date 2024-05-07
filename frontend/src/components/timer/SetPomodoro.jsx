@@ -9,6 +9,36 @@ const SetPomodoro = () => {
     longbreak: 1,
     active: 'work'
   });
+
+  const handleChange = input => {
+    const {name, value} = input.target
+    // Switch statement used to overide current timer values
+    switch (name) {
+      case 'work':
+        setNewTimer({
+          ...newTimer,
+          work: parseInt(value)
+        })
+        break;
+
+      case 'shortbreak':
+        setNewTimer({
+          ...newTimer,
+          shortbreak: parseInt(value)
+        })
+        break;
+        
+      case 'longbreak':
+        setNewTimer({
+          ...newTimer,
+          longbreak: parseInt(value)
+        })
+        break;
+
+      default:
+        break;
+    }
+  }
   return (
     <div className="pomodoro-form-container">
 
