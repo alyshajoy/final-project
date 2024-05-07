@@ -1,8 +1,8 @@
-const Button = ({title, activeClass, _callback}) => {
+const TimerButton = ({title, activeClass, _callback}) => {
   return (
     <button className={activeClass} onClick={_callback}>{title}</button>
   );
 
 };
 
-export default Button;
+export default TimerButton;
