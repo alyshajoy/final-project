@@ -5,7 +5,7 @@ import { faXmark, faCoffee, faMinus, faTrash } from '@fortawesome/fontawesome-fr
 const RemoveTask = (props) => {
   return (
     <>
-      <FontAwesomeIcon icon={faTrash} onClick={props.handleDelete()}/>
+      <FontAwesomeIcon icon={faTrash} onClick={() => props.handleDelete(props.task_id)}/>
     </>
   )
 };

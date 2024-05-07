@@ -21,14 +21,18 @@ const ListContainer = () => {
   const [tasks, setTasks] = useState([]);
 
   const handleAdd = () => {
-    console.log('Add');
+    
     const copy = [...tasks, {title: value}];
     setTasks(copy);
     setValue("");
   }
 
-  const handleDelete = (id) => {
-    // console.log('Deleted!')
+  const handleDelete = (task_id) => {
+    console.log('Delete');
+    const filteredTasks = tasks.filter((task) => {
+      return task.id !== task_id
+    })
+    setTasks(filteredTasks);
   }
 
   const items = [
@@ -47,7 +51,7 @@ const ListContainer = () => {
         <button type="button" onClick={handleAdd}>Add</button>
       </form>
       <div>
-        <ListItems items={items} handleDelete={handleDelete} tasks={tasks}/>
+        <ListItems handleDelete={handleDelete} tasks={tasks}/>
       </div>
       <div>
         <ListFooter />

@@ -20,7 +20,7 @@ const ListItems = (props) => {
   return (
     <div className="list-items-container">
       <ul className="list-items-container-inner">
-        {mappedList(props.tasks)}
+       {mappedList(props.tasks)}
       </ul>
     </div>
   );

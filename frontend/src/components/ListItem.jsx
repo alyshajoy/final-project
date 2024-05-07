@@ -13,7 +13,7 @@ const ListItem = (props) => {
     <div className="list-item-container">
       <div><Checkbox/></div>
       <h3 className="list-item-title"> {props.task.title}</h3>
-      <div><RemoveTask handleDelete={props.handleDelete}/></div>
+      <div><RemoveTask handleDelete={props.handleDelete} task_id={props.task.task_id}/></div>
       
     </div>
   );
