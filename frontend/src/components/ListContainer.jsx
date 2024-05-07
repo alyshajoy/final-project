@@ -10,7 +10,7 @@ const ListContainer = () => {
     fetch('/api/tasks')
     .then((res) => res.json())
     .then((data) => {
-      setTodo(data);
+      setTasks(data);
     })
     .catch((error) => {
       console.error('Error fetching tasks:', error);
@@ -18,12 +18,12 @@ const ListContainer = () => {
   }, []);
 
   const [value, setValue] = useState("");
-  const [todo, setTodo] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   const handleAdd = () => {
     console.log('Add');
-    const copy = [...todo, {title: value}];
-    setTodo(copy);
+    const copy = [...tasks, {title: value}];
+    setTasks(copy);
     setValue("");
   }
 
@@ -47,7 +47,7 @@ const ListContainer = () => {
         <button type="button" onClick={handleAdd}>Add</button>
       </form>
       <div>
-        <ListItems items={items} handleDelete={handleDelete} todo={todo}/>
+        <ListItems items={items} handleDelete={handleDelete} tasks={tasks}/>
       </div>
       <div>
         <ListFooter />

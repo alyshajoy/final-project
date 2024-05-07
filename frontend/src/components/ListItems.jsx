@@ -4,13 +4,13 @@ import ListItem from "./ListItem";
 const ListItems = (props) => {
 
 
-  const mappedList = (todos) => {
-    return todos.map(todo => (
+  const mappedList = (tasks) => {
+    return tasks.map(task => (
       <ListItem 
         // item={item}
         // key={item.id}
-        todo={todo}
-        key={todo}
+        task={task}
+        key={task.task_id}
         handleDelete={props.handleDelete}
         
       />
@@ -20,7 +20,7 @@ const ListItems = (props) => {
   return (
     <div className="list-items-container">
       <ul className="list-items-container-inner">
-        {mappedList(props.todo)}
+        {mappedList(props.tasks)}
       </ul>
     </div>
   );
