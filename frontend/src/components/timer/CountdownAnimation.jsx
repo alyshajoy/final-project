@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import { TimerSettingsContext } from '../../context/TimerSettingsContext';
 
 const CountdownAnimation = ({key = 1, timer = 20, animate = true, children }) => {
+  const {stopTimer} = useContext(TimerSettingsContext)
   return (
     <CountdownCircleTimer
       key={key}
@@ -11,7 +14,7 @@ const CountdownAnimation = ({key = 1, timer = 20, animate = true, children }) =>
       // Can be set to background color to make disappearing effect
       trailColor="#151932"
       onComplete={ () => {
-        // stopAnimate();
+        stopTimer();
       }}
     >
       {children}
