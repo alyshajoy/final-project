@@ -13,7 +13,7 @@ const ListItems = (props) => {
         task={task}
         key={task.task_id}
         handleDelete={props.handleDelete}
-        
+        setValue={props.setValue}
       />
     ));
   };

@@ -13,7 +13,6 @@ const ListItem = (props) => {
   const [edit, setEdit] = useState(false);
 
   const handleEdit = (id) => {
-    console.log('Edit', id);
     setEdit(true);
   }
 
@@ -23,7 +22,12 @@ const ListItem = (props) => {
       {edit 
      ? <div>
         <form>
-          <input type="text" placeholder={props.task.title}/>
+          <input 
+          type="text" 
+          placeholder={props.task.title} 
+          autoFocus 
+          onBlur={() => setEdit(false)}
+          onChange={e => props.setValue(e.target.value)}/>
         </form>
       </div>
       :<h3 className="list-item-title" onClick={() => handleEdit(props.task.task_id)}> {props.task.title} </h3>
