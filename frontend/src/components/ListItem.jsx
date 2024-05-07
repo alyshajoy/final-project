@@ -27,7 +27,9 @@ const ListItem = (props) => {
           placeholder={props.task.title} 
           autoFocus 
           onBlur={() => setEdit(false)}
-          onChange={e => props.setValue(e.target.value)}/>
+          onChange={e => props.setValue(e.target.value)}
+          onSubmit={e => props.handleAdd}
+          />
         </form>
       </div>
       :<h3 className="list-item-title" onClick={() => handleEdit(props.task.task_id)}> {props.task.title} </h3>
