@@ -1,5 +1,5 @@
 import React from "react";
-import FocusTimer from '../components/FocusTimer'
+import FocusTimer from '../components/timer/FocusTimer'
 
 const Timer = () => {
   return (
