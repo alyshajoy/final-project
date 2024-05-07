@@ -35,6 +35,10 @@ const ListContainer = () => {
     setTasks(filteredTasks);
   }
 
+  // const handleEdit = (id) => {
+  //   console.log('Edit', id);
+  // }
+
   const items = [
     {id: 1, title:'Banana'}, 
     {id: 2,title:'Chocolate'}, 
@@ -51,7 +55,7 @@ const ListContainer = () => {
         <button type="button" onClick={handleAdd}>Add</button>
       </form>
       <div>
-        <ListItems handleDelete={handleDelete} tasks={tasks}/>
+        <ListItems handleDelete={handleDelete} tasks={tasks} value={value}/>
       </div>
       <div>
         <ListFooter />
