@@ -1,10 +1,21 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ListHeader from "./ListHeader";
 import ListFooter from "./ListFooter";
 import ListItems from "./ListItems";
 
 const ListContainer = () => {
+
+  useEffect (() => {
+    fetch('http://localhost:3001/api/tasks')
+    .then((res) => res.json())
+    .then((data) => {
+      setTodo(data);
+    })
+    .catch((error) => {
+      console.error('Error fetching tasks:', error);
+    });
+  }, []);
 
   const [value, setValue] = useState("");
   const [todo, setTodo] = useState([]);
