@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/ListContainer.scss'
+import '../styles/CSS/ListContainer.css'
 
 const ListHeader = () => {
   return (
