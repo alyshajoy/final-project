@@ -30,7 +30,7 @@ const ListContainer = () => {
   const handleDelete = (task_id) => {
     console.log('Delete');
     const filteredTasks = tasks.filter((task) => {
-      return task.id !== task_id
+      return task.task_id !== task_id
     })
     setTasks(filteredTasks);
   }
