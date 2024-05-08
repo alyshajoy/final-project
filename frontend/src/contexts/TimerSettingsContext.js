@@ -48,6 +48,12 @@ const TimerSettingsContextProvider = (props) => {
         setPomodoro(0)
         break;
     }
+  } 
+  const children = ({ remainingTimer }) => {
+    const minutes = Math.floor(remainingTimer / 60)
+    const seconds = remainingTimer % 60
+
+    return `${minutes}m ${seconds}s`
   }
   
   return (
