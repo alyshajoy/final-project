@@ -17,6 +17,14 @@ const TimerSettingsContextProvider = (props) => {
     setPomodoro(0)
   }
 
+  const setCurrentTimer = (active_state) => {
+    updateExecute({
+      ...executing,
+      active: active_state
+    })
+    setTimerTime(executing);
+  } 
+
   const updateExecute = (updatedSettings) => {
     setExecuting(updatedSettings)
     setTimerTime(updatedSettings)
