@@ -19,10 +19,11 @@ const ListContainer = () => {
 
   const [value, setValue] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [complete, setComplete] = useState([]);
 
   const handleAdd = () => {
     
-    const copy = [...tasks, {title: value}];
+    const copy = [...tasks, {title: value, completed: false}];
     setTasks(copy);
     setValue("");
   }
@@ -33,6 +34,13 @@ const ListContainer = () => {
       return task.task_id !== task_id
     })
     setTasks(filteredTasks);
+  }
+
+  const handleComplete = (task_id) => {
+    const completedTasks = tasks.filter((task) => {
+      return task.task_id !== task_id
+    })
+    setComplete(completedTasks);
   }
 
   // const handleEdit = (id) => {
@@ -60,7 +68,10 @@ const ListContainer = () => {
         tasks={tasks} value={value} 
         setValue={setValue} 
         setTasks={setTasks}
-        handleAdd={handleAdd}/>
+        handleAdd={handleAdd}
+        handleComplete={handleComplete}
+        />
+        
       </div>
       <div>
         <ListFooter />

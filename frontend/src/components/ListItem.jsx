@@ -11,6 +11,7 @@ const ListItem = (props) => {
   // }
 
   const [edit, setEdit] = useState(false);
+  
 
   const handleEdit = (id) => {
     setEdit(true);
@@ -22,9 +23,11 @@ const ListItem = (props) => {
     props.handleAdd();
   }
 
+ 
+
   return (
     <div className="list-item-container">
-      <div><Checkbox/></div>
+      <div><Checkbox handleComplete={props.handleComplete} task_id={props.task.task_id}/></div>
       {edit 
      ? <div>
         <form>

@@ -16,6 +16,7 @@ const ListItems = (props) => {
         handleAdd={props.handleAdd}
         setValue={props.setValue}
         setTasks={props.setTasks}
+        handleComplete={props.handleComplete}
       />
     ));
   };
