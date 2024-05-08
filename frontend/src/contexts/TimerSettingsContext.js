@@ -12,6 +12,11 @@ const TimerSettingsContextProvider = (props) => {
   const pauseTimer = () => setStartAnimate(false);
   const stopTimer = () => setStartAnimate(false);
 
+  const settingBtn = () => {
+    setExecuting({})
+    setPomodoro(0)
+  }
+
   const updateExecute = (updatedSettings) => {
     setExecuting(updatedSettings)
     setTimerTime(updatedSettings)
