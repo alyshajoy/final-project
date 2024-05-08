@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS badges CASCADE;
 
 CREATE TABLE badges (
-    badge_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
     threshold INTEGER,
