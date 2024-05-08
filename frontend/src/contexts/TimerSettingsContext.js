@@ -12,7 +12,30 @@ const TimerSettingsContextProvider = (props) => {
   const pauseTimer = () => setStartAnimate(false);
   const stopTimer = () => setStartAnimate(false);
 
-  const updateExecute = (updatedSettings) => setExecuting(updatedSettings)
+  const updateExecute = (updatedSettings) => {
+    setExecuting(updatedSettings)
+    setTimerTime(updatedSettings)
+  } 
+
+  const setTimerTime = evaluate => {
+
+    switch (evaluate.active) {
+      case 'work': 
+        setPomodoro(evaluate.work)
+        break;
+      case 'shortbreak': 
+        setPomodoro(evaluate.shortbreak)
+        break;
+      case 'longbreak': 
+        setPomodoro(evaluate.longbreak)
+        break;
+
+
+      default:
+        setPomodoro(0)
+        break;
+    }
+  }
   
   return (
     <div>
