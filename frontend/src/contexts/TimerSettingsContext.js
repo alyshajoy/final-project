@@ -49,16 +49,27 @@ const TimerSettingsContextProvider = (props) => {
         break;
     }
   } 
-  const children = ({ remainingTimer }) => {
-    const minutes = Math.floor(remainingTimer / 60)
-    const seconds = remainingTimer % 60
+  const children = ({ remainingTime }) => {
+    const minutes = Math.floor(remainingTime / 60)
+    const seconds = remainingTime % 60
 
     return `${minutes}m ${seconds}s`
   }
-  
+
   return (
     <div>
-      <TimerSettingsContext.Provider value={{stopTimer, updateExecute}}>
+      <TimerSettingsContext.Provider value={{
+        stopTimer, 
+        updateExecute,
+        pomodoro,
+        executing,
+        startAnimate,
+        startTimer,
+        pauseTimer,
+        settingBtn,
+        setCurrentTimer,
+        children
+        }}>
         {props.children}
       </TimerSettingsContext.Provider>
     </div>
