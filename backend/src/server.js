@@ -4,7 +4,13 @@ require('dotenv').config({ path: '../../.env'});
 
 // Modules
 const express = require('express');
-const db = require('./db/connection'); // Assuming you have a db module for database connection
+const app = express(); // Initialize Express
+const db = require('./db/connection');
+const WebSocket = require('ws')
+const http = require('http')
+
+// Import WebSocket server integration
+const WebSocketServer = require('./websockets/websocket');
 
 // Require/import Feature Routes
 const tasksRoutes = require('./routes/tasks');
@@ -12,8 +18,11 @@ const timerRoutes = require('./routes/timer');
 const calendarRoutes = require('./routes/calendar');
 const badgesRoutes = require('./routes/badges');
 
-// Initialize Express
-const app = express();
+// Create an HTTP server from the Express application
+const server = http.createServer(app);
+
+// WebSocket server setup (mount onto HTTP server)
+WebSocketServer(server);
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
