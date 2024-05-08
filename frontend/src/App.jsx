@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter, Link, Routes, Route} from 'react-router-dom';
-import {NotificationProvider} from './NotificationContext'
+import {NotificationProvider} from './contexts/NotificationContext'
 import Home from './pages/Home.jsx';
 import Badges from './pages/Badges.jsx';
 import Timer from './pages/Timer.jsx';
 import Calendar from './pages/Calendar.jsx';
 import Tasks from './pages/Tasks.jsx';
-
+import WebSocketHandler from './contexts/WebsSocketHandler.jsx';
 function App() {
   return (
     <div className="App">
