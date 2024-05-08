@@ -1,5 +1,5 @@
 CREATE TABLE calendar_events (
-    event_id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
     date DATE,
