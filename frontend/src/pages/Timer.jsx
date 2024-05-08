@@ -1,12 +1,14 @@
 import React from "react";
-import FocusTimer from '../components/FocusTimer'
+import FocusTimer from '../components/timer/FocusTimer'
+import TimerSettingsContextProvider from "../contexts/TimerSettingsContext";
 
 const Timer = () => {
   return (
     <div>
-      <h1>I am the Timer page</h1>
-      <main>Hello World!
-        <FocusTimer />
+      <main>
+        <TimerSettingsContextProvider>
+          <FocusTimer />
+        </TimerSettingsContextProvider>
       </main>
     </div>
   );
