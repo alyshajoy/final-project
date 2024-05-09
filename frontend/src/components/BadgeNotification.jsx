@@ -2,17 +2,16 @@
 // hardcoded badges for now
 
 import React from 'react';
-import './BadgeNotification.css'; // Assuming your CSS handles images too
-import '../styles/BadgeNotification.scss';
-import { useNotification } from './NotificationContext';
-const BadgeNotification = ({ badge }) => {
+import '../styles/CSS/BadgeNotification.css'; // Assuming your CSS handles images too
+import { useNotification } from '../contexts/NotificationContext';
+const BadgeNotification = () => {
   const { notification, hideNotification } = useNotification();
   return notification ? (
     <div className="badge-notification">
-      <img src={badge.imageUrl} alt={badge.title} className="badge-image" />
+      <img src={notification.imageUrl} alt={notification.title} className="badge-image" />
       <div>
-        <h4>{badge.title}</h4>
-        <p>{badge.description}</p>
+        <h4>{notification.title}</h4>
+        <p>{notification.description}</p>
         <button onClick={hideNotification}>Close</button>
       </div>
     </div>
