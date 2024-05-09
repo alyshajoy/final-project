@@ -6,10 +6,11 @@ const SetPomodoro = () => {
   const { updateExecute } = useContext(TimerSettingsContext)
   // Default vaulues for pomodoro timer, active key determines which time will run
   const [newTimer, setNewTimer] = useState({
-    work: 0.3,
-    shortbreak: 0.2,
-    longbreak: 1,
-    active: 'work'
+    work: 25,
+    shortbreak: 5,
+    longbreak: 15,
+    active: 'work',
+    message: 'Time to work!'
   });
 
   const handleChange = input => {
