@@ -30,7 +30,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
-app.use(cors());  // Enable CORS for all routes
+app.use(cors({
+  origin: ['http://localhost:3000'],
+  credentials: true
+}));  // Enable CORS for all routes
 
 
 // Define endpoints

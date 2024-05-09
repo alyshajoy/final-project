@@ -21,6 +21,7 @@ function RegistrationForm() {
     try {
       const response = await fetch('http://localhost:3001/user/register', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         },

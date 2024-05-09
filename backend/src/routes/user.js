@@ -15,10 +15,12 @@ router.post('/register', async (req, res) => {
             [firstName, lastName, hardcodedEmail, hardcodedPassword, hardcodedUsername]
         );
 
-        const userId = response.rows[0].user_id;
+        const userId = response.rows[0].id;
 
+        console.log('Setting cookie for user ID:', userId);
         // Set a cookie with the user's ID or a session token
-        res.cookie('userId', userId, { httpOnly: true, secure: true, maxAge: 86400000 });
+        res.cookie('userId', userId, { maxAge: 86400000 });
+        console.log('Cookie set:', res.get('Set-Cookie'));
 
         res.status(201).json(response.rows[0]);  // Send back the newly created user
     } catch (error) {
