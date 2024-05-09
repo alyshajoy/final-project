@@ -3,12 +3,14 @@ require('dotenv').config({ path: '../.env'});
 // Modules
 const express = require('express');
 const db = require('./db/connection');
-//const WebSocket = require('ws')
-//const http = require('http')
+const WebSocket = require('ws')
+const http = require('http')
+
+const app = express(); // Initialize Express
+console.log('Express initialized...');
 
 // Import WebSocket server integration
-//const WebSocketServer = require('./websockets/websocket');
-
+const initWebSocketServer = require('./db/websockets/websockets');
 // Require/import Feature Routes
 const tasksRoutes = require('./routes/tasks');
 const timerRoutes = require('./routes/timer');
@@ -16,12 +18,11 @@ const calendarRoutes = require('./routes/calendar');
 const badgesRoutes = require('./routes/badges');
 
 // Create an HTTP server from the Express application
-// const server = http.createServer(app);
-
-// WebSocket server setup (mount onto HTTP server)
-//WebSocketServer(server);
-const app = express(); // Initialize Express
-
+const server = http.createServer(app);
+console.log('HTTP server mounted and intialized...');
+// Import and initialize WebSocket server with the HTTP server
+const wss = initWebSocketServer(server);
+console.log('WebSocket server mounted...');
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -40,7 +41,7 @@ app.get('/', (req, res) => {
 
 // Start the server
 const port = process.env.PORT || 3001;
-app.listen(port, () => {
+server.listen(port, () => { //was app in place of server
     console.log(`Server running on port ${port}`);
 });
 
