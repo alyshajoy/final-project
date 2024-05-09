@@ -18,7 +18,7 @@ const ListItem = (props) => {
   const handleSubmit = (e) => {
     console.log('submitted')
     e.preventDefault();
-    props.handleAdd();
+    handleAdd();
   }
 
 
@@ -35,7 +35,7 @@ const ListItem = (props) => {
           onBlur={() => setEdit(false)}
           onChange={e => setValue(e.target.value)}
           />
-          <button type="button" onClick={handleAdd}>Add</button>
+          <button type="button" onClick={handleSubmit}>Add</button>
         </form>
       </div>
       :<h3 className="list-item-title" onClick={() => handleEdit(task.task_id)}> {task.title} </h3>

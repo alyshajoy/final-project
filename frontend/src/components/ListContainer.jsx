@@ -23,7 +23,7 @@ const ListContainer = () => {
 
   const handleAdd = () => {
     
-    const copy = [...tasks, {title: value, completed: false}];
+    const copy = [...tasks, {title: value, task_id: tasks.length + 1, completed: false}];
     setTasks(copy);
     setValue("");
   }
@@ -61,7 +61,10 @@ const ListContainer = () => {
       <div>
         <ListItems 
         handleDelete={handleDelete} 
-        tasks={tasks} value={value} 
+        tasks={tasks} 
+        value={value} 
+        complete={complete}
+        setComplete={complete}
         setValue={setValue} 
         setTasks={setTasks}
         handleAdd={handleAdd}
