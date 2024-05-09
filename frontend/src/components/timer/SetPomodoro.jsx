@@ -7,7 +7,7 @@ const SetPomodoro = () => {
   // Default vaulues for pomodoro timer, active key determines which time will run
   const [newTimer, setNewTimer] = useState({
     work: 25,
-    shortbreak: 5,
+    shortbreak: 20,
     longbreak: 15,
     active: 'work',
     message: 'Time to work!'
@@ -48,14 +48,23 @@ const SetPomodoro = () => {
     updateExecute(newTimer);
   }
 
+  const increment = () => {
+    setNewTimer({
+      ...newTimer,
+      
+    })
+  }
+
   return (
     <div className="pomodoro-form-container">
 
       <form noValidate>
         <div className="pomodoro-input-wrapper">
-          <input className="input" name="work" onChange={handleChange} value={newTimer.work}/>
-          <input className="input" name="shortbreak" onChange={handleChange} value={newTimer.shortbreak}/>
-          <input className="input" name="longbreak" onChange={handleChange} value={newTimer.longbreak}/>
+          <p className="input" name="work" onChange={handleChange}>
+          {newTimer.work}
+          </p>
+          <p className="input" name="shortbreak" onChange={handleChange}>{newTimer.shortbreak}</p>
+          <p className="input" name="longbreak" onChange={handleChange}>{newTimer.longbreak}</p>
         </div>
         <TimerButton title="Set Timer" _callback={handleSubmit} />
       </form>
