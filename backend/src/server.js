@@ -1,16 +1,13 @@
 // Environment variables
-require('dotenv').config({ path: '../../.env'});
-
-
+require('dotenv').config({ path: '../.env'});
 // Modules
 const express = require('express');
-const app = express(); // Initialize Express
 const db = require('./db/connection');
-const WebSocket = require('ws')
-const http = require('http')
+//const WebSocket = require('ws')
+//const http = require('http')
 
 // Import WebSocket server integration
-const WebSocketServer = require('./websockets/websocket');
+//const WebSocketServer = require('./websockets/websocket');
 
 // Require/import Feature Routes
 const tasksRoutes = require('./routes/tasks');
@@ -19,10 +16,11 @@ const calendarRoutes = require('./routes/calendar');
 const badgesRoutes = require('./routes/badges');
 
 // Create an HTTP server from the Express application
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
 // WebSocket server setup (mount onto HTTP server)
-WebSocketServer(server);
+//WebSocketServer(server);
+const app = express(); // Initialize Express
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
