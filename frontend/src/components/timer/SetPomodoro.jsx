@@ -7,11 +7,13 @@ const SetPomodoro = () => {
   // Default vaulues for pomodoro timer, active key determines which time will run
   const [newTimer, setNewTimer] = useState({
     work: 25,
-    shortbreak: 20,
+    shortbreak: 5,
     longbreak: 15,
     active: 'work',
     message: 'Time to work!'
   });
+
+  const [timeValue, setTimeValue] = useState();
 
   const handleChange = input => {
     const {name, value} = input.target
@@ -48,23 +50,19 @@ const SetPomodoro = () => {
     updateExecute(newTimer);
   }
 
-  const increment = () => {
-    setNewTimer({
-      ...newTimer,
-      
-    })
+  const increment = (e) => {
+    e.preventDefault();
   }
-
   return (
     <div className="pomodoro-form-container">
-
       <form noValidate>
         <div className="pomodoro-input-wrapper">
-          <p className="input" name="work" onChange={handleChange}>
-          {newTimer.work}
-          </p>
-          <p className="input" name="shortbreak" onChange={handleChange}>{newTimer.shortbreak}</p>
-          <p className="input" name="longbreak" onChange={handleChange}>{newTimer.longbreak}</p>
+          <TimerButton title="-" _callback={increment}/><p className="input" name="work" onChange={handleChange} value={newTimer.work}>{newTimer.work}</p><TimerButton title="+" _callback={increment}/> 
+          <br />
+          <TimerButton title="-" _callback={increment}/><p className="input" name="shortbreak" onChange={handleChange} value={newTimer.shortbreak}>{newTimer.shortbreak}</p><TimerButton title="+" _callback={increment}/> 
+          <br />
+          <TimerButton title="-" _callback={increment}/><p className="input" name="longbreak" onChange={handleChange} value={newTimer.longbreak}>{newTimer.longbreak}</p><TimerButton title="+" _callback={increment}/> 
+          <br />
         </div>
         <TimerButton title="Set Timer" _callback={handleSubmit} />
       </form>
