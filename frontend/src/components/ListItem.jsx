@@ -21,7 +21,6 @@ const ListItem = (props) => {
     props.handleAdd();
   }
 
- 
 
   return (
     <div className="list-item-container">
@@ -30,13 +29,13 @@ const ListItem = (props) => {
      ? <div>
         <form>
           <input 
-          type="text" 
+          value={value}
           placeholder={task.title} 
           autoFocus 
           onBlur={() => setEdit(false)}
           onChange={e => setValue(e.target.value)}
           />
-          <button type="submit" onClick={handleAdd}>Add</button>
+          <button type="button" onClick={handleAdd}>Add</button>
         </form>
       </div>
       :<h3 className="list-item-title" onClick={() => handleEdit(task.task_id)}> {task.title} </h3>

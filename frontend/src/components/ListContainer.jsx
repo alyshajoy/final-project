@@ -43,10 +43,6 @@ const ListContainer = () => {
     setComplete(completedTasks);
   }
 
-  // const handleEdit = (id) => {
-  //   console.log('Edit', id);
-  // }
-
   const items = [
     {id: 1, title:'Banana'}, 
     {id: 2,title:'Chocolate'}, 
@@ -60,7 +56,7 @@ const ListContainer = () => {
       </div>
       <form>
         <input value={value} onChange={e => setValue(e.target.value)}/>
-        <button type="submit" onClick={handleAdd}>Add</button>
+        <button type="button" onClick={handleAdd}>Add</button>
       </form>
       <div>
         <ListItems 
