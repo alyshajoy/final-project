@@ -1,18 +1,16 @@
 // Environment variables
-require('dotenv').config({ path: '../../.env'});
-
-
+require('dotenv').config({ path: '../.env'});
 // Modules
 const express = require('express');
-const app = express(); // Initialize Express
 const db = require('./db/connection');
-const cors = require('cors');
-// const WebSocket = require('ws');
-// const http = require('http');
+const WebSocket = require('ws')
+const http = require('http')
 
-// // Import WebSocket server integration
-// const WebSocketServer = require('./websockets/websocket');
+const app = express(); // Initialize Express
+console.log('Express initialized...');
 
+// Import WebSocket server integration
+const initWebSocketServer = require('./db/websockets/websockets');
 // Require/import Feature Routes
 const tasksRoutes = require('./routes/tasks');
 const timerRoutes = require('./routes/timer');
@@ -21,12 +19,12 @@ const badgesRoutes = require('./routes/badges');
 const userRoutes = require('./routes/user');
 
 // Create an HTTP server from the Express application
-// const server = http.createServer(app);
-
-// WebSocket server setup (mount onto HTTP server)
-// WebSocketServer(server);
-
-// Middleware
+const server = http.createServer(app);
+console.log('HTTP server mounted and intialized...');
+// Import and initialize WebSocket server with the HTTP server
+const wss = initWebSocketServer(server);
+console.log('WebSocket server mounted...');
+// Middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const cookieParser = require('cookie-parser');
@@ -49,7 +47,7 @@ app.get('/', (req, res) => {
 
 // Start the server
 const port = process.env.PORT || 3001;
-app.listen(port, () => {
+server.listen(port, () => { //was app in place of server
     console.log(`Server running on port ${port}`);
 });
 
