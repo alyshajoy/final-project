@@ -25,9 +25,11 @@ const server = http.createServer(app);
 // WebSocket server setup (mount onto HTTP server)
 WebSocketServer(server);
 
-// Middlewares
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 // Define endpoints
 app.use('/api/tasks', tasksRoutes);
