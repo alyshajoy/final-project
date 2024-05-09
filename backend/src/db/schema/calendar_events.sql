@@ -9,5 +9,5 @@ CREATE TABLE calendar_events (
     location VARCHAR(255),
     recurrence_pattern VARCHAR(50),  -- Could be 'daily', 'weekly', 'monthly', 'yearly'
     recurrence_end_date TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
