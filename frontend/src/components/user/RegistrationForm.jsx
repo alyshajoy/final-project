@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function RegistrationForm() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,7 +35,7 @@ function RegistrationForm() {
       console.log('data:', data);
       if (response.ok) {
         console.log('Registration successful', data);
-        // Additional actions upon successful registration like redirecting
+        navigate('/'); // navigate user to homepage upon successful registration
       } else {
         throw new Error(data.error || 'Registration failed.');
       }
