@@ -1,5 +1,5 @@
 // load .env data into process.env
-require('dotenv').config();
+require('dotenv').config({ path: '../.env'});
 
 // other dependencies
 const fs = require('fs');

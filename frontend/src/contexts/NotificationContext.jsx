@@ -1,12 +1,13 @@
 import React, { createContext, useState, useContext } from 'react';
-
+import badgesData from '../Mocks/BadgeMockData';
 const NotificationContext = createContext();
 //hello
 export const useNotification = () => useContext(NotificationContext);
 
 export const NotificationProvider = ({ children }) => {
-  const [notification, setNotification] = useState(null);
-  const showNotification = (badge) => setNotification(badge);
+  const testBadge = badgesData[0];
+  const [notification, setNotification] = useState(testBadge); //change back to null
+  const showNotification = (badge) => setNotification(testBadge); //change back to just Badge
   const hideNotification = () => setNotification(null);
 
   return (
