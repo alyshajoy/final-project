@@ -44,7 +44,7 @@ const SetPomodoro = () => {
   // }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     updateExecute(newTimer);
   }
 
@@ -60,7 +60,6 @@ const SetPomodoro = () => {
   }
   return (
     <div className="pomodoro-form-container">
-      <form noValidate>
         <div className="pomodoro-input-wrapper">
           <button onClick={() => decrement('work')}>-</button>
           <p className="input" name="work" value={newTimer.work}>{newTimer.work}</p>
@@ -76,7 +75,6 @@ const SetPomodoro = () => {
           <br />
         </div>
         <TimerButton title="Set Timer" _callback={handleSubmit} />
-      </form>
     </div>
   )
 }
