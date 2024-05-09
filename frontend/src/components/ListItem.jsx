@@ -6,9 +6,7 @@ import '../styles/CSS/ListItems.css';
 
 const ListItem = (props) => {
 
-  // const handleDelete = (id) => {
-  //   console.log('Deleted!')
-  // }
+  const {value, task, key, handleAdd, handleComplete, handleDelete, setTasks, setValue} = props;
 
   const [edit, setEdit] = useState(false);
   
@@ -27,24 +25,24 @@ const ListItem = (props) => {
 
   return (
     <div className="list-item-container">
-      <div><Checkbox handleComplete={props.handleComplete} task_id={props.task.task_id}/></div>
+      <div><Checkbox handleComplete={handleComplete} task_id={task.task_id}/></div>
       {edit 
      ? <div>
         <form>
           <input 
           type="text" 
-          placeholder={props.task.title} 
+          placeholder={task.title} 
           autoFocus 
           onBlur={() => setEdit(false)}
-          onChange={e => props.setValue(e.target.value)}
-          onSubmit={e => e.preventDefault()}
+          onChange={e => setValue(e.target.value)}
           />
+          <button type="submit" onClick={handleAdd}>Add</button>
         </form>
       </div>
-      :<h3 className="list-item-title" onClick={() => handleEdit(props.task.task_id)}> {props.task.title} </h3>
+      :<h3 className="list-item-title" onClick={() => handleEdit(task.task_id)}> {task.title} </h3>
       }
       
-      <div><RemoveTask handleDelete={props.handleDelete} task_id={props.task.task_id}/></div>
+      <div><RemoveTask handleDelete={handleDelete} task_id={task.task_id}/></div>
       
      
     </div>

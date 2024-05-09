@@ -60,7 +60,7 @@ const ListContainer = () => {
       </div>
       <form>
         <input value={value} onChange={e => setValue(e.target.value)}/>
-        <button type="button" onClick={handleAdd}>Add</button>
+        <button type="submit" onClick={handleAdd}>Add</button>
       </form>
       <div>
         <ListItems 
