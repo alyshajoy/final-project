@@ -7,7 +7,7 @@ CREATE TABLE tasks (
     description TEXT,
     priority INTEGER,
     due_date DATE,
-    status BOOLEAN,
+    completed BOOLEAN,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE,
     FOREIGN KEY (user_id) REFERENCES users(id)

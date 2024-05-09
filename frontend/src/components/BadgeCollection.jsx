@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/CSS/BadgeCollection.css';
 import badgesData from '../Mocks/BadgeMockData';
+
 const BadgeCollection = ({ }) => {
   return (
     <div className="badge-collection">
