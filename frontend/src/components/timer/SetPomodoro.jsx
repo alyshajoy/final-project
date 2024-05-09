@@ -13,55 +13,66 @@ const SetPomodoro = () => {
     message: 'Time to work!'
   });
 
-  const [timeValue, setTimeValue] = useState();
+  // const handleChange = input => {
+  //   const {name, value} = input.target
+  //   // Switch statement used to overide current timer values
+  //   switch (name) {
+  //     case 'work':
+  //       setNewTimer({
+  //         ...newTimer,
+  //         work: parseInt(value)
+  //       })
+  //       break;
 
-  const handleChange = input => {
-    const {name, value} = input.target
-    // Switch statement used to overide current timer values
-    switch (name) {
-      case 'work':
-        setNewTimer({
-          ...newTimer,
-          work: parseInt(value)
-        })
-        break;
+  //     case 'shortbreak':
+  //       setNewTimer({
+  //         ...newTimer,
+  //         shortbreak: parseInt(value)
+  //       })
+  //       break;
 
-      case 'shortbreak':
-        setNewTimer({
-          ...newTimer,
-          shortbreak: parseInt(value)
-        })
-        break;
+  //     case 'longbreak':
+  //       setNewTimer({
+  //         ...newTimer,
+  //         longbreak: parseInt(value)
+  //       })
+  //       break;
 
-      case 'longbreak':
-        setNewTimer({
-          ...newTimer,
-          longbreak: parseInt(value)
-        })
-        break;
-
-      default:
-        break;
-    }
-  }
+  //     default:
+  //       break;
+  //   }
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     updateExecute(newTimer);
   }
 
-  const increment = (e) => {
+  const increment = (timer) => {
+    setNewTimer(newTimer => ({
+      ...newTimer,
+      [timer]: newTimer[timer] + 1
+    }))
+  }
+
+  const decrement = (e) => {
     e.preventDefault();
   }
   return (
     <div className="pomodoro-form-container">
       <form noValidate>
         <div className="pomodoro-input-wrapper">
-          <TimerButton title="-" _callback={increment}/><p className="input" name="work" onChange={handleChange} value={newTimer.work}>{newTimer.work}</p><TimerButton title="+" _callback={increment}/> 
+          <button onClick={() => decrement('work')}>-</button>
+          <p className="input" name="work" value={newTimer.work}>{newTimer.work}</p>
+          <button onClick={() => increment('work')}>+</button>
           <br />
-          <TimerButton title="-" _callback={increment}/><p className="input" name="shortbreak" onChange={handleChange} value={newTimer.shortbreak}>{newTimer.shortbreak}</p><TimerButton title="+" _callback={increment}/> 
+          <button onClick={() => decrement('shortbreak')}>-</button>
+          <p className="input" name="shortbreak" value={newTimer.shortbreak}>{newTimer.shortbreak}</p>
+          <button onClick={() => increment('shortbreak')}>+</button>
           <br />
-          <TimerButton title="-" _callback={increment}/><p className="input" name="longbreak" onChange={handleChange} value={newTimer.longbreak}>{newTimer.longbreak}</p><TimerButton title="+" _callback={increment}/> 
+          <button onClick={() => decrement('longbreak')}>-</button>
+          <p className="input" name="longbreak" value={newTimer.longbreak}>{newTimer.longbreak}</p>
+          <button onClick={() => increment('longbreak')}>+</button>
           <br />
         </div>
         <TimerButton title="Set Timer" _callback={handleSubmit} />
