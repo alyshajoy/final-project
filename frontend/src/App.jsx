@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import BadgeNotification from './components/BadgeNotification.jsx';
 import {BrowserRouter, Link, Routes, Route} from 'react-router-dom';
 import {NotificationProvider} from './contexts/NotificationContext'
 import Home from './pages/Home.jsx';
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NotificationProvider>
+          <BadgeNotification />
           {/*WebsocketHandler for badge notifications */}
           <WebSocketHandler />
           <Link to="/home">Home</Link> <br/>
