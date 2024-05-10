@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CalendarView from "../components/Calendar/CalendarView";
 import AddEventButton from "../components/Calendar/AddEventButton";
 import EventForm from "../components/Calendar/EventForm";
@@ -10,6 +10,29 @@ const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null); // Date selected in CalendarView
   const [selectedStartTime, setSelectedStartTime] = useState(null); // Start time selected in CalendarView
   const [selectedEndTime, setSelectedEndTime] = useState(null); // End time selected in CalendarView
+
+  // Fetch events when the component mounts
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/calendar/events', {
+          method: 'GET',
+          credentials: 'include'  // Include cookies
+        });
+        if (!response.ok) throw new Error('Failed to fetch');
+        const data = await response.json();
+        setEvents(data.map(event => ({
+          title: event.title,
+          start: new Date(event.start_time),
+          end: new Date(event.end_time)
+        })));
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   const handleAddEvent = async (eventData) => {
     const { title, date, startTime, endTime } = eventData;

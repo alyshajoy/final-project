@@ -12,6 +12,19 @@ router.get('/', (req, res) => {
   res.send('Hello Calendar Api')
 });
 
+// GET route to fetch user events
+router.get('/events', async (req, res) => {
+  const user_id = req.cookies.userId;  // Assuming you are storing user_id in cookies
+
+  try {
+      const result = await db.query('SELECT * FROM calendar_events WHERE user_id = $1', [user_id]);
+      res.json(result.rows);
+  } catch (error) {
+      console.error('Error fetching events:', error);
+      res.status(500).send({ message: 'Error fetching events' });
+  }
+});
+
 // Receive calendar event form
 router.post('/events', async (req, res) => {
 
