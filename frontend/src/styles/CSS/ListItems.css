@@ -1,10 +1,25 @@
 .list-item-container {
   border: black solid 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .list-item-title {
-  background-color: lightcyan;
+  background-color: rgba(255, 171, 171, 0.1568627451);
   height: 40px;
+}
+
+.list-items-container {
+  margin: 0;
+  padding: 0;
+}
+
+.list-items-container-inner {
+  margin: 0;
+  padding: 0;
 }
 
 /*# sourceMappingURL=ListItems.css.map */
