@@ -19,10 +19,11 @@ const ListContainer = () => {
 
   const [value, setValue] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [complete, setComplete] = useState([]);
 
   const handleAdd = () => {
     
-    const copy = [...tasks, {title: value}];
+    const copy = [...tasks, {title: value, task_id: tasks.length + 1, completed: false}];
     setTasks(copy);
     setValue("");
   }
@@ -34,6 +35,34 @@ const ListContainer = () => {
     })
     setTasks(filteredTasks);
   }
+
+  // const handleComplete = (task_id) => {
+  //   const completedTasks = tasks.filter((task) => {
+  //     return task.task_id !== task_id
+  //   })
+  //   setComplete(completedTasks);
+  // }
+
+  const handleComplete = (task_id) => {
+    const updatedTasks = tasks.map(task => {
+      if (task.task_id === task_id) {
+        // Toggle the completed status of the task
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  };
+
+  const handleUpdate = (taskId, newTitle) => {
+    const updatedTasks = tasks.map(task => {
+      if (task.task_id === taskId) {
+        return { ...task, title: newTitle };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  };
 
   const items = [
     {id: 1, title:'Banana'}, 
@@ -51,7 +80,19 @@ const ListContainer = () => {
         <button type="button" onClick={handleAdd}>Add</button>
       </form>
       <div>
-        <ListItems handleDelete={handleDelete} tasks={tasks}/>
+        <ListItems 
+        handleDelete={handleDelete} 
+        tasks={tasks} 
+        value={value} 
+        complete={complete}
+        setComplete={setComplete}
+        setValue={setValue} 
+        setTasks={setTasks}
+        handleAdd={handleAdd}
+        handleComplete={handleComplete}
+        handleUpdate={handleUpdate}
+        />
+        
       </div>
       <div>
         <ListFooter />
