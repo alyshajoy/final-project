@@ -2,20 +2,14 @@
 .badge-notification {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  padding: 20px;
+  padding: 10px;
   background-color: #f4f4f9;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 80%; /* Adjust width as needed */
-  transform: translate(-50%, -50%);
-  max-width: 500px; /* Set max-width for responsiveness */
-  height: auto; /* Let the content determine height */
+  top: -100px;
+  right: 20px;
   transition: top 0.5s ease;
-  width: 40%;
 }
 
 .badge-notification.active {
@@ -23,8 +17,8 @@
 }
 
 .badge-image {
-  width: 100px; /* Fixed width */
-  height: auto; /* Fixed height */
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height */
   object-fit: contain; /* Maintain aspect ratio without cropping */
 }
 
