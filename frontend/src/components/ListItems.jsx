@@ -3,7 +3,7 @@ import ListItem from "./ListItem";
 
 const ListItems = (props) => {
 
-  const {tasks, setTasks, value, setValue, handleAdd, handleComplete, handleDelete, complete, setComplete} = props;
+  const {tasks, setTasks, value, setValue, handleAdd, handleComplete, handleDelete, complete, setComplete, handleUpdate} = props;
 
   const mappedList = (tasks) => {
     return tasks.map(task => (
@@ -21,6 +21,7 @@ const ListItems = (props) => {
         handleComplete={handleComplete}
         complete={complete}
         setComplete={setComplete}
+        handleUpdate={handleUpdate}
       />
     ));
   };
