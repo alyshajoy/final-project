@@ -17,10 +17,10 @@ router.post('/events', async (req, res) => {
 
   const user_id = req.cookies.userId;
 
-  const { title, date, startTime, endTime } = req.body;
+  const { title, date, start_time, end_time } = req.body;
 
-  const start_time = `${date}T${startTime}:00`;
-  const end_time = `${date}T${endTime}:00`;
+  // const startTime = `${date}T${start_time}:00`;
+  // const endTime = `${date}T${end_time}:00`;
 
   const queryText = `
     INSERT INTO calendar_events (

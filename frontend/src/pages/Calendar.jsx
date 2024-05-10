@@ -11,12 +11,37 @@ const Calendar = () => {
   const [selectedStartTime, setSelectedStartTime] = useState(null); // Start time selected in CalendarView
   const [selectedEndTime, setSelectedEndTime] = useState(null); // End time selected in CalendarView
 
-  const handleAddEvent = (eventData) => {
+  const handleAddEvent = async (eventData) => {
     const { title, date, startTime, endTime } = eventData;
-    const start = `${date}T${startTime}:00`; // Combine date and start time
-    const end = `${date}T${endTime}:00`; // Combine date and end time
-    const newEvent = { title, start, end };
+    const start_time = `${date}T${startTime}:00`; // Combine date and start time
+    const end_time = `${date}T${endTime}:00`; // Combine date and end time
+
+    const newEvent = { title, date, start_time, end_time };
     setEvents([...events, newEvent]); // Add new event to the existing events
+
+    try {
+      const response = await fetch('http://localhost:3001/api/calendar/events', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+              title, 
+              date, 
+              start_time, 
+              end_time
+          }),
+          credentials: 'include'  // include cookies
+      });
+
+    if (!response.ok) throw new Error('Network response was not ok');
+      const result = await response.json();
+      console.log("Event added successfully:", result);
+    } catch (error) {
+      console.error("Error adding event:", error);
+  }
+
     setIsModalOpen(false); // Close modal after adding event
 };
 
