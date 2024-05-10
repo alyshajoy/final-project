@@ -5,6 +5,6 @@ CREATE TABLE user_badges (
     user_id INTEGER NOT NULL,
     badge_id INTEGER NOT NULL,
     earned_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (badge_id) REFERENCES badges(badge_id)
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (badge_id) REFERENCES badges(id)
 );
