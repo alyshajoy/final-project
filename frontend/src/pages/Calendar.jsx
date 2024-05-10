@@ -3,6 +3,7 @@ import CalendarView from "../components/Calendar/CalendarView";
 import AddEventButton from "../components/Calendar/AddEventButton";
 import EventForm from "../components/Calendar/EventForm";
 import HomeButton from "../components/buttons/HomeButton";
+import '../styles/CSS/Calendar.css';
 
 const Calendar = () => {
 
@@ -78,7 +79,7 @@ const Calendar = () => {
     <div>
       <HomeButton />
       <h1>Calendar</h1>
-      <AddEventButton onClick={handleOpenModal}/>
+      
       <EventForm 
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -87,12 +88,15 @@ const Calendar = () => {
         initialStartTime={selectedStartTime}
         initialEndTime={selectedEndTime}
       />
-      <CalendarView
-        events={events}
-        setSelectedDate={setSelectedDate}
-        setSelectedStartTime={setSelectedStartTime}
-        setSelectedEndTime={setSelectedEndTime}
-      />
+      <div className="calendar-wrapper">
+        <AddEventButton onClick={handleOpenModal}/>
+        <CalendarView
+          events={events}
+          setSelectedDate={setSelectedDate}
+          setSelectedStartTime={setSelectedStartTime}
+          setSelectedEndTime={setSelectedEndTime}
+        />
+      </div>
     </div>
   );
 };
