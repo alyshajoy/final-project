@@ -1,33 +1,47 @@
 .list-item-container {
-  border: black solid 1px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
+  padding: 5px;
 }
 
 .list-item-title {
   background-color: rgba(255, 171, 171, 0.1568627451);
   height: 40px;
   color: #003845;
+  font-weight: 800;
+  font-size: 25px;
+  padding: 3px;
+  padding-top: 2%;
+  margin: 0 auto;
+  width: 80%;
+  border-radius: 2px 15px;
+  text-align: center;
 }
 
 .list-item-title-strike {
-  background-color: rgba(255, 171, 171, 0.1568627451);
+  background-color: rgba(0, 56, 69, 0.1568627451);
+  text-decoration: line-through white solid 5%;
   height: 40px;
   color: #003845;
-  text-decoration: line-through white solid 20%;
+  font-weight: 800;
+  font-size: 25px;
+  padding: 3px;
+  padding-top: 2%;
+  margin: 0 auto;
 }
 
 .list-items-container {
-  margin: 0;
-  padding: 0;
+  margin: 5px;
+  padding: 5px;
 }
 
 .list-items-container-inner {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 /*# sourceMappingURL=ListItems.css.map */

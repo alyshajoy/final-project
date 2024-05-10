@@ -1,32 +1,45 @@
 .list-item-container {
-  border: black solid 1px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
+  padding: 5px;
 }
 
 .list-item-title {
   background-color: #FFABAB28;
   height: 40px;
   color: #003845;
+  font-weight: 800;
+  font-size: 25px;
+  padding: 3px;
+  padding-top: 2%;
+  margin: 0 auto;
+  width: 80%;
+  border-radius: 2px 15px;
+  text-align: center;
 }
 
 .list-item-title-strike {
-  background-color: #FFABAB28;
+  background-color: #00384528;
+  text-decoration: line-through #FFFF solid 5%;
   height: 40px;
   color: #003845;
-  text-decoration: line-through #FFFF solid 20%;
+  font-weight: 800;
+  font-size: 25px;
+  padding: 3px;
+  padding-top: 2%;
+  margin: 0 auto;
 }
 
-
 .list-items-container{
-  margin: 0;
-  padding: 0;
+  margin: 5px;
+  padding: 5px;
 }
 
 .list-items-container-inner {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
