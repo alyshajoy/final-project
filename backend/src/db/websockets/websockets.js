@@ -15,36 +15,36 @@ module.exports = (server) => {
 
   // Listen for database changes
   const listenForDatabaseChanges = () => {
-    // implement mechanism to listen for database changes
-    // using PostgreSQL's LISTEN/NOTIFY mechanism or database triggers
-
-    // When a database change event occurs, broadcast the change to WebSocket clients
-    db.on('notification', (msg) => {
+    db.on('notification', async (msg) => {
+      console.log("notification received 1 prior to if statement")
       if (msg.channel === 'badge_count_exceeded') {
-          try {
-              (async () => {
-                const result = await db.query('SELECT * FROM badges WHERE id = $1', [msg.payload]);
-              })();
-              const badge = result.rows[0];
-              const payload = {
-                  type: 'badge-earned',
-                  badge: {
-                      imageUrl: badge.image_url,
-                      title: badge.name,
-                      description: badge.description
-                  }
-              };
-              // Send badge data to frontend
-              wss.clients.forEach(client => {
-                  if (client.readyState === WebSocket.OPEN) {
-                      client.send(JSON.stringify(payload));
-                  }
-              });
-          } catch (error) {
-              console.error('Error fetching badge:', error);
+        console.log("notification received 2")
+        try {
+          const badgeId = parseInt(msg.payload);
+          const result = await db.query('SELECT * FROM badges WHERE id = $1', [badgeId]);
+          const badge = result.rows[0];
+          console.log("badge",badge)
+          if (badge) {
+            const payload = {
+              type: 'badge-earned',
+              badge: {
+                imageUrl: badge.image_url,
+                title: badge.name,
+                description: badge.description
+              }
+            };
+            // Send badge data to frontend
+            wss.clients.forEach(client => {
+              if (client.readyState === WebSocket.OPEN) {
+                client.send(JSON.stringify(payload));
+              }
+            });
           }
+        } catch (error) {
+          console.error('Error fetching badge:', error);
+        }
       }
-   });
+    });
   };
 
   // Start listening for database changes
