@@ -6,58 +6,75 @@ const SetPomodoro = () => {
   const { updateExecute } = useContext(TimerSettingsContext)
   // Default vaulues for pomodoro timer, active key determines which time will run
   const [newTimer, setNewTimer] = useState({
-    work: 0.3,
-    shortbreak: 0.2,
-    longbreak: 1,
-    active: 'work'
+    work: 25,
+    shortbreak: 5,
+    longbreak: 15,
+    active: 'work',
+    message: 'Time to work!'
   });
 
-  const handleChange = input => {
-    const {name, value} = input.target
-    // Switch statement used to overide current timer values
-    switch (name) {
-      case 'work':
-        setNewTimer({
-          ...newTimer,
-          work: parseInt(value)
-        })
-        break;
+  // const handleChange = input => {
+  //   const {name, value} = input.target
+  //   // Switch statement used to overide current timer values
+  //   switch (name) {
+  //     case 'work':
+  //       setNewTimer({
+  //         ...newTimer,
+  //         work: parseInt(value)
+  //       })
+  //       break;
 
-      case 'shortbreak':
-        setNewTimer({
-          ...newTimer,
-          shortbreak: parseInt(value)
-        })
-        break;
+  //     case 'shortbreak':
+  //       setNewTimer({
+  //         ...newTimer,
+  //         shortbreak: parseInt(value)
+  //       })
+  //       break;
 
-      case 'longbreak':
-        setNewTimer({
-          ...newTimer,
-          longbreak: parseInt(value)
-        })
-        break;
+  //     case 'longbreak':
+  //       setNewTimer({
+  //         ...newTimer,
+  //         longbreak: parseInt(value)
+  //       })
+  //       break;
 
-      default:
-        break;
-    }
-  }
+  //     default:
+  //       break;
+  //   }
+  // }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     updateExecute(newTimer);
   }
 
+  const increment = (timer) => {
+    setNewTimer(newTimer => ({
+      ...newTimer,
+      [timer]: newTimer[timer] + 1
+    }))
+  }
+
+  const decrement = (e) => {
+    e.preventDefault();
+  }
   return (
     <div className="pomodoro-form-container">
-
-      <form noValidate>
         <div className="pomodoro-input-wrapper">
-          <input className="input" name="work" onChange={handleChange} value={newTimer.work}/>
-          <input className="input" name="shortbreak" onChange={handleChange} value={newTimer.shortbreak}/>
-          <input className="input" name="longbreak" onChange={handleChange} value={newTimer.longbreak}/>
+          <button onClick={() => decrement('work')}>-</button>
+          <p className="input" name="work" value={newTimer.work}>{newTimer.work}</p>
+          <button onClick={() => increment('work')}>+</button>
+          <br />
+          <button onClick={() => decrement('shortbreak')}>-</button>
+          <p className="input" name="shortbreak" value={newTimer.shortbreak}>{newTimer.shortbreak}</p>
+          <button onClick={() => increment('shortbreak')}>+</button>
+          <br />
+          <button onClick={() => decrement('longbreak')}>-</button>
+          <p className="input" name="longbreak" value={newTimer.longbreak}>{newTimer.longbreak}</p>
+          <button onClick={() => increment('longbreak')}>+</button>
+          <br />
         </div>
         <TimerButton title="Set Timer" _callback={handleSubmit} />
-      </form>
     </div>
   )
 }
