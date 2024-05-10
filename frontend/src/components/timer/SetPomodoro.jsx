@@ -13,36 +13,6 @@ const SetPomodoro = () => {
     message: 'Time to work!'
   });
 
-  // const handleChange = input => {
-  //   const {name, value} = input.target
-  //   // Switch statement used to overide current timer values
-  //   switch (name) {
-  //     case 'work':
-  //       setNewTimer({
-  //         ...newTimer,
-  //         work: parseInt(value)
-  //       })
-  //       break;
-
-  //     case 'shortbreak':
-  //       setNewTimer({
-  //         ...newTimer,
-  //         shortbreak: parseInt(value)
-  //       })
-  //       break;
-
-  //     case 'longbreak':
-  //       setNewTimer({
-  //         ...newTimer,
-  //         longbreak: parseInt(value)
-  //       })
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-  // }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     updateExecute(newTimer);
@@ -55,8 +25,11 @@ const SetPomodoro = () => {
     }))
   }
 
-  const decrement = (e) => {
-    e.preventDefault();
+  const decrement = (timer) => {
+    setNewTimer(newTimer => ({
+      ...newTimer,
+      [timer]: newTimer[timer] - 1
+    }))
   }
   return (
     <div className="pomodoro-form-container">
@@ -74,7 +47,10 @@ const SetPomodoro = () => {
           <button onClick={() => increment('longbreak')}>+</button>
           <br />
         </div>
+        {newTimer.work > 0 && newTimer.shortbreak > 0 && newTimer.longbreak > 0 ? 
         <TimerButton title="Set Timer" _callback={handleSubmit} />
+        : <p className="timer-alert">Break times must be greater than 0 😖</p>
+        }
     </div>
   )
 }
