@@ -50,21 +50,26 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
 
   return (
       <div>
-          <div>
+          {/* <div>
               <button onClick={() => setCurrentView('dayGridMonth')}>Month</button>
               <button onClick={() => setCurrentView('timeGridWeek')}>Week</button>
               <button onClick={() => setCurrentView('timeGridDay')}>Day</button>
-          </div>
+          </div> */}
           
           <FullCalendar
-              key={currentView}
-              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-              initialView={currentView}
-              weekends={true}
-              events={events}
-              selectable={true}
-              selectMirror={true}
-              select={handleDateSelect}
+            key={currentView}
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            initialView={currentView}
+            weekends={true}
+            events={events}
+            selectable={true}
+            selectMirror={true}
+            select={handleDateSelect}
+            headerToolbar={{
+                left: 'prev,next',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            }}
           />
       </div>
   );

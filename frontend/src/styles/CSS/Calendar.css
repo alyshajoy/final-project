@@ -9,4 +9,15 @@
   width: 40px;
 }
 
+.fc .fc-daygrid-event-dot {
+  border-color: var(--pink);
+}
+.fc .fc-event-main {
+  border-color: var(--pink);
+  background-color: var(--pink);
+}
+.fc .fc-day-today {
+  background-color: transparent !important;
+}
+
 /*# sourceMappingURL=Calendar.css.map */
