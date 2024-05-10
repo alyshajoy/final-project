@@ -13,17 +13,32 @@ router.get('/', (req, res) => {
 });
 
 // Receive calendar event form
-router.post('/events', (req, res) => {
+router.post('/events', async (req, res) => {
+
+  const user_id = req.cookies.userId;
+
   const { title, date, startTime, endTime } = req.body;
-  const newEvent = {
-      id: events.length + 1, // Simple ID generation
-      title,
-      date,
-      startTime,
-      endTime
-  };
-  events.push(newEvent); // You would replace this with a database insert operation
-  res.status(201).send(newEvent);
+
+  const start_time = `${date}T${startTime}:00`;
+  const end_time = `${date}T${endTime}:00`;
+
+  const queryText = `
+    INSERT INTO calendar_events (
+      user_id, title, date, start_time, end_time
+    ) VALUES ($1, $2, $3, $4, $5) RETURNING *;
+  `;
+
+  const queryParams = [
+    user_id, title, date, start_time, end_time
+  ];
+
+  try {
+    const result = await db.query(queryText, queryParams);
+    res.status(201).send(result.rows[0]);
+  } catch (error) {
+    console.error('Error adding event to database:', error);
+    res.status(400).send({ message: error.message });
+  }
 });
 
 module.exports = router;
