@@ -1,8 +1,11 @@
 CREATE OR REPLACE FUNCTION check_badge_count_trigger() RETURNS TRIGGER AS $$
 BEGIN
-    IF NEW.badge_count > 3 THEN
-        -- Send notification
-        PERFORM pg_notify('badge_count_exceeded', NEW.id::text);
+    IF (SELECT COUNT(*) FROM badges WHERE status = true) >= 3 THEN
+        -- Check if badge ID 1 is already active
+        IF NOT EXISTS (SELECT 1 FROM badges WHERE id = 1 AND status = true) THEN
+            -- Send notification for badge ID 1
+            PERFORM pg_notify('badge_count_exceeded', '1');
+        END IF;
     END IF;
     RETURN NEW;
 END;

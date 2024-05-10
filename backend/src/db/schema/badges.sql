@@ -6,5 +6,5 @@ CREATE TABLE badges (
     description TEXT NOT NULL,
     threshold INTEGER,
     image_url TEXT NOT NULL,
-    status BOOLEAN DEFAULT TRUE NOT NULL
+    status BOOLEAN NOT NULL
 );
