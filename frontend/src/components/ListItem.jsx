@@ -6,7 +6,7 @@ import '../styles/CSS/ListItems.css';
 
 const ListItem = (props) => {
 
-  const {value, task, key, handleAdd, handleComplete, handleDelete, setTasks, setValue, handleUpdate} = props;
+  const {value, task, key, handleAdd, handleComplete, handleDelete, setTasks, setValue, handleUpdate, complete, setComplete} = props;
 
   const [edit, setEdit] = useState(false);
   const [editValue, setEditValue] = useState(task.title);
@@ -40,7 +40,7 @@ const ListItem = (props) => {
           <button type="submit" onClick={handleSubmit}>Update</button>
         </form>
       </div>
-      :<h3 className="list-item-title" onClick={() => handleEdit(task.task_id)}> {task.title} </h3>
+      :<h3 className={task.completed?"list-item-title-strike":"list-item-title"} onClick={() => handleEdit(task.task_id)}> {task.title} </h3>
       }
       
       <div><RemoveTask handleDelete={handleDelete} task_id={task.task_id}/></div>
