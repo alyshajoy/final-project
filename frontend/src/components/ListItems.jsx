@@ -3,16 +3,25 @@ import ListItem from "./ListItem";
 
 const ListItems = (props) => {
 
+  const {tasks, setTasks, value, setValue, handleAdd, handleComplete, handleDelete, complete, setComplete, handleUpdate} = props;
 
   const mappedList = (tasks) => {
     return tasks.map(task => (
       <ListItem 
         // item={item}
         // key={item.id}
+        value={value}
         task={task}
+        tasks={tasks}
         key={task.task_id}
-        handleDelete={props.handleDelete}
-        
+        handleDelete={handleDelete}
+        handleAdd={handleAdd}
+        setValue={setValue}
+        setTasks={setTasks}
+        handleComplete={handleComplete}
+        complete={complete}
+        setComplete={setComplete}
+        handleUpdate={handleUpdate}
       />
     ));
   };
@@ -20,7 +29,7 @@ const ListItems = (props) => {
   return (
     <div className="list-items-container">
       <ul className="list-items-container-inner">
-       {mappedList(props.tasks)}
+       {mappedList(tasks)}
       </ul>
     </div>
   );

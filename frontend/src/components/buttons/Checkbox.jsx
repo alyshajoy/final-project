@@ -1,10 +1,15 @@
 import React from "react";
+import '../../styles/CSS/Checkbox.css';
 
-const Checkbox = () => {
+const Checkbox = (props) => {
+
+  const {task_id, handleComplete} = props;
+
   return (
-    <>
-      <input type="checkbox" />
-    </>
+    <label className="checkbox-container">
+      <input type="checkbox" className="checkbox" onClick={() => handleComplete(task_id)}/>
+      <span class="checkmark"></span>
+    </label>
   )
 };
 
