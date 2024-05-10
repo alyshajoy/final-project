@@ -20,7 +20,8 @@ const runSchemaFiles = async () => {
     'tasks.sql',       // Then 'tasks' can reference 'users'
     'badges.sql',
     'user_badges.sql',
-    'motivational_quotes.sql'
+    'motivational_quotes.sql',
+    'calendar_events.sql'
   ];
 
   // const schemaFilenames = fs.readdirSync('./src/db/schema');
