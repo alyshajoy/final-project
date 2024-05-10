@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;
   margin: 10px auto;
   padding: 5px;
 }
@@ -15,33 +15,42 @@
   font-weight: 800;
   font-size: 25px;
   padding: 3px;
+  padding-left: 2%;
   padding-top: 2%;
   margin: 0 auto;
   width: 80%;
   border-radius: 2px 15px;
-  text-align: center;
+  text-align: left;
 }
 
 .list-item-title-strike {
   background-color: rgba(0, 56, 69, 0.1568627451);
-  text-decoration: line-through white solid 5%;
+  text-decoration: line-through white solid 15%;
   height: 40px;
   color: #003845;
   font-weight: 800;
   font-size: 25px;
   padding: 3px;
   padding-top: 2%;
+  padding-left: 2%;
   margin: 0 auto;
+  width: 80%;
+  border-radius: 2px 15px;
+  text-align: left;
 }
 
 .list-items-container {
-  margin: 5px;
+  margin: 0px;
   padding: 5px;
 }
 
 .list-items-container-inner {
   margin: 0px;
   padding: 0px;
+}
+
+.remove-task {
+  margin: 10px;
 }
 
 /*# sourceMappingURL=ListItems.css.map */
