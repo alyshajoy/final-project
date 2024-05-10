@@ -1,6 +1,8 @@
 import { useContext, useState } from "react"
 import TimerButton from "./TimerButton"
 import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
+import '../../styles/CSS/SetPomodoro.css';
+
 
 const SetPomodoro = () => {
   const { updateExecute } = useContext(TimerSettingsContext)
@@ -13,8 +15,8 @@ const SetPomodoro = () => {
     message: 'Time to work!'
   });
 
-  // const handleChange = input => {
-  //   const {name, value} = input.target
+  // const handleChange = timer-set => {
+  //   const {name, value} = timer-set.target
   //   // Switch statement used to overide current timer values
   //   switch (name) {
   //     case 'work':
@@ -60,21 +62,23 @@ const SetPomodoro = () => {
   }
   return (
     <div className="pomodoro-form-container">
-        <div className="pomodoro-input-wrapper">
+        <div className="pomodoro-timer-set-wrapper">
           <button onClick={() => decrement('work')}>-</button>
-          <p className="input" name="work" value={newTimer.work}>{newTimer.work}</p>
+          <p className="timer-set" name="work" value={newTimer.work}>{newTimer.work}</p>
           <button onClick={() => increment('work')}>+</button>
           <br />
           <button onClick={() => decrement('shortbreak')}>-</button>
-          <p className="input" name="shortbreak" value={newTimer.shortbreak}>{newTimer.shortbreak}</p>
+          <p className="timer-set" name="shortbreak" value={newTimer.shortbreak}>{newTimer.shortbreak}</p>
           <button onClick={() => increment('shortbreak')}>+</button>
           <br />
           <button onClick={() => decrement('longbreak')}>-</button>
-          <p className="input" name="longbreak" value={newTimer.longbreak}>{newTimer.longbreak}</p>
+          <p className="timer-set" name="longbreak" value={newTimer.longbreak}>{newTimer.longbreak}</p>
           <button onClick={() => increment('longbreak')}>+</button>
           <br />
         </div>
-        <TimerButton title="Set Timer" _callback={handleSubmit} />
+        <div className="set-timer-button">
+        <TimerButton className="set-timer" title="Set Timer" _callback={handleSubmit} />
+        </div>
     </div>
   )
 }
