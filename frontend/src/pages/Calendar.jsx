@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CalendarView from "../components/Calendar/CalendarView";
 import AddEventButton from "../components/Calendar/AddEventButton";
 import EventForm from "../components/Calendar/EventForm";
+import HomeButton from "../components/buttons/HomeButton";
 
 const Calendar = () => {
 
@@ -75,7 +76,8 @@ const Calendar = () => {
 
   return (
     <div>
-      <h1>I am the Calendar page</h1>
+      <HomeButton />
+      <h1>Calendar</h1>
       <AddEventButton onClick={handleOpenModal}/>
       <EventForm 
         isOpen={isModalOpen}
