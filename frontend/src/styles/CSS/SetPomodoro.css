@@ -1,12 +1,18 @@
 html {
   padding: 70px 0;
-  text-align: center;
 }
 
 h1, h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.timer-labels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 .pomodoro-timer-set-wrapper {
@@ -18,6 +24,26 @@ h1, h3 {
 .set-timer-button {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+
+.time-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }
 
 /*# sourceMappingURL=SetPomodoro.css.map */
