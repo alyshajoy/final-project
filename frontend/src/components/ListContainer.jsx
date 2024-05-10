@@ -36,12 +36,33 @@ const ListContainer = () => {
     setTasks(filteredTasks);
   }
 
+  // const handleComplete = (task_id) => {
+  //   const completedTasks = tasks.filter((task) => {
+  //     return task.task_id !== task_id
+  //   })
+  //   setComplete(completedTasks);
+  // }
+
   const handleComplete = (task_id) => {
-    const completedTasks = tasks.filter((task) => {
-      return task.task_id !== task_id
-    })
-    setComplete(completedTasks);
-  }
+    const updatedTasks = tasks.map(task => {
+      if (task.task_id === task_id) {
+        // Toggle the completed status of the task
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  };
+
+  const handleUpdate = (taskId, newTitle) => {
+    const updatedTasks = tasks.map(task => {
+      if (task.task_id === taskId) {
+        return { ...task, title: newTitle };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  };
 
   const items = [
     {id: 1, title:'Banana'}, 
@@ -64,11 +85,12 @@ const ListContainer = () => {
         tasks={tasks} 
         value={value} 
         complete={complete}
-        setComplete={complete}
+        setComplete={setComplete}
         setValue={setValue} 
         setTasks={setTasks}
         handleAdd={handleAdd}
         handleComplete={handleComplete}
+        handleUpdate={handleUpdate}
         />
         
       </div>
