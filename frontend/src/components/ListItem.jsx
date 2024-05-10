@@ -6,10 +6,10 @@ import '../styles/CSS/ListItems.css';
 
 const ListItem = (props) => {
 
-  const {value, task, key, handleAdd, handleComplete, handleDelete, setTasks, setValue} = props;
+  const {value, task, key, handleAdd, handleComplete, handleDelete, setTasks, setValue, handleUpdate} = props;
 
   const [edit, setEdit] = useState(false);
-  
+  const [editValue, setEditValue] = useState(task.title);
 
   const handleEdit = (id) => {
     setEdit(true);
@@ -18,7 +18,10 @@ const ListItem = (props) => {
   const handleSubmit = (e) => {
     console.log('submitted')
     e.preventDefault();
-    handleAdd();
+    if(edit) {
+      handleUpdate(task.task_id, editValue); // Assuming `handleUpdate` and `value` are received via props
+      setEdit(false); // Exiting edit mode
+    }
   }
 
 
@@ -27,15 +30,14 @@ const ListItem = (props) => {
       <div><Checkbox handleComplete={handleComplete} task_id={task.task_id}/></div>
       {edit 
      ? <div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input 
-          value={value}
-          placeholder={task.title} 
+          value={editValue}
           autoFocus 
-          onBlur={() => setEdit(false)}
-          onChange={e => setValue(e.target.value)}
+          onBlur={handleSubmit}
+          onChange={e => setEditValue(e.target.value)}
           />
-          <button type="button" onClick={handleSubmit}>Add</button>
+          <button type="submit" onClick={handleSubmit}>Update</button>
         </form>
       </div>
       :<h3 className="list-item-title" onClick={() => handleEdit(task.task_id)}> {task.title} </h3>
