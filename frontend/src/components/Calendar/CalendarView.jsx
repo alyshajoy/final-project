@@ -54,8 +54,8 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
     // Check the view type to determine the content to render
     if (viewType === 'timeGridWeek') {
       return (
-        <div className="custom-event-time">
-          {eventInfo.event.title}
+        <div className="custom-event-title">
+            {eventInfo.event.title}
         </div>
       );
     } else {
@@ -103,10 +103,15 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
                     }
                 },
                 timeGridWeek: { // Applies to the week view
-                    titleFormat: { month: 'long', day: 'numeric', omitCommas: true } // "May 5 - 11 2024"
+                    titleFormat: { month: 'long', day: 'numeric', omitCommas: true }, // "May 5 - 11"
+                    eventTimeFormat: {
+                      hour: 'numeric',
+                      meridiem: 'short',
+                      hour12: true
+                    }
                 },
                 timeGridDay: { // Applies to the day view
-                    titleFormat: { month: 'long', day: 'numeric', year: 'numeric' } // "May 11"
+                    titleFormat: { month: 'long', day: 'numeric', year: 'numeric' } // "May 11, 2024"
                 }
             }}
           />

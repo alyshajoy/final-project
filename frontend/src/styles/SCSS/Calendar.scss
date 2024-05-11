@@ -9,6 +9,11 @@
   }
 }
 
+h1 {
+  color: var(--gray);
+  text-align: center;
+}
+
 .fc {
   .fc-daygrid-event {
     background-color: var(--pink); /* Example blue background, adjust color as needed */
@@ -69,6 +74,16 @@
 
   .fc-prev-button, .fc-next-button {
     border: none;
+    background-color: transparent;
+    color: var(--pink);
+
+    &:hover, &:focus, &:active {
+      background-color: transparent !important;
+      color: var(--pink) !important;
+      border: none;
+      box-shadow: none !important;
+    }
+
   }
 
   .fc-toolbar-title {
@@ -78,6 +93,23 @@
     letter-spacing: -0.4px;
   }
 
-  
+//   .fc-button-primary:not(.fc-button-prev):not(.fc-button-next) {
+//     background-color: var(--pink) /* Your desired background color */ !important;
+//     border-color: var(--pink) /* Your desired border color */ !important;
+//     color: white/* Your desired text color */ !important;
+// }
 
+  .fc-dayGridMonth-button.fc-button-active,
+  .fc-timeGridWeek-button.fc-button-active,
+  .fc-timeGridDay-button.fc-button-active {
+    background-color: var(--pink) /* Your desired background color */ !important;
+    border-color: var(--pink)/* Your desired border color */ !important;
+    color: white/* Your desired text color */ !important;
+  }
+
+  .fc-dayGridMonth-button:hover,
+  .fc-timeGridWeek-button:hover,
+  .fc-timeGridDay-button:hover {
+    background-color: var(--light-gray);
+  }
 }

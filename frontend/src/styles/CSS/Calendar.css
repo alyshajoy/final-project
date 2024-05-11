@@ -8,6 +8,11 @@
   width: 40px;
 }
 
+h1 {
+  color: var(--gray);
+  text-align: center;
+}
+
 .fc .fc-daygrid-event {
   background-color: var(--pink); /* Example blue background, adjust color as needed */
   color: white; /* White text for better readability */
@@ -55,12 +60,32 @@
 }
 .fc .fc-prev-button, .fc .fc-next-button {
   border: none;
+  background-color: transparent;
+  color: var(--pink);
+}
+.fc .fc-prev-button:hover, .fc .fc-prev-button:focus, .fc .fc-prev-button:active, .fc .fc-next-button:hover, .fc .fc-next-button:focus, .fc .fc-next-button:active {
+  background-color: transparent !important;
+  color: var(--pink) !important;
+  border: none;
+  box-shadow: none !important;
 }
 .fc .fc-toolbar-title {
   margin: 0 5px !important;
   display: inline-block !important;
   font-size: 14px;
   letter-spacing: -0.4px;
+}
+.fc .fc-dayGridMonth-button.fc-button-active,
+.fc .fc-timeGridWeek-button.fc-button-active,
+.fc .fc-timeGridDay-button.fc-button-active {
+  background-color: var(--pink) !important;
+  border-color: var(--pink) !important;
+  color: white !important;
+}
+.fc .fc-dayGridMonth-button:hover,
+.fc .fc-timeGridWeek-button:hover,
+.fc .fc-timeGridDay-button:hover {
+  background-color: var(--light-gray);
 }
 
 /*# sourceMappingURL=Calendar.css.map */
