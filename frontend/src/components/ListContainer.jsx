@@ -93,6 +93,7 @@ const ListContainer = () => {
         handleComplete={handleComplete}
         handleUpdate={handleUpdate}
         sortedTasks={sortedTasks}
+        sort={sort}
         />
         
       </div>
