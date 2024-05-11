@@ -57,8 +57,11 @@ const SetPomodoro = () => {
     }))
   }
 
-  const decrement = (e) => {
-    e.preventDefault();
+  const decrement = (timer) => {
+    setNewTimer(newTimer => ({
+      ...newTimer,
+      [timer]: newTimer[timer] - 1
+    }))
   }
   return (
     <div className="pomodoro-form-container">
@@ -76,9 +79,10 @@ const SetPomodoro = () => {
           <button onClick={() => increment('longbreak')}>+</button>
           <br />
         </div>
-        <div className="set-timer-button">
-        <TimerButton className="set-timer" title="Set Timer" _callback={handleSubmit} />
-        </div>
+        {newTimer.work > 0 && newTimer.shortbreak > 0 && newTimer.longbreak > 0 ? 
+        <TimerButton title="Set Timer" _callback={handleSubmit} />
+        : <p className="timer-alert">Break times must be greater than 0 😖</p>
+        }
     </div>
   )
 }
