@@ -62,6 +62,7 @@ h1 {
   border: none;
   background-color: transparent;
   color: var(--pink);
+  padding: 5px;
 }
 .fc .fc-prev-button:hover, .fc .fc-prev-button:focus, .fc .fc-prev-button:active, .fc .fc-next-button:hover, .fc .fc-next-button:focus, .fc .fc-next-button:active {
   background-color: transparent !important;

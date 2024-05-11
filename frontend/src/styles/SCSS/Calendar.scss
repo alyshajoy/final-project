@@ -76,6 +76,7 @@ h1 {
     border: none;
     background-color: transparent;
     color: var(--pink);
+    padding: 5px;
 
     &:hover, &:focus, &:active {
       background-color: transparent !important;
