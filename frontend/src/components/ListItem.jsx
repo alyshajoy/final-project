@@ -42,18 +42,23 @@ const ListItem = (props) => {
     <div className="list-item-container">
       <div><Checkbox handleComplete={handleComplete} task_id={task.task_id}/></div>
       {edit 
-     ? <div>
-        <form onSubmit={handleSubmit}>
-          <input 
-          value={editValue}
-          autoFocus 
-          onBlur={handleSubmit}
-          onChange={e => setEditValue(e.target.value)}
-          />
-          <button type="submit" onClick={handleSubmit}>Update</button>
-        </form>
-      </div>
-      :<div className={task.completed?"list-item-title-strike":"list-item-title"} onClick={() => handleEdit(task.task_id)}> {task.title}, {task.priority} </div>
+      ? <div>
+          <form onSubmit={handleSubmit}>
+            <input 
+            value={editValue}
+            autoFocus 
+            onBlur={handleSubmit}
+            onChange={e => setEditValue(e.target.value)}
+            />
+            <button type="submit" onClick={handleSubmit}>Update</button>
+          </form>
+        </div>
+      : <div 
+          className={task.completed?"list-item-title-strike":"list-item-title"} 
+          onClick={() => handleEdit(task.task_id)}> 
+          {task.title}, 
+          {task.priority} 
+        </div>
       }
       
       <div className="remove-task"><RemoveTask handleDelete={handleDelete} task_id={task.task_id}/></div>

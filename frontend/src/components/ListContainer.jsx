@@ -74,7 +74,7 @@ const ListContainer = () => {
   return (
     <>
       <div>
-        <ListHeader />
+        <ListHeader toggleSort={toggleSort} sort={sort} setSort={setSort}/>
       </div>
       <form>
         <input value={value} onChange={e => setValue(e.target.value)}/>
