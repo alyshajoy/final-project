@@ -10,4 +10,8 @@
   --fc-button-bg-color: var(--gray);
 }
 
+.App {
+  padding: 1.5rem;
+}
+
 /*# sourceMappingURL=Global.css.map */

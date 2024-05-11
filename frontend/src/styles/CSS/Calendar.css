@@ -1,23 +1,54 @@
 .calendar-wrapper {
   position: relative;
 }
-
-.add-event-button {
+.calendar-wrapper .add-event-button {
   position: absolute;
-  top: -20px;
+  top: -60px;
   right: 0px;
   width: 40px;
 }
 
 .fc .fc-daygrid-event-dot {
-  border-color: var(--pink);
+  border-color: var(--pink) !important;
 }
 .fc .fc-event-main {
-  border-color: var(--pink);
-  background-color: var(--pink);
+  border-color: var(--pink) !important;
+  background-color: var(--pink) !important;
 }
 .fc .fc-day-today {
   background-color: transparent !important;
+}
+.fc .fc-toolbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+.fc .fc-header-toolbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+.fc .fc-toolbar-chunk {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+.fc .fc-button {
+  background: none;
+  border: 1px solid #ccc;
+  color: #333;
+}
+.fc .fc-prev-button, .fc .fc-next-button {
+  border: none;
+}
+.fc .fc-toolbar-title {
+  margin: 0 5px !important;
+  display: inline-block !important;
+  font-size: 14px;
+  letter-spacing: -0.4px;
 }
 
 /*# sourceMappingURL=Calendar.css.map */

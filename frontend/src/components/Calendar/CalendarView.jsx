@@ -3,6 +3,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import '../../styles/CSS/Calendar.css';
 
 function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelectedEndTime }) {
   const [currentView, setCurrentView] = useState('dayGridMonth');
@@ -50,25 +51,33 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
 
   return (
       <div>
-          {/* <div>
-              <button onClick={() => setCurrentView('dayGridMonth')}>Month</button>
-              <button onClick={() => setCurrentView('timeGridWeek')}>Week</button>
-              <button onClick={() => setCurrentView('timeGridDay')}>Day</button>
-          </div> */}
           
           <FullCalendar
             key={currentView}
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             initialView={currentView}
+            contentHeight="auto"
             weekends={true}
             events={events}
             selectable={true}
             selectMirror={true}
             select={handleDateSelect}
             headerToolbar={{
-                left: 'prev,next',
-                center: 'title',
+                left: 'prev,title,next',
+                center: '',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            }}
+            
+            views={{
+                dayGridMonth: { // Applies to the month view
+                    titleFormat: { year: 'numeric', month: 'long' } // "May 2024"
+                },
+                timeGridWeek: { // Applies to the week view
+                    titleFormat: { month: 'long', day: 'numeric', omitCommas: true } // "May 5 - 11 2024"
+                },
+                timeGridDay: { // Applies to the day view
+                    titleFormat: { month: 'long', day: 'numeric', year: 'numeric' } // "May 11"
+                }
             }}
           />
       </div>

@@ -1,25 +1,69 @@
 .calendar-wrapper {
   position: relative;
-}
 
-.add-event-button {
-  position: absolute;
-  top: -20px;
-  right: 0px;
-  width: 40px;
+  .add-event-button {
+    position: absolute;
+    top: -60px;
+    right: 0px;
+    width: 40px;
+  }
 }
 
 .fc {
-
+  // Specific styles for event dots and main event styling
   .fc-daygrid-event-dot {
-    border-color: var(--pink);
+    border-color: var(--pink) !important;
   }
+
   .fc-event-main {
-    border-color: var(--pink);
-    background-color: var(--pink);
+    border-color: var(--pink) !important;
+    background-color: var(--pink) !important;
   }
+
   .fc-day-today {
-    background-color: transparent !important;  // Ensures it overrides any other background color set
+    background-color: transparent !important; // Forces transparency on the current day
+  }
+
+  // Toolbar overall styling
+  .fc-toolbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+  }
+
+  // Header toolbar specific adjustments
+  .fc-header-toolbar {
+    display: flex !important; // Ensures the toolbar is a flex container
+    justify-content: space-between !important; // Distributes space between and around content items
+    align-items: center !important; // Aligns items vertically
+    flex-wrap: nowrap !important; // Prevents wrapping of items
+  }
+
+  // Toolbar chunks adjustments
+  .fc-toolbar-chunk {
+    display: flex !important; // Ensures that each chunk is a flex container
+    flex-direction: row !important; // Aligns children in a horizontal row
+    align-items: center !important; // Align items in the center vertically within each chunk
+    flex-wrap: nowrap !important; // Prevent wrapping within chunks
+  }
+
+  // Button styling within the toolbar
+  .fc-button {
+    background: none;  // If set to none, reset to default or remove this line
+    border: 1px solid #ccc;  // Check if the border color blends with the background
+    color: #333;  // Ensure the color contrasts with the button background
+  }
+
+  .fc-prev-button, .fc-next-button {
+    border: none;
+  }
+
+  .fc-toolbar-title {
+    margin: 0 5px !important; // Adjust space between buttons and title
+    display: inline-block !important;
+    font-size: 14px;
+    letter-spacing: -0.4px;
   }
 
 }
