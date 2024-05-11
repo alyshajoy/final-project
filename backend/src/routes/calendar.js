@@ -54,4 +54,20 @@ router.post('/events', async (req, res) => {
   }
 });
 
+// Delete calendar event
+router.delete('/events/:id', async (req, res) => {
+  try {
+    const { id } = req.params; // Get the event ID from the URL parameter
+    const queryText = `
+      DELETE FROM calendar_events
+      WHERE id = $1;
+    `;
+    await db.query(queryText, [id]);
+    res.status(200).send({ message: 'Event deleted successfully' });
+  } catch (error) {
+    console.error('Delete event error:', error);
+    res.status(500).send({ message: 'Failed to delete the event' });
+  }
+});
+
 module.exports = router;

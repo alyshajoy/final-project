@@ -12,6 +12,14 @@ const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null); // Date selected in CalendarView
   const [selectedStartTime, setSelectedStartTime] = useState(null); // Start time selected in CalendarView
   const [selectedEndTime, setSelectedEndTime] = useState(null); // End time selected in CalendarView
+  const [title, setTitle] = useState('');
+  const [date, setDate] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
+  const [allDay, setAllDay] = useState(false);
+  const [formMode, setFormMode] = useState('new');
+  const [eventID, setEventID] = useState('');
+
 
   // Fetch events when the component mounts
   useEffect(() => {
@@ -23,11 +31,11 @@ const Calendar = () => {
         });
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
-        console.log('Fetched events:', data);
         setEvents(data.map(event => ({
           title: event.title,
           start: new Date(event.start_time),
-          end: new Date(event.end_time)
+          end: new Date(event.end_time),
+          id: event.id
         })));
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -36,6 +44,8 @@ const Calendar = () => {
 
     fetchEvents();
   }, []);
+
+  console.log("events:", events);
 
   const handleAddEvent = async (eventData) => {
     const { title, date, startTime, endTime, allDay } = eventData;
@@ -86,10 +96,43 @@ const Calendar = () => {
     setIsModalOpen(false); // Close modal after adding event
   };
 
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true); // Function to open the modal
+  const handleOpenModalForNewEvent = () => {
+    // Optionally set only date and time or leave blank for completely new event
+    setFormMode('new');
+    setTitle('');
+    setDate(selectedDate);
+    setStartTime(selectedStartTime || '12:00');  // Default start time if none selected
+    setEndTime(selectedEndTime || '13:00');  // Default end time if none selected
+    setAllDay(false);
+    setIsModalOpen(true);
   };
+
+  const handleDoubleClickEvent = (event) => {
+    setFormMode('edit');
+    setTitle(event.title);
+    setEventID(event.id);
+    setDate(event.startStr.split('T')[0]);
+    setStartTime(event.start.toISOString().split('T')[1].slice(0, 5));
+    setEndTime(event.end.toISOString().split('T')[1].slice(0, 5));
+    setAllDay(event.allDay);
+    setIsModalOpen(true);
+  };
+
+  const handleDeleteEvent = async (eventId) => {
+    console.log("EVENT ID:", eventId);
+    // Call your backend API to delete the event
+    const response = await fetch(`http://localhost:3001/api/calendar/events/${eventId}`, { method: 'DELETE' });
+    if (response.ok) {
+      // Remove the event from the state or re-fetch events
+      setEvents(prevEvents => prevEvents.filter(event => event.id !== eventId));
+      // Log the updated state here
+      console.log("EVENTS:", events);
+      setIsModalOpen(false); // Close the modal on successful deletion
+    } else {
+      console.error('Failed to delete the event');
+    }
+  };
+  
 
   return (
     <div>
@@ -98,19 +141,34 @@ const Calendar = () => {
       
       <EventForm 
         isOpen={isModalOpen}
+        mode={formMode}
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleAddEvent}
         initialDate={selectedDate}
         initialStartTime={selectedStartTime}
+        setSelectedStartTime={setSelectedStartTime}
         initialEndTime={selectedEndTime}
+        setSelectedEndTime={setSelectedEndTime}
+        initialAllDay={allDay}
+        setAllDay={setAllDay}
+        title={title}
+        setTitle={setTitle}
+        date={date}
+        setDate={setDate}
+        startTime={startTime}
+        setStartTime={setStartTime}
+        endTime={endTime}
+        setEndTime={setEndTime}
+        onDelete={() => handleDeleteEvent(eventID)}
       />
       <div className="calendar-wrapper">
-        <AddEventButton onClick={handleOpenModal}/>
+        <AddEventButton onClick={handleOpenModalForNewEvent}/>
         <CalendarView
           events={events}
           setSelectedDate={setSelectedDate}
           setSelectedStartTime={setSelectedStartTime}
           setSelectedEndTime={setSelectedEndTime}
+          onDoubleClickEvent={handleDoubleClickEvent}
         />
       </div>
     </div>

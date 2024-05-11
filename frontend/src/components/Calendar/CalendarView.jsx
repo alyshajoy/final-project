@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import '../../styles/CSS/Calendar.css';
 
-function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelectedEndTime }) {
+function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelectedEndTime, onDoubleClickEvent }) {
   const [currentView, setCurrentView] = useState('dayGridMonth');
+  let clickTimer = useRef(null);
+
+  const handleEventClick = (clickInfo) => {
+    if (clickTimer && clickTimer.current === null) {
+      clickTimer.current = setTimeout(() => {
+        clickTimer.current = null;
+      }, 300);
+    } else if (clickTimer && clickTimer.current !== null) {
+      clearTimeout(clickTimer.current);
+      clickTimer.current = null;
+      onDoubleClickEvent(clickInfo.event);
+    }
+  };
 
   function handleDateSelect(selectInfo) {
     let currentDate;
@@ -43,6 +56,7 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
     const startTime = `${formattedHours}:${minutes}`;
     const endTime = `${formattedEndHours}:${minutes}`;
 
+    console.log("SETSELECTEDDATE:", selectInfo)
     setSelectedDate(selectInfo.startStr.split('T')[0]);
     setSelectedStartTime(startTime);
     setSelectedEndTime(endTime);
@@ -76,7 +90,8 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
       <div>
           
           <FullCalendar
-            key={currentView}
+            key={events.length}
+            timeZone='UTC'
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             initialView={currentView}
             contentHeight="auto"
@@ -85,6 +100,7 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
             selectable={true}
             selectMirror={true}
             select={handleDateSelect}
+            eventClick={handleEventClick}
             eventContent={renderEventContent}
             headerToolbar={{
                 left: 'prev,title,next',

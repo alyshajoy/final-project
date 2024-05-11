@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/CSS/CalendarFormModal.css'
 
-function EventForm({ isOpen, onClose, onSubmit, initialDate, initialStartTime, initialEndTime }) {
-    const [title, setTitle] = useState('');
-    const [date, setDate] = useState(initialDate || '');
-    const [startTime, setStartTime] = useState(initialStartTime || '');
-    const [endTime, setEndTime] = useState(initialEndTime || '');
-    const [allDay, setAllDay] = useState(false);
+function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSubmit, setStartTime, setEndTime, setAllDay, initialDate, initialStartTime, initialEndTime, mode, title, date, startTime, endTime }) {
 
     useEffect(() => {
-        setDate(initialDate);
-        setStartTime(initialStartTime); // Updated: initialStartTime
-        setEndTime(initialEndTime); // Updated: initialEndTime
-    }, [initialDate, initialStartTime, initialEndTime]);
+        if (isOpen) {
+            if (mode === 'edit') {
+                // Set fields for editing
+                setTitle(title);
+                setDate(date);
+                setStartTime(startTime);
+                setEndTime(endTime);
+                setAllDay(allDay);
+            } else {
+                setTitle('');
+                setDate(initialDate);
+                setStartTime(initialStartTime);
+                setEndTime(initialEndTime);
+                setAllDay(false);
+            }
+        }
+    }, [mode, isOpen, date, startTime, endTime, allDay, initialStartTime, initialEndTime]);
     
     const formatTime = (time) => {
         const [hours, minutes] = time.split(':');
@@ -75,7 +83,7 @@ function EventForm({ isOpen, onClose, onSubmit, initialDate, initialStartTime, i
         <div className="modal-overlay">
             <div className="modal-content">
                 <form onSubmit={handleSubmit}>
-                    <h2>Add New Event</h2>
+                  <h2>{mode === 'edit' ? 'Edit Event' : 'Add New Event'}</h2>
                     <label>
                         Event Title:
                         <input type="text" value={title} onChange={e => setTitle(e.target.value)} required />
@@ -97,7 +105,14 @@ function EventForm({ isOpen, onClose, onSubmit, initialDate, initialStartTime, i
                         <input type="checkbox" checked={allDay} onChange={e => setAllDay(e.target.checked)} />
                     </label>
                     <div className="modal-actions">
-                        <button type="submit">Add Event</button>
+                    <button type="submit">
+                      {mode === 'edit' ? 'Update Event' : 'Add Event'}
+                    </button>
+                      {mode === 'edit' && (
+                        <button type="button" onClick={onDelete}>
+                          Delete Event
+                        </button>
+                      )}
                         <button type="button" onClick={onClose}>Cancel</button>
                     </div>
                 </form>
