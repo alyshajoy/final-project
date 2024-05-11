@@ -20,6 +20,7 @@ const ListContainer = () => {
   const [value, setValue] = useState("");
   const [tasks, setTasks] = useState([]);
   const [complete, setComplete] = useState([]);
+  const [sort, setSort] = useState(false);
 
   const handleAdd = () => {
     
@@ -66,7 +67,9 @@ const ListContainer = () => {
 
   const sortedTasks = [...tasks].sort((a, b) => a.priority - b.priority);
   
-  
+  const toggleSort = () => {
+    setSort(!sort);
+  }
 
   return (
     <>
