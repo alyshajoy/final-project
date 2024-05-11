@@ -23,6 +23,7 @@ const Calendar = () => {
         });
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
+        console.log('Fetched events:', data);
         setEvents(data.map(event => ({
           title: event.title,
           start: new Date(event.start_time),
@@ -37,38 +38,53 @@ const Calendar = () => {
   }, []);
 
   const handleAddEvent = async (eventData) => {
-    const { title, date, startTime, endTime } = eventData;
-    const start = `${date}T${startTime}:00`; // Combine date and start time
-    const end = `${date}T${endTime}:00`; // Combine date and end time
+    const { title, date, startTime, endTime, allDay } = eventData;
+    if (allDay) {
+      // If it's an all-day event, set start and end times to null
+      const newEvent = { title, date, allDay: true };
+      setEvents([...events, newEvent]); // Add new event to the existing events
+    } else {
+      // If it's not an all-day event, combine date and time for start and end
+      const start = `${date}T${startTime}`; // Combine date and start time
+      const end = `${date}T${endTime}`; // Combine date and end time
+  
+      const newEvent = { title, date, start, end };
+      setEvents([...events, newEvent]); // Add new event to the existing events
 
-    const newEvent = { title, date, start, end };
-    setEvents([...events, newEvent]); // Add new event to the existing events
-
-    try {
-      const response = await fetch('http://localhost:3001/api/calendar/events', {
+      console.log("Event data:", {
+        title,
+        date,
+        start,
+        end
+    });
+  
+      try {
+        const response = await fetch('http://localhost:3001/api/calendar/events', {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
           body: JSON.stringify({
-              title, 
-              date, 
-              start, 
-              end
+            title,
+            date,
+            start,
+            end,
+            allDay
           }),
-          credentials: 'include'  // include cookies
-      });
-
-    if (!response.ok) throw new Error('Network response was not ok');
-      const result = await response.json();
-      console.log("Event added successfully:", result);
-    } catch (error) {
-      console.error("Error adding event:", error);
-  }
-
+          credentials: 'include' // include cookies
+        });
+  
+        if (!response.ok) throw new Error('Network response was not ok');
+        const result = await response.json();
+        console.log("Event added successfully:", result);
+      } catch (error) {
+        console.error("Error adding event:", error);
+      }
+    }
+  
     setIsModalOpen(false); // Close modal after adding event
-};
+  };
 
 
   const handleOpenModal = () => {

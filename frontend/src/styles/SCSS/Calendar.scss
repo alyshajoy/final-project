@@ -112,4 +112,8 @@ h1 {
   .fc-timeGridDay-button:hover {
     background-color: var(--light-gray);
   }
+
+  .fc-daygrid-event.fc-event-all-day {
+    overflow-wrap: break-word;
+  }
 }

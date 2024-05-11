@@ -18,6 +18,7 @@ router.get('/events', async (req, res) => {
 
   try {
       const result = await db.query('SELECT * FROM calendar_events WHERE user_id = $1', [user_id]);
+      console.log('Fetched events:', result.rows);
       res.json(result.rows);
   } catch (error) {
       console.error('Error fetching events:', error);
@@ -30,20 +31,19 @@ router.post('/events', async (req, res) => {
 
   const user_id = req.cookies.userId;
 
-  const { title, date, start_time, end_time } = req.body;
-
-  // const startTime = `${date}T${start_time}:00`;
-  // const endTime = `${date}T${end_time}:00`;
+  const { title, date, start, end, allDay } = req.body;
 
   const queryText = `
     INSERT INTO calendar_events (
-      user_id, title, date, start_time, end_time
-    ) VALUES ($1, $2, $3, $4, $5) RETURNING *;
+      user_id, title, date, start_time, end_time, all_day
+    ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;
   `;
 
   const queryParams = [
-    user_id, title, date, start_time, end_time
+    user_id, title, date, start, end, allDay || false // Set all_day to false if not provided
   ];
+
+  console.log("queryParams: ", queryParams);
 
   try {
     const result = await db.query(queryText, queryParams);
