@@ -8,8 +8,20 @@
   width: 40px;
 }
 
+.fc .fc-daygrid-event {
+  background-color: var(--pink); /* Example blue background, adjust color as needed */
+  color: white; /* White text for better readability */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Optional: rounded corners */
+  padding: 2px 4px; /* Padding inside the rectangle */
+  font-size: 0.6em; /* Smaller font size to ensure it fits */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Ensure it doesn't exceed the cell width */
+}
 .fc .fc-daygrid-event-dot {
-  border-color: var(--pink) !important;
+  display: none;
 }
 .fc .fc-event-main {
   border-color: var(--pink) !important;

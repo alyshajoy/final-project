@@ -10,9 +10,21 @@
 }
 
 .fc {
-  // Specific styles for event dots and main event styling
+  .fc-daygrid-event {
+    background-color: var(--pink); /* Example blue background, adjust color as needed */
+    color: white; /* White text for better readability */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Optional: rounded corners */
+    padding: 2px 4px; /* Padding inside the rectangle */
+    font-size: 0.6em; /* Smaller font size to ensure it fits */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; /* Ensure it doesn't exceed the cell width */
+  }
+
   .fc-daygrid-event-dot {
-    border-color: var(--pink) !important;
+    display: none;
   }
 
   .fc-event-main {
@@ -65,5 +77,7 @@
     font-size: 14px;
     letter-spacing: -0.4px;
   }
+
+  
 
 }

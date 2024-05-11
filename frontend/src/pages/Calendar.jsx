@@ -38,10 +38,10 @@ const Calendar = () => {
 
   const handleAddEvent = async (eventData) => {
     const { title, date, startTime, endTime } = eventData;
-    const start_time = `${date}T${startTime}:00`; // Combine date and start time
-    const end_time = `${date}T${endTime}:00`; // Combine date and end time
+    const start = `${date}T${startTime}:00`; // Combine date and start time
+    const end = `${date}T${endTime}:00`; // Combine date and end time
 
-    const newEvent = { title, date, start_time, end_time };
+    const newEvent = { title, date, start, end };
     setEvents([...events, newEvent]); // Add new event to the existing events
 
     try {
@@ -54,8 +54,8 @@ const Calendar = () => {
           body: JSON.stringify({
               title, 
               date, 
-              start_time, 
-              end_time
+              start, 
+              end
           }),
           credentials: 'include'  // include cookies
       });

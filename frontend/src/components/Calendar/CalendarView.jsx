@@ -46,8 +46,31 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
     setSelectedDate(selectInfo.startStr.split('T')[0]);
     setSelectedStartTime(startTime);
     setSelectedEndTime(endTime);
-}
+  }
 
+  function renderEventContent(eventInfo) {
+    const viewType = eventInfo.view.type;
+
+    // Check the view type to determine the content to render
+    if (viewType === 'timeGridWeek') {
+      return (
+        <div className="custom-event-time">
+          {eventInfo.event.title}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div className="custom-event-time">
+            {eventInfo.timeText}
+          </div>
+          <div className="custom-event-title">
+            {eventInfo.event.title}
+          </div>
+        </div>
+      );
+    }
+  }
 
   return (
       <div>
@@ -62,6 +85,7 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
             selectable={true}
             selectMirror={true}
             select={handleDateSelect}
+            eventContent={renderEventContent}
             headerToolbar={{
                 left: 'prev,title,next',
                 center: '',
@@ -70,7 +94,13 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
             
             views={{
                 dayGridMonth: { // Applies to the month view
-                    titleFormat: { year: 'numeric', month: 'long' } // "May 2024"
+                  titleFormat: { year: 'numeric', month: 'long' }, // "May 2024"
+                  eventTimeFormat: { // Specify the time format for events
+                      hour: 'numeric',
+                      minute: '2-digit',
+                      meridiem: 'short',
+                      hour12: true
+                    }
                 },
                 timeGridWeek: { // Applies to the week view
                     titleFormat: { month: 'long', day: 'numeric', omitCommas: true } // "May 5 - 11 2024"
