@@ -64,7 +64,9 @@ router.post('/', (req,res) => {
 
   const newTask = {
     task_id: tasks.length + 1,
-    title: req.body.title
+    title: req.body.title,
+    completed: false,
+    priority: 0
   }
   tasks.push(newTask);
   res.status(201).json(tasks);
