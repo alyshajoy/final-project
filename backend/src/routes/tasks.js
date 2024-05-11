@@ -9,17 +9,32 @@ const tasks = [
   {
     task_id: 1,
     title: "Finish Project",
-    status: false,
+    completed: false,
+    priority: 1
   },
   {
     task_id: 2,
     title: "Start Blog Post",
-    status: false,
+    completed: false,
+    priority: 3
   },
   {
     task_id: 3,
     title: "Update Resume",
-    status: true,
+    completed: true,
+    priority: 2
+  },
+  {
+    task_id: 4,
+    title: "Write draft for email",
+    completed: true,
+    priority: 3
+  },
+  {
+    task_id: 5,
+    title: "Read Chapter 1 and take notes",
+    completed: true,
+    priority: 1
   },
 ]
 
