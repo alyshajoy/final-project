@@ -3,10 +3,10 @@ import ListItem from "./ListItem";
 
 const ListItems = (props) => {
 
-  const {tasks, setTasks, value, setValue, handleAdd, handleComplete, handleDelete, complete, setComplete, handleUpdate} = props;
+  const {tasks, setTasks, value, setValue, handleAdd, handleComplete, handleDelete, complete, setComplete, handleUpdate, sortedTasks} = props;
 
   const mappedList = (tasks) => {
-    return tasks.map(task => (
+    return sortedTasks.map(task => (
       <ListItem 
         // item={item}
         // key={item.id}

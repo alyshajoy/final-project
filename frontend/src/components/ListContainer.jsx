@@ -64,11 +64,9 @@ const ListContainer = () => {
     setTasks(updatedTasks);
   };
 
-  const items = [
-    {id: 1, title:'Banana'}, 
-    {id: 2,title:'Chocolate'}, 
-    {id: 3,title:'Strawberry'}
-  ];
+  const sortedTasks = [...tasks].sort((a, b) => a.priority - b.priority);
+  
+  
 
   return (
     <>
@@ -91,6 +89,7 @@ const ListContainer = () => {
         handleAdd={handleAdd}
         handleComplete={handleComplete}
         handleUpdate={handleUpdate}
+        sortedTasks={sortedTasks}
         />
         
       </div>
