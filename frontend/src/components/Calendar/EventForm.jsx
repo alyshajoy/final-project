@@ -73,7 +73,7 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
 
         if (mode === 'edit') {
           // Include the event ID in the eventData if in 'edit' mode
-          eventData.id = title;
+          eventData.id = title; // Make sure event.id is accessible and passed to the form
         }
 
         onSubmit(eventData);
