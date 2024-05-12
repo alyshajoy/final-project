@@ -19,9 +19,8 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
                 setAllDay(false);
             }
         }
-    }, [mode, isOpen, date, startTime, endTime, initialStartTime, initialEndTime]);
+    }, [mode, isOpen, date, initialStartTime, initialEndTime]);
     
-    {console.log("ALL DAY BEFORE CHECKED:", allDay)}
     const formatTime = (time) => {
         const [hours, minutes] = time.split(':');
         let formattedHours = parseInt(hours);
@@ -51,7 +50,6 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
         // Format start and end times
         const formattedStartTime = formatTime(startTime);
         const formattedEndTime = formatTime(endTime);
-        
         let eventData;
         if (allDay) {
             // For all-day events, set start and end times to null
@@ -72,7 +70,12 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
               endTime: formattedEndTime
               };
         }
-        console.log("Event Data:", eventData);
+
+        if (mode === 'edit') {
+          // Include the event ID in the eventData if in 'edit' mode
+          eventData.id = title;
+        }
+
         onSubmit(eventData);
         onClose(); // Close modal after submission
     };
@@ -103,7 +106,6 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
                     <label>
                         All Day:
                         <input type="checkbox" checked={allDay} onChange={e => setAllDay(e.target.checked)} />
-                        {console.log("ALL DAY?:", allDay)}
                     </label>
                     <div className="modal-actions">
                     <button type="submit">

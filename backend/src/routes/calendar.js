@@ -45,7 +45,7 @@ router.post('/events', async (req, res) => {
 });
 
 // Delete calendar event
-router.delete('/events/:id', async (req, res) => {
+router.delete('/events/delete/:id', async (req, res) => {
   try {
     const { id } = req.params; // Get the event ID from the URL parameter
     const queryText = `
@@ -61,17 +61,17 @@ router.delete('/events/:id', async (req, res) => {
 });
 
 // Update Events
-router.put('/api/calendar/events/:eventId', async (req, res) => {
-  const eventId = req.params.eventId;
+router.put('/events/update/:id', async (req, res) => {
+
   const { title, date, start, end, allDay } = req.body;
 
   try {
     const queryText = `
       UPDATE calendar_events
-      SET title = $1, date = $2, start_time = $3, end_time = $4, all_day = $5
-      WHERE id = $6;
+      SET date = $2, start_time = $3, end_time = $4, all_day = $5
+      WHERE title = $1;
     `;
-    const queryParams = [title, date, start, end, allDay, eventId]
+    const queryParams = [title, date, start, end, allDay]
 
     await db.query(queryText, queryParams);
       res.status(200).send({ message: 'Event updated successfully' }); // Changed message to indicate update

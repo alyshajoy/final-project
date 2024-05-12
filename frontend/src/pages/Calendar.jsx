@@ -31,11 +31,13 @@ const Calendar = () => {
         });
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
+        console.log("JSON RESPONSE:", data);
         setEvents(data.map(event => ({
           title: event.title,
           start: new Date(event.start_time),
           end: new Date(event.end_time),
-          id: event.id
+          id: event.id,
+          allDay: event.allDay
         })));
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -48,15 +50,34 @@ const Calendar = () => {
   const handleAddEvent = async (eventData) => {
     const { title, date, startTime, endTime, allDay, id } = eventData;
     if (allDay) {
-      // If it's an all-day event, set start and end times to null
-      const newEvent = { title, date, allDay: true };
+
+      const start = date;
+      const newEvent = { title, start, allDay: true };
       setEvents([...events, newEvent]); // Add new event to the existing events
+
+      try {
+        const response = await fetch('http://localhost:3001/api/calendar/events', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(newEvent),
+            credentials: 'include' // include cookies
+        });
+
+        if (!response.ok) throw new Error('Network response was not ok');
+        const result = await response.json();
+        console.log("Event added successfully:", result);
+      } catch (error) {
+        console.error("Error adding event:", error);
+      }
+
     } else {
       // If it's not an all-day event, combine date and time for start and end
       const start = `${date}T${startTime}`; // Combine date and start time
       const end = `${date}T${endTime}`; // Combine date and end time
-  
-      console.log("ID", id);
+
       if (formMode === 'edit' && events.length > 0) {
         // If in edit mode, update the existing event instead of adding a new one
         setEvents(events.map(event => {
@@ -67,7 +88,7 @@ const Calendar = () => {
         }));
   
         try {
-          const response = await fetch(`http://localhost:3001/api/calendar/events/${eventID}`, {
+          const response = await fetch(`http://localhost:3001/api/calendar/events/update/${title}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -147,8 +168,25 @@ const Calendar = () => {
     setTitle(event.title);
     setEventID(event.id);
     setDate(event.startStr.split('T')[0]);
-    setStartTime(event.start.toISOString().split('T')[1].slice(0, 5));
-    setEndTime(event.end.toISOString().split('T')[1].slice(0, 5));
+
+    if (!event.allDay) {
+      if (event.start) {
+        setStartTime(event.start.toISOString().split('T')[1].slice(0, 5));
+      } else {
+        setStartTime(''); // Set empty or a default time if necessary
+      }
+  
+      if (event.end) {
+        setEndTime(event.end.toISOString().split('T')[1].slice(0, 5));
+      } else {
+        setEndTime(''); // Set empty or a default time if necessary
+      }
+    } else {
+      // Clear time fields for all-day events
+      setStartTime('');
+      setEndTime('');
+    }
+
     setAllDay(event.allDay);
     setIsModalOpen(true);
   };
@@ -156,7 +194,6 @@ const Calendar = () => {
   const handleDeleteEvent = async (eventId) => {
 
   // Call backend API to delete the event
-  console.log("EventID and events befor fetch:", eventId, events);
   const response = await fetch(`http://localhost:3001/api/calendar/events/${eventId}`, { method: 'DELETE' });
     if (response.ok) {
       // Remove the event from the state or re-fetch events
@@ -171,7 +208,6 @@ const Calendar = () => {
       console.error('Failed to delete the event');
     }
   };
-  console.log("ALL DAY ON CALENDAR:", allDay)
 
   return (
     <div>
