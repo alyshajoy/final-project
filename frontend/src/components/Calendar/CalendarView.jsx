@@ -91,7 +91,7 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
           
           <FullCalendar
             key={events.length}
-            timeZone='UTC'
+            timeZone='America/Denver'
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             initialView={currentView}
             contentHeight="auto"

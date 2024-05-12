@@ -6,7 +6,6 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
     useEffect(() => {
         if (isOpen) {
             if (mode === 'edit') {
-                // Set fields for editing
                 setTitle(title);
                 setDate(date);
                 setStartTime(startTime);
@@ -20,8 +19,9 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
                 setAllDay(false);
             }
         }
-    }, [mode, isOpen, date, startTime, endTime, allDay, initialStartTime, initialEndTime]);
+    }, [mode, isOpen, date, startTime, endTime, initialStartTime, initialEndTime]);
     
+    {console.log("ALL DAY BEFORE CHECKED:", allDay)}
     const formatTime = (time) => {
         const [hours, minutes] = time.split(':');
         let formattedHours = parseInt(hours);
@@ -103,6 +103,7 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
                     <label>
                         All Day:
                         <input type="checkbox" checked={allDay} onChange={e => setAllDay(e.target.checked)} />
+                        {console.log("ALL DAY?:", allDay)}
                     </label>
                     <div className="modal-actions">
                     <button type="submit">
