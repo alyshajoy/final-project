@@ -5,13 +5,6 @@ const router = express.Router();
 
 //Prefix '/api/calendar' for endpoint
 
-let events = ['test'];
-
-// Calendar Routes
-router.get('/', (req, res) => {
-  res.send('Hello Calendar Api')
-});
-
 // GET route to fetch user events
 router.get('/events', async (req, res) => {
   const user_id = req.cookies.userId;  // Assuming you are storing user_id in cookies
@@ -30,19 +23,16 @@ router.post('/events', async (req, res) => {
 
   const user_id = req.cookies.userId;
 
-  const { title, date, start_time, end_time } = req.body;
-
-  // const startTime = `${date}T${start_time}:00`;
-  // const endTime = `${date}T${end_time}:00`;
+  const { title, date, start, end, allDay } = req.body;
 
   const queryText = `
     INSERT INTO calendar_events (
-      user_id, title, date, start_time, end_time
-    ) VALUES ($1, $2, $3, $4, $5) RETURNING *;
+      user_id, title, date, start_time, end_time, all_day
+    ) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;
   `;
 
   const queryParams = [
-    user_id, title, date, start_time, end_time
+    user_id, title, date, start, end, allDay || false // Set all_day to false if not provided
   ];
 
   try {
@@ -52,6 +42,43 @@ router.post('/events', async (req, res) => {
     console.error('Error adding event to database:', error);
     res.status(400).send({ message: error.message });
   }
+});
+
+// Delete calendar event
+router.delete('/events/delete/:id', async (req, res) => {
+  try {
+    const { id } = req.params; // Get the event ID from the URL parameter
+    const queryText = `
+      DELETE FROM calendar_events
+      WHERE id = $1;
+    `;
+    await db.query(queryText, [id]);
+    res.status(200).send({ message: 'Event deleted successfully' });
+  } catch (error) {
+    console.error('Delete event error:', error);
+    res.status(500).send({ message: 'Failed to delete the event' });
+  }
+});
+
+// Update Events
+router.put('/events/update/:id', async (req, res) => {
+
+  const { title, date, start, end, allDay } = req.body;
+
+  try {
+    const queryText = `
+      UPDATE calendar_events
+      SET date = $2, start_time = $3, end_time = $4, all_day = $5
+      WHERE title = $1;
+    `;
+    const queryParams = [title, date, start, end, allDay]
+
+    await db.query(queryText, queryParams);
+      res.status(200).send({ message: 'Event updated successfully' }); // Changed message to indicate update
+    } catch (error) {
+      console.error('Update event error:', error); // Changed console message to indicate update error
+      res.status(500).send({ message: 'Failed to update the event' });
+    }
 });
 
 module.exports = router;

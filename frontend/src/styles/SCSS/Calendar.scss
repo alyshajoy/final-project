@@ -1,0 +1,120 @@
+.calendar-wrapper {
+  position: relative;
+
+  .add-event-button {
+    position: absolute;
+    top: -60px;
+    right: 0px;
+    width: 40px;
+  }
+}
+
+h1 {
+  color: var(--gray);
+  text-align: center;
+}
+
+.fc {
+  .fc-daygrid-event {
+    background-color: var(--pink); /* Example blue background, adjust color as needed */
+    color: white; /* White text for better readability */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Optional: rounded corners */
+    padding: 2px 4px; /* Padding inside the rectangle */
+    font-size: 0.6em; /* Smaller font size to ensure it fits */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; /* Ensure it doesn't exceed the cell width */
+  }
+
+  .fc-daygrid-event-dot {
+    display: none;
+  }
+
+  .fc-event-main {
+    border-color: var(--pink) !important;
+    background-color: var(--pink) !important;
+  }
+
+  .fc-day-today {
+    background-color: transparent !important; // Forces transparency on the current day
+  }
+
+  // Toolbar overall styling
+  .fc-toolbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+  }
+
+  // Header toolbar specific adjustments
+  .fc-header-toolbar {
+    display: flex !important; // Ensures the toolbar is a flex container
+    justify-content: space-between !important; // Distributes space between and around content items
+    align-items: center !important; // Aligns items vertically
+    flex-wrap: nowrap !important; // Prevents wrapping of items
+  }
+
+  // Toolbar chunks adjustments
+  .fc-toolbar-chunk {
+    display: flex !important; // Ensures that each chunk is a flex container
+    flex-direction: row !important; // Aligns children in a horizontal row
+    align-items: center !important; // Align items in the center vertically within each chunk
+    flex-wrap: nowrap !important; // Prevent wrapping within chunks
+  }
+
+  // Button styling within the toolbar
+  .fc-button {
+    background: none;  // If set to none, reset to default or remove this line
+    border: 1px solid #ccc;  // Check if the border color blends with the background
+    color: #333;  // Ensure the color contrasts with the button background
+  }
+
+  .fc-prev-button, .fc-next-button {
+    border: none;
+    background-color: transparent;
+    color: var(--pink);
+    padding: 5px;
+
+    &:hover, &:focus, &:active {
+      background-color: transparent !important;
+      color: var(--pink) !important;
+      border: none;
+      box-shadow: none !important;
+    }
+
+  }
+
+  .fc-toolbar-title {
+    margin: 0 5px !important; // Adjust space between buttons and title
+    display: inline-block !important;
+    font-size: 14px;
+    letter-spacing: -0.4px;
+  }
+
+//   .fc-button-primary:not(.fc-button-prev):not(.fc-button-next) {
+//     background-color: var(--pink) /* Your desired background color */ !important;
+//     border-color: var(--pink) /* Your desired border color */ !important;
+//     color: white/* Your desired text color */ !important;
+// }
+
+  .fc-dayGridMonth-button.fc-button-active,
+  .fc-timeGridWeek-button.fc-button-active,
+  .fc-timeGridDay-button.fc-button-active {
+    background-color: var(--pink) /* Your desired background color */ !important;
+    border-color: var(--pink)/* Your desired border color */ !important;
+    color: white/* Your desired text color */ !important;
+  }
+
+  .fc-dayGridMonth-button:hover,
+  .fc-timeGridWeek-button:hover,
+  .fc-timeGridDay-button:hover {
+    background-color: var(--light-gray);
+  }
+
+  .fc-daygrid-event.fc-event-all-day {
+    overflow-wrap: break-word;
+  }
+}
