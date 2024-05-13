@@ -18,6 +18,11 @@
 .add-form-container {
   text-align: center;
   width: 100%;
+  border: 1px black solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
   input {
     width: 70%;
@@ -27,7 +32,15 @@
   }
 
   button {
-    margin: 3px;
+    border: 0px;
+    background-color: white;
+
+    .add-button {
+      position: relative;
+      width: 40px;
+      height: 40px;
+    }
+
   }
 
 }

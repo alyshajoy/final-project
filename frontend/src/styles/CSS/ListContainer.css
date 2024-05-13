@@ -18,6 +18,11 @@
 .add-form-container {
   text-align: center;
   width: 100%;
+  border: 1px black solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .add-form-container input {
   width: 70%;
@@ -26,7 +31,13 @@
   border: 0px;
 }
 .add-form-container button {
-  margin: 3px;
+  border: 0px;
+  background-color: white;
+}
+.add-form-container button .add-button {
+  position: relative;
+  width: 40px;
+  height: 40px;
 }
 
 /*# sourceMappingURL=ListContainer.css.map */
