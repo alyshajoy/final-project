@@ -76,7 +76,7 @@ const ListContainer = () => {
       <div>
         <ListHeader toggleSort={toggleSort} sort={sort} setSort={setSort}/>
       </div>
-      <form>
+      <form className="add-form-container">
         <input value={value} onChange={e => setValue(e.target.value)}/>
         <button type="button" onClick={handleAdd}>Add</button>
       </form>

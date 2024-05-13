@@ -14,3 +14,20 @@
   color: black;
   text-align: center;
 }
+
+.add-form-container {
+  text-align: center;
+  width: 100%;
+
+  input {
+    width: 70%;
+    background-color: #00384528;
+    height: 40px;
+    border: 0px;
+  }
+
+  button {
+    margin: 3px;
+  }
+
+}

@@ -15,4 +15,18 @@
   text-align: center;
 }
 
+.add-form-container {
+  text-align: center;
+  width: 100%;
+}
+.add-form-container input {
+  width: 70%;
+  background-color: rgba(0, 56, 69, 0.1568627451);
+  height: 40px;
+  border: 0px;
+}
+.add-form-container button {
+  margin: 3px;
+}
+
 /*# sourceMappingURL=ListContainer.css.map */
