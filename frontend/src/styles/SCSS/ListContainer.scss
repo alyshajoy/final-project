@@ -15,10 +15,25 @@
   padding: 2px;
   border: 1px solid black;
 
+  button {
+    border: 0px;
+    background-color: white;
+  }
+
   .todo-icon {
     height: 30px;
     width: 30px;
-    
+    fill: #828282;
+  }
+
+  .sort-button {
+    height: 30px;
+    width: 30px;
+    fill: #828282;
+  }
+
+  .sort-button:active {
+    fill: black;
   }
 
 }

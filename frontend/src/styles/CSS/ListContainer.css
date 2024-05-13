@@ -15,9 +15,22 @@
   padding: 2px;
   border: 1px solid black;
 }
+.header-container button {
+  border: 0px;
+  background-color: white;
+}
 .header-container .todo-icon {
   height: 30px;
   width: 30px;
+  fill: #828282;
+}
+.header-container .sort-button {
+  height: 30px;
+  width: 30px;
+  fill: #828282;
+}
+.header-container .sort-button:active {
+  fill: black;
 }
 
 .list-title {
