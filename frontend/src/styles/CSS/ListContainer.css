@@ -4,15 +4,26 @@
 }
 
 .header-container {
-  background-color: rgba(248, 177, 185, 0.5);
+  background-color: white;
   height: 40px;
-  width: 90%;
-  margin: 0 auto;
+  width: 80%;
+  margin: 9px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  border: 1px solid black;
+}
+.header-container .todo-icon {
+  height: 30px;
+  width: 30px;
 }
 
 .list-title {
-  color: black;
+  color: #828282;
   text-align: center;
+  margin: 5px;
 }
 
 .add-form-container {
