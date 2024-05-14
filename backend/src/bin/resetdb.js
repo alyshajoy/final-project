@@ -21,7 +21,8 @@ const runSchemaFiles = async () => {
     'badges.sql',
     'user_badges.sql',
     'motivational_quotes.sql',
-    'calendar_events.sql'
+    'calendar_events.sql',
+    'badgeTriggers.sql'
   ];
 
   // const schemaFilenames = fs.readdirSync('./src/db/schema');
