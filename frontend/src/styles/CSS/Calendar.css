@@ -1,0 +1,103 @@
+.calendar-wrapper {
+  position: relative;
+}
+.calendar-wrapper .add-event-button {
+  position: absolute;
+  top: -60px;
+  right: 0px;
+  width: 40px;
+}
+
+h1 {
+  color: var(--gray);
+  text-align: center;
+}
+
+h2 {
+  color: var(--gray);
+  text-align: center;
+}
+
+.fc .fc-daygrid-event {
+  background-color: var(--pink); /* Example blue background, adjust color as needed */
+  color: white; /* White text for better readability */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Optional: rounded corners */
+  padding: 2px 4px; /* Padding inside the rectangle */
+  font-size: 0.6em; /* Smaller font size to ensure it fits */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Ensure it doesn't exceed the cell width */
+}
+.fc .fc-daygrid-event-dot {
+  display: none;
+}
+.fc .fc-event-main {
+  border-color: var(--pink) !important;
+  background-color: var(--pink) !important;
+}
+.fc .fc-day-today {
+  background-color: transparent !important;
+}
+.fc .fc-toolbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+.fc .fc-header-toolbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+.fc .fc-toolbar-chunk {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+}
+.fc .fc-button {
+  background: none;
+  border: 1px solid #ccc;
+  color: #333;
+}
+.fc .fc-prev-button, .fc .fc-next-button {
+  border: none;
+  background-color: transparent;
+  color: var(--pink);
+  padding: 2px 5px 6px 2px;
+}
+.fc .fc-prev-button:hover, .fc .fc-prev-button:focus, .fc .fc-prev-button:active, .fc .fc-next-button:hover, .fc .fc-next-button:focus, .fc .fc-next-button:active {
+  background-color: transparent !important;
+  color: var(--pink) !important;
+  border: none;
+  box-shadow: none !important;
+}
+.fc .fc-toolbar-title {
+  margin: 0 5px !important;
+  display: inline-block !important;
+  font-size: 14px;
+  letter-spacing: -0.4px;
+}
+.fc .fc-dayGridMonth-button.fc-button-active,
+.fc .fc-timeGridWeek-button.fc-button-active,
+.fc .fc-timeGridDay-button.fc-button-active {
+  background-color: var(--pink) !important;
+  border-color: var(--pink) !important;
+  color: white !important;
+}
+.fc .fc-dayGridMonth-button:hover,
+.fc .fc-timeGridWeek-button:hover,
+.fc .fc-timeGridDay-button:hover {
+  background-color: var(--light-gray);
+}
+.fc .fc-daygrid-event.fc-event-all-day {
+  overflow-wrap: break-word;
+}
+.fc .custom-event-title {
+  word-wrap: break-word;
+}
+
+/*# sourceMappingURL=Calendar.css.map */

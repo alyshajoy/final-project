@@ -2,8 +2,6 @@
 require('dotenv').config({ path: '../.env'});
 // Modules
 const express = require('express');
-const db = require('./db/connection');
-const WebSocket = require('ws');
 const http = require('http');
 const cors = require('cors');
 

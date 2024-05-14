@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import '../../styles/CSS/Calendar.css';
 
-function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelectedEndTime }) {
+function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelectedEndTime, onDoubleClickEvent }) {
   const [currentView, setCurrentView] = useState('dayGridMonth');
+  let clickTimer = useRef(null);
+
+  const handleEventClick = (clickInfo) => {
+    if (clickTimer && clickTimer.current === null) {
+      clickTimer.current = setTimeout(() => {
+        clickTimer.current = null;
+      }, 300);
+    } else if (clickTimer && clickTimer.current !== null) {
+      clearTimeout(clickTimer.current);
+      clickTimer.current = null;
+      onDoubleClickEvent(clickInfo.event);
+    }
+  };
 
   function handleDateSelect(selectInfo) {
     let currentDate;
@@ -45,26 +59,76 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
     setSelectedDate(selectInfo.startStr.split('T')[0]);
     setSelectedStartTime(startTime);
     setSelectedEndTime(endTime);
-}
+  }
 
+  function renderEventContent(eventInfo) {
+    const viewType = eventInfo.view.type;
+
+    // Check the view type to determine the content to render
+    if (viewType === 'timeGridWeek') {
+      return (
+        <div className="custom-event-title">
+            {eventInfo.event.title}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div className="custom-event-time">
+            {eventInfo.timeText}
+          </div>
+          <div className="custom-event-title">
+            {eventInfo.event.title}
+          </div>
+        </div>
+      );
+    }
+  }
 
   return (
       <div>
-          <div>
-              <button onClick={() => setCurrentView('dayGridMonth')}>Month</button>
-              <button onClick={() => setCurrentView('timeGridWeek')}>Week</button>
-              <button onClick={() => setCurrentView('timeGridDay')}>Day</button>
-          </div>
           
           <FullCalendar
-              key={currentView}
-              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-              initialView={currentView}
-              weekends={true}
-              events={events}
-              selectable={true}
-              selectMirror={true}
-              select={handleDateSelect}
+            key={events.length}
+            timeZone='UTC'
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            initialView={currentView}
+            contentHeight="auto"
+            weekends={true}
+            events={events}
+            selectable={true}
+            selectMirror={true}
+            select={handleDateSelect}
+            eventClick={handleEventClick}
+            eventContent={renderEventContent}
+            headerToolbar={{
+                left: 'prev,title,next',
+                center: '',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            }}
+            
+            views={{
+                dayGridMonth: { // Applies to the month view
+                  titleFormat: { year: 'numeric', month: 'long' }, // "May 2024"
+                  eventTimeFormat: { // Specify the time format for events
+                      hour: 'numeric',
+                      minute: '2-digit',
+                      meridiem: 'short',
+                      hour12: true
+                    }
+                },
+                timeGridWeek: { // Applies to the week view
+                    titleFormat: { month: 'long', day: 'numeric', omitCommas: true }, // "May 5 - 11"
+                    eventTimeFormat: {
+                      hour: 'numeric',
+                      meridiem: 'short',
+                      hour12: true
+                    }
+                },
+                timeGridDay: { // Applies to the day view
+                    titleFormat: { month: 'long', day: 'numeric', year: 'numeric' } // "May 11, 2024"
+                }
+            }}
           />
       </div>
   );
