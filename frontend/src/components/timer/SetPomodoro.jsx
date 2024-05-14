@@ -36,25 +36,25 @@ const SetPomodoro = () => {
   return (
     <div className="pomodoro-form-container">
         <div className="timer-setting-bubble">
-            <button onClick={() => decrement('work')}>-</button>
+            <button className="decrement-button" onClick={() => decrement('work')}>-</button>
             <p className="timer-set" name="work" value={newTimer.work}>{newTimer.work}</p>
-            <button onClick={() => increment('work')}>+</button>
+            <button className="increment-button" onClick={() => increment('work')}>+</button>
         </div>
         <div className="timer-description">
           <h4>Set Focus Timer</h4>
         </div>
         <div className="timer-setting-bubble">
-          <button onClick={() => decrement('shortbreak')}>-</button>
+          <button className="decrement-button" onClick={() => decrement('shortbreak')}>-</button>
           <p className="timer-set" name="shortbreak" value={newTimer.shortbreak}>{newTimer.shortbreak}</p>
-          <button onClick={() => increment('shortbreak')}>+</button>       
+          <button className="increment-button" onClick={() => increment('shortbreak')}>+</button>       
         </div>
         <div className="timer-description">
           <h4>Set Shortbreak Timer</h4>
         </div>
         <div className="timer-setting-bubble">
-          <button onClick={() => decrement('longbreak')}>-</button>
+          <button className="decrement-button" onClick={() => decrement('longbreak')}>-</button>
           <p className="timer-set" name="longbreak" value={newTimer.longbreak}>{newTimer.longbreak}</p>
-          <button onClick={() => increment('longbreak')}>+</button>
+          <button className="increment-button" onClick={() => increment('longbreak')}>+</button>
         </div>
         <div className="timer-description">
           <h4>Set Longbreak Timer</h4>
