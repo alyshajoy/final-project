@@ -1,3 +1,7 @@
+$pinkFull : rgba(255, 171, 171, 1);
+$pinkOpaque : rgba(255, 171, 171, 0.28);
+$blueFull : 003845;
+
 html {
   padding: 70px 0;
 }
@@ -28,7 +32,7 @@ h1, h3 {
   letter-spacing: 2.5px;
   font-weight: 500;
   color: #000;
-  background-color: #ffabab;
+  background-color: $pinkOpaque;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -87,8 +91,8 @@ h1, h3 {
   height:30px;
   bottom:20px;
   right:20px;
-  background-color:#ffabab;
-  color:#FFF;
+  background-color: $pinkOpaque;
+  color:#000;
   border-radius:50px;
   text-align:center;
   box-shadow: 2px 2px 3px #999;
@@ -102,8 +106,8 @@ h1, h3 {
   height:30px;
   bottom:20px;
   right:20px;
-  background-color:#ffabab;
-  color:#FFF;
+  background-color: $pinkOpaque;
+  color:#000;
   border-radius:50px;
   text-align:center;
   box-shadow: 2px 2px 3px #999;
@@ -111,13 +115,22 @@ h1, h3 {
 }
 
 .increment-button:hover {
-  background-color: #003845;
+  background-color: $pinkFull;
   box-shadow: 0px 15px 20px rgba(46, 108, 157, 0.4);
   color: #fff;
 }
 
 .decrement-button:hover {
-  background-color: #003845;
+  background-color: $pinkOpaque;
   box-shadow: 0px 15px 20px rgba(46, 108, 157, 0.4);
   color: #fff;
+}
+
+.timer-set {
+  width:30px;
+  height:30px;
+  color:#ffffff;
+  background-color: #003845;
+  border-radius: 50px;
+  text-align: center;
 }
