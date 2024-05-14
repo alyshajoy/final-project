@@ -31,14 +31,26 @@ const Calendar = () => {
         });
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
-        console.log("JSON RESPONSE:", data);
-        setEvents(data.map(event => ({
-          title: event.title,
-          start: new Date(event.start_time),
-          end: new Date(event.end_time),
-          id: event.id,
-          allDay: event.allDay
-        })));
+        setEvents(data.map(event => {
+          let res = {}
+          if (event.all_day) {
+            res = {
+              id: event.id,
+              title: event.title,
+              start: new Date(event.start_time),
+              allDay: true
+            }
+          } else {
+            res = {
+              title: event.title,
+              start: new Date(event.start_time),
+              end: new Date(event.end_time),
+              id: event.id,
+              allDay: event.allDay
+            }
+          }
+          return res;
+      }));
       } catch (error) {
         console.error("Error fetching events:", error);
       }
