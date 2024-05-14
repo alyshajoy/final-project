@@ -59,6 +59,16 @@ const Calendar = () => {
     fetchEvents();
   }, []);
 
+
+
+  // function to convert times to UTC
+  const toUTC = (date, time) => {
+    const localDate = new Date(`${date}T${time}`);
+    return new Date(localDate.getTime() - (localDate.getTimezoneOffset() * 60000)).toISOString();
+  };
+  
+
+
   const handleAddEvent = async (eventData) => {
     const { title, date, startTime, endTime, allDay, id } = eventData;
     if (allDay) {
@@ -81,14 +91,15 @@ const Calendar = () => {
         if (!response.ok) throw new Error('Network response was not ok');
         const result = await response.json();
         console.log("Event added successfully:", result);
+        window.location.reload();
       } catch (error) {
         console.error("Error adding event:", error);
       }
 
     } else {
       // If it's not an all-day event, combine date and time for start and end
-      const start = `${date}T${startTime}`; // Combine date and start time
-      const end = `${date}T${endTime}`; // Combine date and end time
+      const start = toUTC(date, startTime); // Combine date and start time
+      const end = toUTC(date, endTime); // Combine date and end time
 
       if (formMode === 'edit' && events.length > 0) {
         // If in edit mode, update the existing event instead of adding a new one

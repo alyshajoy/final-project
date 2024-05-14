@@ -56,7 +56,6 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
     const startTime = `${formattedHours}:${minutes}`;
     const endTime = `${formattedEndHours}:${minutes}`;
 
-    console.log("SETSELECTEDDATE:", selectInfo)
     setSelectedDate(selectInfo.startStr.split('T')[0]);
     setSelectedStartTime(startTime);
     setSelectedEndTime(endTime);
@@ -91,7 +90,7 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
           
           <FullCalendar
             key={events.length}
-            timeZone='local'
+            timeZone='UTC'
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             initialView={currentView}
             contentHeight="auto"
