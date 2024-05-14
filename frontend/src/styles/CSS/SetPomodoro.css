@@ -1,11 +1,12 @@
-html {
-  padding: 70px 0;
-}
-
-h1, h2, h3 {
+.pomodoro-headers {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.pomodoro {
+  padding: 70px 0;
+  height: 100%;
 }
 
 .timer-labels {
@@ -23,7 +24,7 @@ h1, h2, h3 {
   border-width: 2px;
   border-style: solid;
   border-radius: 45px;
-  margin: 0 150px;
+  margin: 0 125px;
 }
 
 .set-timer-button {

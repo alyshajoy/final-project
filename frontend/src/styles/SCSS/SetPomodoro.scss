@@ -3,14 +3,24 @@ $pinkOpaque : rgba(255, 171, 171, 0.28);
 $blueFull : rgba(0, 56, 69, 1);
 $blueOpaque : rgba(0, 56, 69, 0.28);
 
-html {
-  padding: 70px 0;
-}
+// @mixin vertical-gradient-topdown($from, $to, $filter:true, $stop:100%) {
+//   background: $from; /* Old browsers */
+//   background: linear-gradient(to bottom, $from 40%, $to $stop); /* W3C */
+//   @if(filter == true) {
+//       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$from}', endColorstr='#{$to}',GradientType=0 ); /* IE6-9 */
+//   }
+// }
 
-h1, h2, h3 {
+.pomodoro-headers {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.pomodoro {
+  padding: 70px 0;
+  // @include vertical-gradient-topdown(#ffffff, $pinkOpaque);
+  height: 100%
 }
 
 .timer-labels {
@@ -28,7 +38,7 @@ h1, h2, h3 {
   border-width: 2px;
   border-style: solid;
   border-radius: 45px;
-  margin: 0 150px;
+  margin: 0 125px;
 }
 
 .set-timer-button {
