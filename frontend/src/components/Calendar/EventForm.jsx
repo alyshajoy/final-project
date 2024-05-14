@@ -19,7 +19,7 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
                 setAllDay(false);
             }
         }
-    }, [mode, isOpen, date, initialStartTime, initialEndTime]);
+    }, [mode, isOpen, initialStartTime, initialEndTime]);
     
     const formatTime = (time) => {
         const [hours, minutes] = time.split(':');

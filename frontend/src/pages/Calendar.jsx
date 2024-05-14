@@ -31,14 +31,26 @@ const Calendar = () => {
         });
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
-        console.log("JSON RESPONSE:", data);
-        setEvents(data.map(event => ({
-          title: event.title,
-          start: new Date(event.start_time),
-          end: new Date(event.end_time),
-          id: event.id,
-          allDay: event.allDay
-        })));
+        setEvents(data.map(event => {
+          let res = {}
+          if (event.all_day) {
+            res = {
+              id: event.id,
+              title: event.title,
+              start: new Date(event.start_time),
+              allDay: true
+            }
+          } else {
+            res = {
+              title: event.title,
+              start: new Date(event.start_time),
+              end: new Date(event.end_time),
+              id: event.id,
+              allDay: event.allDay
+            }
+          }
+          return res;
+      }));
       } catch (error) {
         console.error("Error fetching events:", error);
       }
@@ -46,6 +58,16 @@ const Calendar = () => {
 
     fetchEvents();
   }, []);
+
+
+
+  // function to convert times to UTC
+  const toUTC = (date, time) => {
+    const localDate = new Date(`${date}T${time}`);
+    return new Date(localDate.getTime() - (localDate.getTimezoneOffset() * 60000)).toISOString();
+  };
+  
+
 
   const handleAddEvent = async (eventData) => {
     const { title, date, startTime, endTime, allDay, id } = eventData;
@@ -69,22 +91,25 @@ const Calendar = () => {
         if (!response.ok) throw new Error('Network response was not ok');
         const result = await response.json();
         console.log("Event added successfully:", result);
+        window.location.reload();
       } catch (error) {
         console.error("Error adding event:", error);
       }
 
     } else {
       // If it's not an all-day event, combine date and time for start and end
-      const start = `${date}T${startTime}`; // Combine date and start time
-      const end = `${date}T${endTime}`; // Combine date and end time
+      const start = toUTC(date, startTime); // Combine date and start time
+      const end = toUTC(date, endTime); // Combine date and end time
 
       if (formMode === 'edit' && events.length > 0) {
         // If in edit mode, update the existing event instead of adding a new one
         setEvents(events.map(event => {
           if (event.id === eventID) {
+            console.log("EVENT:", event);
             return { ...event, title, date, start, end };
           }
           return event;
+          
         }));
   
         try {
@@ -107,6 +132,7 @@ const Calendar = () => {
           if (!response.ok) throw new Error('Network response was not ok');
           const result = await response.json();
           console.log("Event updated successfully:", result);
+          window.location.reload();
         } catch (error) {
           console.error("Error updating event:", error);
         }
@@ -194,14 +220,10 @@ const Calendar = () => {
   const handleDeleteEvent = async (eventId) => {
 
   // Call backend API to delete the event
-  const response = await fetch(`http://localhost:3001/api/calendar/events/${eventId}`, { method: 'DELETE' });
+  const response = await fetch(`http://localhost:3001/api/calendar/events/delete/${eventId}`, { method: 'DELETE' });
     if (response.ok) {
-      // Remove the event from the state or re-fetch events
-      setEvents(prevEvents => {
-        const updatedEvents = prevEvents.filter(event => event.id !== eventId);
-        console.log("Updated events:", updatedEvents);
-        return updatedEvents;
-      });
+
+      window.location.reload();
 
       setIsModalOpen(false); // Close the modal on successful deletion
     } else {

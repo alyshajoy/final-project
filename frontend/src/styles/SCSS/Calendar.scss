@@ -14,6 +14,11 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  color: var(--gray);
+  text-align: center;
+}
+
 .fc {
   .fc-daygrid-event {
     background-color: var(--pink); /* Example blue background, adjust color as needed */
@@ -76,7 +81,7 @@ h1 {
     border: none;
     background-color: transparent;
     color: var(--pink);
-    padding: 5px;
+    padding: 2px 5px 6px 2px;
 
     &:hover, &:focus, &:active {
       background-color: transparent !important;
@@ -117,4 +122,10 @@ h1 {
   .fc-daygrid-event.fc-event-all-day {
     overflow-wrap: break-word;
   }
+
+  .custom-event-title {
+    word-wrap: break-word;
+  }
+
+
 }
