@@ -56,7 +56,7 @@ const id = req.params.id;
 const title = req.body.title;
   const newTask = {
     user_id: 1,
-    title: title,
+    title: 'title',
     description: 'blank',
     priority: 0,
     due_date: '2024-05-10',
@@ -70,7 +70,6 @@ const title = req.body.title;
   RETURNING *;
   `,[newTask.user_id, newTask.title, newTask.description, newTask.priority, newTask.due_date, newTask.completed])
   .then((taskEntry) => {
-    console.log(taskEntry);
     res.status(201).json(taskEntry);
   })
 
