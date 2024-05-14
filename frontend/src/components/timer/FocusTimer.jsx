@@ -31,31 +31,26 @@ useEffect(() => updateExecute(executing), [executing, startAnimate])
         {executing.message}
         </h3>
       </div>
-          <ul className="timer-labels">
-            <li>
-              <TimerButton
-                title="Work"
-                activeClass={executing.active === 'work' && "active-label"}
-                _callback={() => setCurrentTimer('work', "Time To Work!")}
-              />
-            </li>
-            <li>
-              <TimerButton
-                title="Short Break"
-                activeClass={executing.active === 'shortbreak' && "active-label"}
-                _callback={() => setCurrentTimer('shortbreak', "Time To Take A Break 🍵")}
-              />
-            </li>
-            <li>
-              <TimerButton
-                title="Long Break"
-                activeClass={executing.active === 'longbreak' && "active-label"}
-                _callback={() => setCurrentTimer('longbreak', 'Time To Take A Long Break 🐢')}
-              />
-            </li>
-          </ul>
-
+      <div className="timer-labels">
+        <TimerButton
+          title="Work"
+            activeClass={executing.active === 'work' && "active-label"}
+            _callback={() => setCurrentTimer('work', "Time To Work!")}
+          />
+        <TimerButton
+          title="Short Break"
+          activeClass={executing.active === 'shortbreak' && "active-label"}
+          _callback={() => setCurrentTimer('shortbreak', "Time To Take A Break 🍵")}
+        />
+        <TimerButton
+          title="Long Break"
+          activeClass={executing.active === 'longbreak' && "active-label"}
+          _callback={() => setCurrentTimer('longbreak', 'Time To Take A Long Break 🐢')}
+        />
+      </div>
+      <div className="settings-button">
           <TimerButton title="Settings" _callback={settingBtn} />
+      </div>
             <div className="time-wrapper">
           <CountdownAnimation
             key={pomodoro}
