@@ -24,6 +24,11 @@ h1, h2, h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-color: $pinkOpaque;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 45px;
+  margin: 0 150px;
 }
 
 .set-timer-button {
@@ -35,7 +40,7 @@ h1, h2, h3 {
   color: #000;
   background-color: $pinkOpaque;
   border: none;
-  border-radius: 45px;
+  border-radius: 25px;
   box-shadow: 0px 8px 15px $blueOpaque;
   transition: all 0.3s ease 0s;
   cursor: pointer;
@@ -75,7 +80,7 @@ h1, h2, h3 {
 .timer-description {
   display: flex;
   justify-content: center;
-  margin-top: -30px;
+  margin-top: -22px;
 }
 
 .set-timer-button:hover {
