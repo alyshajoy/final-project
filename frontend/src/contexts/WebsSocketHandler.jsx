@@ -7,10 +7,14 @@ const WebSocketHandler = () => {
     useEffect(() => {
         // Establish WebSocket connection
         const ws = new WebSocket('ws://localhost:3001');
-
+        ws.onopen = () => {
+            console.log('WebSocket connection established');
+        };
         // Event listener for incoming messages
         ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
+            console.log("websocket message",message)
+            console.log("message.badge", message.badge)
             if (message.type === 'badge-earned') {
                 showNotification(message.badge); // Trigger notification on badge-earned event
             }
@@ -18,7 +22,9 @@ const WebSocketHandler = () => {
 
         // Cleanup function
         return () => {
-            ws.close(); // Close WebSocket connection on component unmount
+            if (ws.readyState === 1) { // <-- This is important
+                ws.close();
+            }
         };
     }, [showNotification]); // Dependency array to prevent unnecessary re-renders
 

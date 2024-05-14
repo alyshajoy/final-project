@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import ListHeader from "./ListHeader";
 import ListFooter from "./ListFooter";
 import ListItems from "./ListItems";
+// import addButton from '../assets/addButton.svg';
+import { ReactComponent as AddButton } from '../assets/addButton.svg';
 
 const ListContainer = () => {
 
@@ -20,12 +22,19 @@ const ListContainer = () => {
   const [value, setValue] = useState("");
   const [tasks, setTasks] = useState([]);
   const [complete, setComplete] = useState([]);
+  const [sort, setSort] = useState(false);
+  const [add, setAdd] = useState(false);
 
   const handleAdd = () => {
     
     const copy = [...tasks, {title: value, task_id: tasks.length + 1, completed: false}];
     setTasks(copy);
     setValue("");
+    handleAddMode();
+  }
+
+  const handleAddMode = () => {
+    setAdd(!add);
   }
 
   const handleDelete = (task_id) => {
@@ -64,21 +73,32 @@ const ListContainer = () => {
     setTasks(updatedTasks);
   };
 
-  const items = [
-    {id: 1, title:'Banana'}, 
-    {id: 2,title:'Chocolate'}, 
-    {id: 3,title:'Strawberry'}
-  ];
+  const sortedTasks = [...tasks].sort((a, b) => a.priority - b.priority);
+  
+  const toggleSort = () => {
+    setSort(!sort);
+  }
 
   return (
     <>
       <div>
-        <ListHeader />
+        <ListHeader toggleSort={toggleSort} sort={sort} setSort={setSort}/>
       </div>
-      <form>
-        <input value={value} onChange={e => setValue(e.target.value)}/>
-        <button type="button" onClick={handleAdd}>Add</button>
-      </form>
+      {add
+      ?<form className="add-form-container">
+      <input value={value} onChange={e => setValue(e.target.value)}/>
+      <button type="button" onClick={handleAdd}> 
+        <AddButton className="add-button"/>
+      </button>
+    </form>
+      :<form className="add-form-container">
+     
+      <button type="button" onClick={handleAddMode}> 
+        <AddButton className="add-button"/>
+      </button>
+    </form>
+      }
+      
       <div>
         <ListItems 
         handleDelete={handleDelete} 
@@ -91,6 +111,8 @@ const ListContainer = () => {
         handleAdd={handleAdd}
         handleComplete={handleComplete}
         handleUpdate={handleUpdate}
+        sortedTasks={sortedTasks}
+        sort={sort}
         />
         
       </div>

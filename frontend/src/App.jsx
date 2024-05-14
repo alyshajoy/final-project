@@ -3,6 +3,7 @@ import './App.css';
 import BadgeNotification from './components/BadgeNotification.jsx';
 import {BrowserRouter, Link, Routes, Route} from 'react-router-dom';
 import {NotificationProvider} from './contexts/NotificationContext';
+import './styles/CSS/Global.css';
 
 import Home from './pages/Home.jsx';
 import Badges from './pages/Badges.jsx';
