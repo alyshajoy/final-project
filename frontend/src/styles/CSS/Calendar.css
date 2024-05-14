@@ -96,5 +96,8 @@ h2 {
 .fc .fc-daygrid-event.fc-event-all-day {
   overflow-wrap: break-word;
 }
+.fc .custom-event-title {
+  word-wrap: break-word;
+}
 
 /*# sourceMappingURL=Calendar.css.map */

@@ -82,9 +82,11 @@ const Calendar = () => {
         // If in edit mode, update the existing event instead of adding a new one
         setEvents(events.map(event => {
           if (event.id === eventID) {
+            console.log("EVENT:", event);
             return { ...event, title, date, start, end };
           }
           return event;
+          
         }));
   
         try {
@@ -107,6 +109,7 @@ const Calendar = () => {
           if (!response.ok) throw new Error('Network response was not ok');
           const result = await response.json();
           console.log("Event updated successfully:", result);
+          window.location.reload();
         } catch (error) {
           console.error("Error updating event:", error);
         }
@@ -194,14 +197,10 @@ const Calendar = () => {
   const handleDeleteEvent = async (eventId) => {
 
   // Call backend API to delete the event
-  const response = await fetch(`http://localhost:3001/api/calendar/events/${eventId}`, { method: 'DELETE' });
+  const response = await fetch(`http://localhost:3001/api/calendar/events/delete/${eventId}`, { method: 'DELETE' });
     if (response.ok) {
-      // Remove the event from the state or re-fetch events
-      setEvents(prevEvents => {
-        const updatedEvents = prevEvents.filter(event => event.id !== eventId);
-        console.log("Updated events:", updatedEvents);
-        return updatedEvents;
-      });
+
+      window.location.reload();
 
       setIsModalOpen(false); // Close the modal on successful deletion
     } else {
