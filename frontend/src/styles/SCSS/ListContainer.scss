@@ -1,13 +1,14 @@
 .footer-container {
   background-color: rgba(248, 177, 185, 0.5);
-  height: 30px
+  height: 30px;
+  margin-top: 20px;
 }
 
 .header-container {
   background-color: white;
   height: 40px;
   width: 80%;
-  margin: 9px auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -57,6 +58,17 @@
     background-color: #00384528;
     height: 40px;
     border: 0px;
+    color: #003845;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 3px;
+  padding-left: 2%;
+  padding-top: 2%;
+  border: 0px;
+  }
+
+  input:focus{
+    outline: none;
   }
 
   button {

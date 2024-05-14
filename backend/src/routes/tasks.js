@@ -32,7 +32,7 @@ const tasks = [
   },
   {
     task_id: 5,
-    title: "Read Chapter 1 and take notes",
+    title: "Read Chapter 1",
     completed: false,
     priority: 1
   },
