@@ -35,6 +35,7 @@ const SetPomodoro = () => {
   }
   return (
     <div className="pomodoro-form-container">
+      <h2>Settings</h2>
         <div className="timer-setting-bubble">
             <button className="decrement-button" onClick={() => decrement('work')}>-</button>
             <p className="timer-set" name="work" value={newTimer.work}>{newTimer.work}</p>

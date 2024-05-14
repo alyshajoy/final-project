@@ -1,12 +1,13 @@
 $pinkFull : rgba(255, 171, 171, 1);
 $pinkOpaque : rgba(255, 171, 171, 0.28);
-$blueFull : 003845;
+$blueFull : rgba(0, 56, 69, 1);
+$blueOpaque : rgba(0, 56, 69, 0.28);
 
 html {
   padding: 70px 0;
 }
 
-h1, h3 {
+h1, h2, h3 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +36,7 @@ h1, h3 {
   background-color: $pinkOpaque;
   border: none;
   border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 15px $blueOpaque;
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
@@ -78,7 +79,7 @@ h1, h3 {
 }
 
 .set-timer-button:hover {
-  background-color: #003845;
+  background-color: $pinkFull;
   box-shadow: 0px 15px 20px rgba(46, 108, 157, 0.4);
   color: #fff;
   transform: translateY(-7px);
@@ -97,6 +98,7 @@ h1, h3 {
   text-align:center;
   box-shadow: 2px 2px 3px #999;
   cursor: pointer;
+  transform: translate(0%, -10%);
 }
 
 .decrement-button {
@@ -112,6 +114,7 @@ h1, h3 {
   text-align:center;
   box-shadow: 2px 2px 3px #999;
   cursor: pointer;
+  transform: translate(0%, -10%);
 }
 
 .increment-button:hover {
@@ -121,7 +124,7 @@ h1, h3 {
 }
 
 .decrement-button:hover {
-  background-color: $pinkOpaque;
+  background-color: $pinkFull;
   box-shadow: 0px 15px 20px rgba(46, 108, 157, 0.4);
   color: #fff;
 }
@@ -129,8 +132,7 @@ h1, h3 {
 .timer-set {
   width:30px;
   height:30px;
-  color:#ffffff;
-  background-color: #003845;
+  color:#000;
   border-radius: 50px;
   text-align: center;
 }
