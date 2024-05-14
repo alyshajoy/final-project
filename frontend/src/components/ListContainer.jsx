@@ -23,12 +23,18 @@ const ListContainer = () => {
   const [tasks, setTasks] = useState([]);
   const [complete, setComplete] = useState([]);
   const [sort, setSort] = useState(false);
+  const [add, setAdd] = useState(false);
 
   const handleAdd = () => {
     
     const copy = [...tasks, {title: value, task_id: tasks.length + 1, completed: false}];
     setTasks(copy);
     setValue("");
+    handleAddMode();
+  }
+
+  const handleAddMode = () => {
+    setAdd(!add);
   }
 
   const handleDelete = (task_id) => {
@@ -78,12 +84,21 @@ const ListContainer = () => {
       <div>
         <ListHeader toggleSort={toggleSort} sort={sort} setSort={setSort}/>
       </div>
-      <form className="add-form-container">
-        <input value={value} onChange={e => setValue(e.target.value)}/>
-        <button type="button" onClick={handleAdd}> 
-          <AddButton className="add-button"/>
-        </button>
-      </form>
+      {add
+      ?<form className="add-form-container">
+      <input value={value} onChange={e => setValue(e.target.value)}/>
+      <button type="button" onClick={handleAdd}> 
+        <AddButton className="add-button"/>
+      </button>
+    </form>
+      :<form className="add-form-container">
+     
+      <button type="button" onClick={handleAddMode}> 
+        <AddButton className="add-button"/>
+      </button>
+    </form>
+      }
+      
       <div>
         <ListItems 
         handleDelete={handleDelete} 
