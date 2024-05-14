@@ -9,17 +9,32 @@ const tasks = [
   {
     task_id: 1,
     title: "Finish Project",
-    status: false,
+    completed: false,
+    priority: 1
   },
   {
     task_id: 2,
     title: "Start Blog Post",
-    status: false,
+    completed: false,
+    priority: 3
   },
   {
     task_id: 3,
     title: "Update Resume",
-    status: true,
+    completed: false,
+    priority: 2
+  },
+  {
+    task_id: 4,
+    title: "Write draft for email",
+    completed: false,
+    priority: 3
+  },
+  {
+    task_id: 5,
+    title: "Read Chapter 1",
+    completed: false,
+    priority: 1
   },
 ]
 
@@ -49,7 +64,9 @@ router.post('/', (req,res) => {
 
   const newTask = {
     task_id: tasks.length + 1,
-    title: req.body.title
+    title: req.body.title,
+    completed: false,
+    priority: 0
   }
   tasks.push(newTask);
   res.status(201).json(tasks);
