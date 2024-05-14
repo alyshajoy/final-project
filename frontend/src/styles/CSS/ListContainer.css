@@ -42,7 +42,6 @@
 .add-form-container {
   text-align: center;
   width: 100%;
-  border: 1px black solid;
   display: flex;
   flex-direction: row;
   justify-content: center;

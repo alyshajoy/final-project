@@ -3,6 +3,7 @@ import { useState } from "react";
 import RemoveTask from "./buttons/RemoveTask";
 import Checkbox from "./buttons/Checkbox";
 import '../styles/CSS/ListItems.css';
+import { ReactComponent as UpdateButton } from '../assets/UpdateButton.svg';
 
 const ListItem = (props) => {
 
@@ -42,15 +43,15 @@ const ListItem = (props) => {
     <div className="list-item-container">
       <div><Checkbox handleComplete={handleComplete} task_id={task.task_id}/></div>
       {edit 
-      ? <div>
-          <form onSubmit={handleSubmit}>
+      ? <div className="edit-form-div-container">
+          <form onSubmit={handleSubmit} className="edit-form-container">
             <input 
             value={editValue}
             autoFocus 
             onBlur={handleSubmit}
             onChange={e => setEditValue(e.target.value)}
             />
-            <button type="submit" onClick={handleSubmit}>Update</button>
+            <button type="submit" onClick={handleSubmit}><UpdateButton className="update-button"/></button>
           </form>
         </div>
       : <div 
