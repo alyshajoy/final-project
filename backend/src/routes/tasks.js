@@ -42,11 +42,11 @@ const tasks = [
 
 //Get 
 router.get('/', (req, res) => {
-  // db.query(`SELECT * FROM tasks`)
-  // .then(({rows}) => {
-  //     res.json(rows);
-  //   });
-  res.status(200).json(tasks);
+  db.query(`SELECT * FROM tasks`)
+  .then(({rows}) => {
+      res.json(rows);
+    });
+  // res.status(200).json(tasks);
 });
 
 //Post
