@@ -3,6 +3,8 @@ import SetPomodoro from "./SetPomodoro";
 import CountdownAnimation from "./CountdownAnimation";
 import TimerButton from "./TimerButton";
 import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
+import '../../styles/CSS/FocusTimer.css';
+
 
 const FocusTimer = () => {
   const { 
@@ -34,7 +36,7 @@ useEffect(() => updateExecute(executing), [executing, startAnimate])
       <div className="timer-labels">
         <TimerButton
           title="Work"
-            activeClass={executing.active === 'work' && "active-label"}
+            activeClass={executing.active === 'work'}
             _callback={() => setCurrentTimer('work', "Time To Work!")}
           />
         <TimerButton
@@ -48,9 +50,7 @@ useEffect(() => updateExecute(executing), [executing, startAnimate])
           _callback={() => setCurrentTimer('longbreak', 'Time To Take A Long Break 🐢')}
         />
       </div>
-      <div className="settings-button">
-          <TimerButton title="Settings" _callback={settingBtn} />
-      </div>
+
             <div className="time-wrapper">
           <CountdownAnimation
             key={pomodoro}
@@ -64,7 +64,11 @@ useEffect(() => updateExecute(executing), [executing, startAnimate])
             <TimerButton title="Start" classname={ !startAnimate && 'active'} _callback={startTimer} />
             <TimerButton title="Pause" classname={ !startAnimate && 'active'} _callback={pauseTimer} />
         </div>
+        <div className="settings-button">
+          <TimerButton title="Settings" _callback={settingBtn} />
+      </div>
           </>
+          
         }
 
     </div>
