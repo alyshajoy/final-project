@@ -86,7 +86,8 @@ body, html {
   margin-left: -3rem;
 }
 .home-footer p {
-  margin: 5px 0;
+  max-width: 85vw;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=Home.css.map */

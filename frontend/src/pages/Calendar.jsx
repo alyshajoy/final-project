@@ -262,6 +262,7 @@ const Calendar = () => {
         <AddEventButton onClick={handleOpenModalForNewEvent}/>
         <CalendarView
           events={events}
+          selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
           setSelectedStartTime={setSelectedStartTime}
           setSelectedEndTime={setSelectedEndTime}
