@@ -47,8 +47,9 @@ body, html {
 }
 
 .feature-list-item {
-  background: white;
-  border: 2px solid var(--pink);
+  color: var(--dark-green) !important;
+  background: var(--light-pink);
+  // border: 2px solid var(--pink);
   border-radius: 10px;
   margin-bottom: 10px;
   width: 90%;
@@ -66,12 +67,14 @@ body, html {
   }
 
   a {
-    color: black;
+    color: var(--dark-green);
     font-size: 18px;
+    font-weight: 800;
     text-decoration: none;
+    margin-left: 0.5rem;
 
     &:hover {
-      color: var(--pink);
+      color: var(--gray);
     }
   }
 }
