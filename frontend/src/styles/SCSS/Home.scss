@@ -59,8 +59,10 @@ body, html {
   max-width: 350px;
   padding: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
   display: flex;
   align-items: center;
+  border: none;
 
   img {
     width: 40px;
@@ -69,16 +71,16 @@ body, html {
     margin-left: 4rem;
   }
 
-  a {
+  span {
     color: var(--dark-green);
     font-size: 18px;
     font-weight: 800;
-    text-decoration: none;
     margin-left: 0.5rem;
+  }
 
-    &:hover {
-      color: var(--gray);
-    }
+  &:hover {
+    background-color: var(--pink);
+    text-decoration: none;
   }
 }
 
@@ -92,6 +94,8 @@ body, html {
   margin-left: -3rem;
 
   p {
-    margin: 5px 0;
+    // margin: 5px 0;
+    max-width: 85vw;
+    margin: 0 auto;
   }
 }

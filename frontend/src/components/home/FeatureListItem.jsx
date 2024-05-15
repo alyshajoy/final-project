@@ -2,10 +2,10 @@ import React from 'react';
 
 function FeatureListItem({ icon, text, link }) {
   return (
-    <div className="feature-list-item">
+    <a href={link} className="feature-list-item">
       <img src={require(`../../assets/homepage_icons/${icon}`)} alt={text} />
-      <a href={link}>{text}</a>
-    </div>
+      <span>{text}</span>
+    </a>
   );
 }
 
