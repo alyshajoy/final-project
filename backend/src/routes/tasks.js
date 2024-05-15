@@ -5,38 +5,38 @@ const router = express.Router();
 
 //Prefix '/api/tasks' for endpoint
 
-const tasks = [
-  {
-    task_id: 1,
-    title: "Finish Project",
-    completed: false,
-    priority: 1
-  },
-  {
-    task_id: 2,
-    title: "Start Blog Post",
-    completed: false,
-    priority: 3
-  },
-  {
-    task_id: 3,
-    title: "Update Resume",
-    completed: false,
-    priority: 2
-  },
-  {
-    task_id: 4,
-    title: "Write draft for email",
-    completed: false,
-    priority: 3
-  },
-  {
-    task_id: 5,
-    title: "Read Chapter 1",
-    completed: false,
-    priority: 1
-  },
-]
+// const tasks = [
+//   {
+//     task_id: 1,
+//     title: "Finish Project",
+//     completed: false,
+//     priority: 1
+//   },
+//   {
+//     task_id: 2,
+//     title: "Start Blog Post",
+//     completed: false,
+//     priority: 3
+//   },
+//   {
+//     task_id: 3,
+//     title: "Update Resume",
+//     completed: false,
+//     priority: 2
+//   },
+//   {
+//     task_id: 4,
+//     title: "Write draft for email",
+//     completed: false,
+//     priority: 3
+//   },
+//   {
+//     task_id: 5,
+//     title: "Read Chapter 1",
+//     completed: false,
+//     priority: 1
+//   },
+// ]
 
 // Tasks Routes
 
@@ -98,23 +98,13 @@ router.delete('/:id/delete', (req, res) => {
   )
   .then((result) => {
       res.json(result.rows);
-    })
+  })
+  .catch((error) => {
+    return error;
+  });
   
 })
 
-// const updateOrderIsActive = (orderId) => {
-//   return db.query(`
-//     UPDATE orders
-//     SET is_active = TRUE
-//     WHERE id = $1;
-//   `, [orderId])
-//     .then(() => {
-//       return "Order is_active field updated successfully";
-//     })
-//     .catch((error) => {
-//       return error;
-//     });
-// };
 
 //Edit completed route
 router.patch('/:id/completed', (req, res) => {
@@ -131,22 +121,33 @@ router.patch('/:id/completed', (req, res) => {
   .then((result) => {
     res.json(result.rows);
   })
+  .catch((error) => {
+    return error;
+  });
+
 })
 
-// const getOrderById = (orderId) => {
-//   return db.query(`
-//     SELECT orders.is_active
-//     FROM orders
-//     WHERE id = $1;
-//   `, [orderId])
-//     .then((orderResult) => {
-//       const dbOrder = orderResult.rows[0];
-//       return dbOrder;
-//     })
-//     .catch((error) => {
-//       return error;
-//     });
-// };
+//Edit title route
+router.patch('/:id/edit', (req, res) => {
+  const title = req.body.title;
+  const id = req.params.id;
+
+  db.query(
+    `
+    UPDATE tasks
+    SET title = $1
+    WHERE id = $2;
+    `
+    ,[title, id]
+  )
+  .then((result) => {
+    res.json(result.rows);
+  })
+  .catch((error) => {
+    return error;
+  });
+
+})
 
 
 module.exports = router;
