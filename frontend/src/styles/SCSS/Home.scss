@@ -8,13 +8,16 @@ body, html {
 .home-container {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 .home-content {
   flex: 1;  // This makes the content grow and take up all available space
   // padding: 20px;
   padding-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .home-header {

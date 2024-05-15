@@ -9,8 +9,10 @@ const Home = () => {
   return (
     <div className='home-container'>
       <div className='home-content'>
-        <Header />
-        <FeatureList />
+        <div>
+          <Header />
+          <FeatureList />
+        </div>
         <Footer />
       </div>
     </div>
