@@ -21,18 +21,17 @@ const FocusTimer = () => {
 
 useEffect(() => updateExecute(executing), [executing, startAnimate])
 
-console.log(pomodoro);
-console.log(executing.active === 'work');
-
   return (
     <div className="container">
       <h1>Focus Timer</h1>
         {pomodoro === 0 ?
           <SetPomodoro /> :
           <>
-      <div className="pomodoro-message">
+      <div className="pomodoro-headers">
         <h3>
-        {executing.active && executing.message}
+        <em>
+          {executing.active && executing.message}
+          </em>
         </h3>
       </div>
       <div className="timer-labels">
