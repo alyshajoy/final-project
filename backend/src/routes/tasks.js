@@ -108,18 +108,20 @@ router.delete('/:id/delete', (req, res) => {
 
 //Edit completed route
 router.patch('/:id/completed', (req, res) => {
+  const status = req.body.status;
   const id = req.params.id;
 
   db.query(
     `
     UPDATE tasks
-    SET completed = TRUE
-    WHERE id = $1;
+    SET completed = $1
+    WHERE id = $2
+    RETURNING *;
     `
-    ,[id]
+    ,[status, id]
   )
   .then((result) => {
-    res.json(result.rows);
+    res.json(result.rows[0]); // Return the updated task
   })
   .catch((error) => {
     return error;

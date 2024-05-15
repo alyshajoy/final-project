@@ -107,11 +107,23 @@ const ListContainer = () => {
 
   const handleComplete = (task_id) => {
 
+    // Find the task with the given task_id
+    const task = tasks.find(task => task.task_id === task_id);
+
+    if (!task) {
+      console.error(`Task with id ${task_id} not found`);
+      return;
+    }
+
+    // Invert the completed status
+    const newStatus = !task.completed;
+
     fetch(`api/tasks/${task_id}/completed`, {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      body: JSON.stringify({ completed: newStatus })
     })
     .then(res => {
       if (!res.ok) {
