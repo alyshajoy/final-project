@@ -84,15 +84,6 @@ const title = req.body.title;
 
 })
 
-//return db.query(`
-//   DELETE FROM orders
-//   WHERE id = $1
-//   RETURNING *;
-//   `, [orderId])
-//     .then((result) => {
-//       return result.rows;
-//     });
-
 //Delete Route
 router.delete('/:id/delete', (req, res) => {
   console.log(req.params);
@@ -125,6 +116,23 @@ router.delete('/:id/delete', (req, res) => {
 //     });
 // };
 
+//Edit completed route
+router.patch('/:id/completed', (req, res) => {
+  const id = req.params.id;
+
+  db.query(
+    `
+    UPDATE tasks
+    SET completed = TRUE
+    WHERE id = $1;
+    `
+    ,[id]
+  )
+  .then((result) => {
+    res.json(result.rows);
+  })
+})
+
 // const getOrderById = (orderId) => {
 //   return db.query(`
 //     SELECT orders.is_active
@@ -140,17 +148,5 @@ router.delete('/:id/delete', (req, res) => {
 //     });
 // };
 
-// const deleteOrder = (orderId) => {
-
-//   return db.query(`
-//   DELETE FROM orders
-//   WHERE id = $1
-//   RETURNING *;
-//   `, [orderId])
-//     .then((result) => {
-//       return result.rows;
-//     });
-
-// };
 
 module.exports = router;
