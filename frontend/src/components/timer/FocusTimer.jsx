@@ -3,6 +3,8 @@ import SetPomodoro from "./SetPomodoro";
 import CountdownAnimation from "./CountdownAnimation";
 import TimerButton from "./TimerButton";
 import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
+import '../../styles/CSS/FocusTimer.css';
+
 
 const FocusTimer = () => {
   const { 
@@ -19,21 +21,22 @@ const FocusTimer = () => {
 
 useEffect(() => updateExecute(executing), [executing, startAnimate])
 
-
   return (
     <div className="container">
       <h1>Focus Timer</h1>
         {pomodoro === 0 ?
           <SetPomodoro /> :
           <>
-      <div className="pomodoro-message">
+      <div className="pomodoro-headers">
         <h3>
-        {executing.message}
+        <em>
+          {executing.active && executing.message}
+          </em>
         </h3>
       </div>
       <div className="timer-labels">
         <TimerButton
-          title="Work"
+          title="Focus"
             activeClass={executing.active === 'work' && "active-label"}
             _callback={() => setCurrentTimer('work', "Time To Work!")}
           />
@@ -48,9 +51,7 @@ useEffect(() => updateExecute(executing), [executing, startAnimate])
           _callback={() => setCurrentTimer('longbreak', 'Time To Take A Long Break 🐢')}
         />
       </div>
-      <div className="settings-button">
-          <TimerButton title="Settings" _callback={settingBtn} />
-      </div>
+
             <div className="time-wrapper">
           <CountdownAnimation
             key={pomodoro}
@@ -61,10 +62,14 @@ useEffect(() => updateExecute(executing), [executing, startAnimate])
           </CountdownAnimation>
             </div>
           <div className="button-wrapper">
-            <TimerButton title="Start" classname={ !startAnimate && 'active'} _callback={startTimer} />
-            <TimerButton title="Pause" classname={ !startAnimate && 'active'} _callback={pauseTimer} />
+            <TimerButton title="Start" activeClass={ startAnimate && 'active'} _callback={startTimer} />
+            <TimerButton title="Pause" activeClass={ !startAnimate && 'active'} _callback={pauseTimer} />
         </div>
+        <div className="settings-button">
+          <TimerButton title="Settings" _callback={settingBtn} />
+      </div>
           </>
+          
         }
 
     </div>
