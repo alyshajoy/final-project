@@ -19,6 +19,8 @@ const ListContainer = () => {
     });
   }, []);
 
+
+
   const [value, setValue] = useState("");
   const [tasks, setTasks] = useState([]);
   const [complete, setComplete] = useState([]);
@@ -27,10 +29,43 @@ const ListContainer = () => {
 
   const handleAdd = () => {
     
-    const copy = [...tasks, {title: value, task_id: tasks.length + 1, completed: false}];
-    setTasks(copy);
+  const newTask = {
+    user_id: 1,
+    title: value,
+    description: 'blank',
+    priority: 0,
+    due_date: '2024-05-10',
+    completed: false,
+  }
+
+  fetch("/api/tasks", {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body:JSON.stringify(newTask)
+  })
+  .then(res => {
+    if (!res.ok) {
+      throw new Error('Failed to add task');
+    }
+    return res.json();
+  })
+  .then(data => {
+    const updatedTasks = [...tasks, data]; // Add the newly created task to the tasks array
+    setTasks(prevTasks => [...prevTasks, data]);
     setValue("");
+    console.log('Hello from data')
     handleAddMode();
+  })
+  .catch(error => {
+    console.error('Error adding task:', error);
+  });
+
+    // const copy = [...tasks, {title: value, task_id: tasks.length + 1, completed: false}];
+    // setTasks(copy);
+    // setValue("");
+    // handleAddMode();
   }
 
   const handleAddMode = () => {

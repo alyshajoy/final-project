@@ -37,5 +37,8 @@
   font-size: 14px;
   color: #666;
 }
-
+.inactive {
+  opacity: 0.5;
+  pointer-events: none;
+}
 /*# sourceMappingURL=BadgeCollection.css.map */

@@ -4,11 +4,8 @@ require('dotenv').config({ path: '../.env'});
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
-
 const app = express(); // Initialize Express
 console.log('Express initialized...');
-
-// Import WebSocket server integration
 const initWebSocketServer = require('./db/websockets/websockets');
 // Require/import Feature Routes
 const tasksRoutes = require('./routes/tasks');
@@ -21,7 +18,7 @@ const userRoutes = require('./routes/user');
 const server = http.createServer(app);
 console.log('HTTP server mounted and intialized...');
 // Import and initialize WebSocket server with the HTTP server
-const wss = initWebSocketServer(server);
+initWebSocketServer(server);
 console.log('WebSocket server mounted...');
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -52,4 +49,3 @@ const port = process.env.PORT || 3001;
 server.listen(port, () => { //was app in place of server
     console.log(`Server running on port ${port}`);
 });
-

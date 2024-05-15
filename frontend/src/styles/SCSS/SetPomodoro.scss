@@ -1,0 +1,158 @@
+$pinkFull : rgba(255, 171, 171, 1);
+$pinkOpaque : rgba(255, 171, 171, 0.28);
+$blueFull : rgba(0, 56, 69, 1);
+$blueOpaque : rgba(0, 56, 69, 0.28);
+
+@mixin vertical-gradient-topdown($from, $to, $filter:true, $stop:100%) {
+  background: $from; /* Old browsers */
+  background: linear-gradient(to bottom, $from 40%, $to $stop); /* W3C */
+  @if(filter == true) {
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$from}', endColorstr='#{$to}',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+html {
+  // @include vertical-gradient-topdown(#ffffff, $pinkOpaque);
+
+}
+
+.pomodoro-headers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pomodoro {
+  padding: 70px 0;
+  // @include vertical-gradient-topdown(#ffffff, $pinkOpaque);
+  height: 100%
+}
+
+.timer-labels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.timer-setting-bubble {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: $pinkOpaque;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 45px;
+  margin: 0 125px;
+}
+
+.set-timer-button {
+  width: 140px;
+  height: 45px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: $pinkOpaque;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 8px 15px $blueOpaque;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.set-timer-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.time-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.timer-alert {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.timer-description {
+  display: flex;
+  justify-content: center;
+  margin-top: -22px;
+}
+
+.set-timer-button:hover {
+  background-color: $pinkFull;
+  box-shadow: 0px 15px 20px rgba(46, 108, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.increment-button {
+  margin-left: 5px;
+  margin-right: 5px;
+  width:30px;
+  height:30px;
+  bottom:20px;
+  right:20px;
+  background-color: $pinkOpaque;
+  color:#000;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
+  cursor: pointer;
+  transform: translate(0%, -10%);
+}
+
+.decrement-button {
+  margin-left: 5px;
+  margin-right: 5px;
+  width:30px;
+  height:30px;
+  bottom:20px;
+  right:20px;
+  background-color: $pinkOpaque;
+  color:#000;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 2px 2px 3px #999;
+  cursor: pointer;
+  transform: translate(0%, -10%);
+}
+
+.increment-button:hover {
+  background-color: $pinkFull;
+  box-shadow: 0px 15px 20px rgba(46, 108, 157, 0.4);
+  color: #fff;
+}
+
+.decrement-button:hover {
+  background-color: $pinkFull;
+  box-shadow: 0px 15px 20px rgba(46, 108, 157, 0.4);
+  color: #fff;
+}
+
+.timer-set {
+  width:30px;
+  height:30px;
+  color:#000;
+  border-radius: 50px;
+  text-align: center;
+}
