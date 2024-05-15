@@ -4,7 +4,7 @@ import ListHeader from "./ListHeader";
 import ListFooter from "./ListFooter";
 import ListItems from "./ListItems";
 // import addButton from '../assets/addButton.svg';
-import { ReactComponent as AddButton } from '../assets/AddButton.svg';
+import { ReactComponent as AddButton } from '../assets/addButton.svg';
 
 const ListContainer = () => {
 
