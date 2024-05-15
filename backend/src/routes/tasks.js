@@ -42,34 +42,48 @@ const tasks = [
 
 //Get 
 router.get('/', (req, res) => {
-  // db.query(`SELECT * FROM tasks`)
-  // .then(({rows}) => {
-  //     res.json(rows);
-  //   });
-  res.status(200).json(tasks);
+  db.query(`SELECT * FROM tasks`)
+  .then(({rows}) => {
+      res.json(rows);
+    });
+  // res.status(200).json(tasks);
 });
 
 //Post
 router.post('/', (req,res) => {
-  // db.query(`
-  // INSERT INTO tasks(task_id, user_id, title, description, priority, due_date, status) 
-  // VALUES($1, $2, $3, $4, $5, $6, $7)
-  // RETURNING *;
-  // `,[id, user_id, title, description, priority, due_date, status])
-  // .then((taskEntry) => {
-  //   console.log(taskEntry);
-  // })
-
-
-
+console.log('req.body', req.body);
+const title = req.body.title;
   const newTask = {
-    task_id: tasks.length + 1,
-    title: req.body.title,
+    user_id: 1,
+    title: title,
+    description: 'blank',
+    priority: 0,
+    due_date: '2024-05-10',
     completed: false,
-    priority: 0
+    
   }
-  tasks.push(newTask);
-  res.status(201).json(tasks);
+  // (1, 'Finish Project', 'Complete the final touches on the project.', 1, '2024-05-10', 'false', NOW(), NOW()),
+  db.query(`
+  INSERT INTO tasks(user_id, title, description, priority, due_date, completed) 
+  VALUES($1, $2, $3, $4, $5, $6)
+  RETURNING *;
+  `,[newTask.user_id, newTask.title, newTask.description, newTask.priority, newTask.due_date, newTask.completed])
+  .then((taskEntry) => {
+    res.status(201).json(taskEntry);
+  })
+
+  
+
+  //Post route with mock data
+  // const newTask = {
+  //   id: tasks.length + 1,
+  //   title: req.body.title,
+  //   completed: false,
+  //   priority: 0
+  // }
+  // tasks.push(newTask);
+  // res.status(201).json(tasks);
+
 
 })
 

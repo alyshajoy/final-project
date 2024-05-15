@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import '../../styles/CSS/Calendar.css';
+// import '../../styles/CSS/Calendar.css';
 
 function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelectedEndTime, onDoubleClickEvent }) {
   const [currentView, setCurrentView] = useState('dayGridMonth');

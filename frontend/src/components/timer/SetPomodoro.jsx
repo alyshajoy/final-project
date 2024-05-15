@@ -1,6 +1,8 @@
 import { useContext, useState } from "react"
 import TimerButton from "./TimerButton"
 import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
+import '../../styles/CSS/SetPomodoro.css';
+
 
 const SetPomodoro = () => {
   const { updateExecute } = useContext(TimerSettingsContext)
@@ -38,26 +40,43 @@ const SetPomodoro = () => {
     }))
   }
   return (
+    <html className="pomodoro">
+    <body>
     <div className="pomodoro-form-container">
-        <div className="pomodoro-input-wrapper">
-          <button onClick={() => decrement('work')}>-</button>
-          <p className="input" name="work" value={newTimer.work}>{newTimer.work}</p>
-          <button onClick={() => increment('work')}>+</button>
-          <br />
-          <button onClick={() => decrement('shortbreak')}>-</button>
-          <p className="input" name="shortbreak" value={newTimer.shortbreak}>{newTimer.shortbreak}</p>
-          <button onClick={() => increment('shortbreak')}>+</button>
-          <br />
-          <button onClick={() => decrement('longbreak')}>-</button>
-          <p className="input" name="longbreak" value={newTimer.longbreak}>{newTimer.longbreak}</p>
-          <button onClick={() => increment('longbreak')}>+</button>
-          <br />
+      <h2 className="pomodoro-headers">Settings</h2>
+        <div className="timer-setting-bubble">
+            <button className="decrement-button" onClick={() => decrement('work')}>-</button>
+            <p className="timer-set" name="work" value={newTimer.work}>{newTimer.work}</p>
+            <button className="increment-button" onClick={() => increment('work')}>+</button>
         </div>
-        {newTimer.work > 0 && newTimer.shortbreak > 0 && newTimer.longbreak > 0 ? 
-        <TimerButton title="Set Timer" _callback={handleSubmit} />
-        : <p className="timer-alert">Break times must be greater than 0 😖</p>
-        }
+        <div className="timer-description">
+          <h4 className="pomodoro-headers">Set Focus Timer</h4>
+        </div>
+        <div className="timer-setting-bubble">
+          <button className="decrement-button" onClick={() => decrement('shortbreak')}>-</button>
+          <p className="timer-set" name="shortbreak" value={newTimer.shortbreak}>{newTimer.shortbreak}</p>
+          <button className="increment-button" onClick={() => increment('shortbreak')}>+</button>       
+        </div>
+        <div className="timer-description">
+          <h4 className="pomodoro-headers">Set Shortbreak Timer</h4>
+        </div>
+        <div className="timer-setting-bubble">
+          <button className="decrement-button" onClick={() => decrement('longbreak')}>-</button>
+          <p className="timer-set" name="longbreak" value={newTimer.longbreak}>{newTimer.longbreak}</p>
+          <button className="increment-button" onClick={() => increment('longbreak')}>+</button>
+        </div>
+        <div className="timer-description">
+          <h4 className="pomodoro-headers">Set Longbreak Timer</h4>
+        </div>      
+      {newTimer.work > 0 && newTimer.shortbreak > 0 && newTimer.longbreak > 0 ?
+      <div className="set-timer-button-wrapper">
+        <TimerButton activeClass ={"set-timer-button"}title="Set Timer" _callback={handleSubmit} />
+      </div>
+      : <p className="timer-alert">Set times  must be greater than 0 😖</p>
+      }
     </div>
+    </body>
+    </html>
   )
 }
 
