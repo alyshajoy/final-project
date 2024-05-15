@@ -3,10 +3,10 @@ import FeatureListItem from './FeatureListItem';
 
 function FeatureList() {
   const menuItems = [
-    { icon: 'timer_icon.png', text: 'Focus Timer', link: '/timer' },
-    { icon: 'calendar_icon.png', text: 'Calendar', link: '/calendar' },
-    { icon: 'todo_icon.png', text: 'To Do List', link: '/tasks' },
-    { icon: 'achievement_icon.png', text: 'Achievements', link: '/achievements' }
+    { icon: 'timer-icon.png', text: 'Focus Timer', link: '/timer' },
+    { icon: 'calendar-icon.png', text: 'Calendar', link: '/calendar' },
+    { icon: 'tasks-icon.png', text: 'To Do List', link: '/tasks' },
+    { icon: 'achievement-icon.png', text: 'Badges', link: '/badges' }
   ];
 
   return (
