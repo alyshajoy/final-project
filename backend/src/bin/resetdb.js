@@ -21,7 +21,7 @@ const runSchemaFiles = async () => {
     'badges.sql',
     'user_badges.sql',
     'motivational_quotes.sql',
-    'calendar_events.sql'
+    'calendar_events.sql',
   ];
 
   // const schemaFilenames = fs.readdirSync('./src/db/schema');
@@ -53,7 +53,21 @@ const runSeedFiles = async () => {
     await db.query(sql);
   }
 };
+const runTriggerFiles = async () => {
+  console.log(`-> Loading Trigger Files ...`);
 
+  // List files in the order they should be executed
+  const triggerFiles = [
+    'badgeTriggers.sql'
+    // Add more trigger files here if needed
+  ];
+
+  for (const fn of triggerFiles) {
+    const sql = fs.readFileSync(`./src/db/triggers/${fn}`, 'utf8');
+    console.log(`\t-> Running ${fn}`);
+    await db.query(sql);
+  }
+};
 const runResetDB = async () => {
 
   try {
@@ -62,6 +76,7 @@ const runResetDB = async () => {
 
     await runSchemaFiles();
     await runSeedFiles();
+    await runTriggerFiles();
     process.exit();
   } catch (err) {
     console.error(`Failed due to error: ${err}`);

@@ -8,11 +8,11 @@ const BadgeNotification = () => {
   const { notification, hideNotification } = useNotification();
   return notification ? (
     <div className="badge-notification">
-      <img src={notification.imageUrl} alt={notification.title} className="badge-image" />
+      <h4 className="notification-title">{notification.title}</h4>
+      <button className="close-button" onClick={hideNotification}>Close</button>
       <div>
-        <h4>{notification.title}</h4>
-        <p>{notification.description}</p>
-        <button onClick={hideNotification}>Close</button>
+              <img src={notification.imageUrl} alt={notification.title} className="badge-image" />
+        <p className="notification-description">{notification.description}</p>
       </div>
     </div>
   ) : null;
