@@ -1,6 +1,6 @@
-INSERT INTO badges (id, name, description, threshold, image_url, status)
+INSERT INTO badges (id, name, description, image_url)
 VALUES
-(1,'Task Master', 'Awarded for completing 10 tasks.', 10, 'example.png', false),
-(2, 'Random Badge', 'Awarded for achieving a random milestone.', 7, 'example.png', false),
-(3, 'Organizer Pro', 'Awarded for organizing tasks into 5 different categories.', 5, 'example.png', true),
-(4, 'Time Keeper', 'Awarded for using the timer 15 times.', 15, 'example.png', true);
+(1,'Task Master', 'Awarded for completing 10 tasks.', 'https://cdn-icons-png.flaticon.com/512/3608/3608607.png'),
+(2, 'Calendar Savant', 'Awarded for organizing your calendar.', 'https://cdn-icons-png.flaticon.com/512/3608/3608592.png'),
+(3, 'Organizer Pro', 'Awarded for organizing tasks into 5 different categories.',''),
+(4, 'Time Keeper', 'Awarded for using the timer 15 times.', 'https://cdn-icons-png.flaticon.com/512/3608/3608755.png');
