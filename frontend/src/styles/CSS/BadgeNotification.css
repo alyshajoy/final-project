@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   gap: 10px;
   padding: 20px;
   background-color: #f4f4f9;
@@ -22,9 +23,33 @@
 }
 
 .badge-image {
-  width: 50px; /* Fixed width */
-  height: 50px; /* Fixed height */
+  margin-top: 10px;
+  width: 100px; /* Increased size */
+  height: 100px; /* Increased size */
   object-fit: contain; /* Maintain aspect ratio without cropping */
+  display: block; /* Needed for centering */
+  margin: auto; /* Centers the image */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.notification-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: -5px;
+}
+
+.notification-description {
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 5px; /* Rounded edges */
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=BadgeNotification.css.map */
