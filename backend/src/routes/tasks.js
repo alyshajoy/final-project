@@ -49,7 +49,7 @@ router.get('/', (req, res) => {
   // res.status(200).json(tasks);
 });
 
-//Post
+//Post - Add
 router.post('/', (req,res) => {
 console.log('req.body', req.body);
 const title = req.body.title;
@@ -72,8 +72,6 @@ const title = req.body.title;
     res.status(201).json(taskEntry);
   })
 
-  
-
   //Post route with mock data
   // const newTask = {
   //   id: tasks.length + 1,
@@ -84,7 +82,75 @@ const title = req.body.title;
   // tasks.push(newTask);
   // res.status(201).json(tasks);
 
-
 })
+
+//return db.query(`
+//   DELETE FROM orders
+//   WHERE id = $1
+//   RETURNING *;
+//   `, [orderId])
+//     .then((result) => {
+//       return result.rows;
+//     });
+
+//Delete Route
+router.post('/:id/delete', (req, res) => {
+  console.log(req.params);
+  const id = req.params.id;
+  console.log('req.params.id', id);
+  db.query(
+    `
+    DELETE FROM tasks
+    WHERE id = $1
+    RETURNING *;
+    `,[id]
+  )
+  .then((deletedTask) => {
+      res.json(deletedTask);
+    });
+  
+});
+
+// const updateOrderIsActive = (orderId) => {
+//   return db.query(`
+//     UPDATE orders
+//     SET is_active = TRUE
+//     WHERE id = $1;
+//   `, [orderId])
+//     .then(() => {
+//       return "Order is_active field updated successfully";
+//     })
+//     .catch((error) => {
+//       return error;
+//     });
+// };
+
+// const getOrderById = (orderId) => {
+//   return db.query(`
+//     SELECT orders.is_active
+//     FROM orders
+//     WHERE id = $1;
+//   `, [orderId])
+//     .then((orderResult) => {
+//       const dbOrder = orderResult.rows[0];
+//       return dbOrder;
+//     })
+//     .catch((error) => {
+//       return error;
+//     });
+// };
+
+// const deleteOrder = (orderId) => {
+
+//   return db.query(`
+//   DELETE FROM orders
+//   WHERE id = $1
+//   RETURNING *;
+//   `, [orderId])
+//     .then((result) => {
+//       return result.rows;
+//     });
+
+// };
 
 module.exports = router;

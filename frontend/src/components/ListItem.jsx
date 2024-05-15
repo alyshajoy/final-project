@@ -62,7 +62,7 @@ const ListItem = (props) => {
         </div>
       }
       
-      <div className="remove-task"><RemoveTask handleDelete={handleDelete} task_id={task.task_id}/></div>
+      <div className="remove-task"><RemoveTask handleDelete={handleDelete} task_id={task.id}/></div>
       
      
     </div>
