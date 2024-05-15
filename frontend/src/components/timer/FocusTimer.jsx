@@ -21,6 +21,8 @@ const FocusTimer = () => {
 
 useEffect(() => updateExecute(executing), [executing, startAnimate])
 
+console.log(pomodoro);
+console.log(executing.active === 'work');
 
   return (
     <div className="container">
@@ -30,13 +32,13 @@ useEffect(() => updateExecute(executing), [executing, startAnimate])
           <>
       <div className="pomodoro-message">
         <h3>
-        {executing.message}
+        {executing.active && executing.message}
         </h3>
       </div>
       <div className="timer-labels">
         <TimerButton
-          title="Work"
-            activeClass={executing.active === 'work'}
+          title="Focus"
+            activeClass={executing.active === 'work' && "active-label"}
             _callback={() => setCurrentTimer('work', "Time To Work!")}
           />
         <TimerButton
@@ -61,8 +63,8 @@ useEffect(() => updateExecute(executing), [executing, startAnimate])
           </CountdownAnimation>
             </div>
           <div className="button-wrapper">
-            <TimerButton title="Start" classname={ !startAnimate && 'active'} _callback={startTimer} />
-            <TimerButton title="Pause" classname={ !startAnimate && 'active'} _callback={pauseTimer} />
+            <TimerButton title="Start" activeClass={ startAnimate && 'active'} _callback={startTimer} />
+            <TimerButton title="Pause" activeClass={ !startAnimate && 'active'} _callback={pauseTimer} />
         </div>
         <div className="settings-button">
           <TimerButton title="Settings" _callback={settingBtn} />

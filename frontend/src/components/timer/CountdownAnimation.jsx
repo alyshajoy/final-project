@@ -12,9 +12,10 @@ const CountdownAnimation = ({key = 1, timer = 20, animate = true, children }) =>
       isPlaying={animate}
       duration={ timer * 60}
       colors={['#ffabab', 0.28]}
-      strokeWidth={6}
+      strokeWidth={15}
       // Can be set to background color to make disappearing effect
       trailColor="#FFF"
+      size={250}
       onComplete={ () => {
         stopTimer();
       }}
