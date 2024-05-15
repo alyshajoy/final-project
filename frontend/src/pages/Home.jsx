@@ -7,10 +7,12 @@ import Footer from '../components/home/Footer.jsx';
 
 const Home = () => {
   return (
-    <div>
-      <Header />
-      <FeatureList />
-      <Footer />
+    <div className='home-container'>
+      <div className='home-content'>
+        <Header />
+        <FeatureList />
+        <Footer />
+      </div>
     </div>
   );
 };
