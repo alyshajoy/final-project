@@ -1,40 +1,30 @@
 /* BadgeNotification.scss, Basic just for testing. */
-
 .badge-notification {
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
   gap: 10px;
   padding: 20px;
   background-color: #f4f4f9;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease-out;
   border-radius: 10px;
+  opacity: 0;
 }
-.notification-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: -5px
+
+.badge-notification.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
 }
-.notification-description {
-  border: 1px solid #ddd; /* Light grey border */
-  border-radius: 5px; /* Rounded edges */
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  text-align: center;
-}
+
 .badge-image {
   width: 50px; /* Fixed width */
   height: 50px; /* Fixed height */
   object-fit: contain; /* Maintain aspect ratio without cropping */
 }
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
+
+/*# sourceMappingURL=BadgeNotification.css.map */
