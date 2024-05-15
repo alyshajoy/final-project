@@ -3,18 +3,23 @@
 .badge-notification {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 10px;
+  padding: 20px;
   background-color: #f4f4f9;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   position: fixed;
-  top: -100px;
-  right: 20px;
-  transition: top 0.5s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease-out;
+  border-radius: 10px;
+  opacity: 0;
 }
 
 .badge-notification.active {
-  top: 20px; /* Slide into view, figure out state management first. */
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
 }
 
 .badge-image {
