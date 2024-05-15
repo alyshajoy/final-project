@@ -106,44 +106,44 @@ const ListContainer = () => {
   // }
 
   const handleComplete = (task_id) => {
-
-    // Find the task with the given task_id
-    const task = tasks.find(task => task.task_id === task_id);
-
+    console.log('Tasks:', tasks); // Log current tasks
+    const task = tasks.find(task => task.id === task_id);
+  
     if (!task) {
       console.error(`Task with id ${task_id} not found`);
       return;
     }
-
-    // Invert the completed status
+    console.log('Task found:', task); // Log the found task
     const newStatus = !task.completed;
-
-    fetch(`api/tasks/${task_id}/completed`, {
+  
+    fetch(`/api/tasks/${task_id}/completed`, {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ completed: newStatus })
+      body: JSON.stringify({ completed: newStatus }) // Ensure JSON body is sent
     })
     .then(res => {
       if (!res.ok) {
         throw new Error('Failed to mark task as completed');
       }
-
-      const updatedTasks = tasks.map(task => {
-        if (task.task_id === task_id) {
-          // Toggle the completed status of the task
-          return { ...task, completed: !task.completed };
+      return res.json();
+    })
+    .then(updatedTask => {
+      console.log('Completed task data:', updatedTask);
+      const updatedTasks = tasks.map(t => {
+        if (t.task_id === task_id) {
+          return { ...t, completed: newStatus };
         }
-        return task;
+        return t;
       });
       setTasks(updatedTasks);
     })
     .catch(error => {
       console.error('Error completing task:', error);
     });
-
   };
+  
 
   const handleUpdate = (taskId, newTitle) => {
     const updatedTasks = tasks.map(task => {

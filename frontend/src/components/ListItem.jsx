@@ -56,7 +56,7 @@ const ListItem = (props) => {
         </div>
       : <div 
           className={task.completed?"list-item-title-strike":"list-item-title"} 
-          onClick={() => handleEdit(task.id)}> 
+          onClick={() => handleEdit(task.task_id)}> 
           {task.title} P - 
           {task.priority} 
         </div>
