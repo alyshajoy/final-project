@@ -18,6 +18,7 @@ module.exports = (server) => {
     .then(() => {
       console.log('Connected to database');
       pgClient.query('LISTEN badge');
+      console.log('Listening for badge notifications')
     })
     .catch(err => console.error('Error connecting to pgClient', err));
 
@@ -25,10 +26,7 @@ module.exports = (server) => {
   const listenForDatabaseChanges = () => {
     console.log("listening for database changes")
     pgClient.on('notification', async (msg) => {
-      console.log("db msg", msg)
-      console.log("notification received 1 prior to if statement")
       if (msg.channel === 'badge') {
-        console.log("notification received 2")
         try {
           const badgeId = parseInt(msg.payload);
           const result = await pgClient.query('SELECT * FROM badges WHERE id = $1', [badgeId]);

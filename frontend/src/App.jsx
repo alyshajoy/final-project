@@ -20,7 +20,6 @@ function App() {
       <BrowserRouter>
         <NotificationProvider>
           <BadgeNotification />
-          {/*WebsocketHandler for badge notifications */}
           <WebSocketHandler />
           {/* <Link to="/">Home</Link> <br/>
           <Link to="/badges">Badges</Link> <br/>
