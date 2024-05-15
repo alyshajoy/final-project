@@ -32,6 +32,7 @@ const SetPomodoro = () => {
       ...newTimer,
       [timer]: newTimer[timer] - 1
     }))
+    
   }
   return (
     <html className="pomodoro">
