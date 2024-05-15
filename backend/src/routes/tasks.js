@@ -94,7 +94,7 @@ const title = req.body.title;
 //     });
 
 //Delete Route
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   console.log(req.params);
   const id = req.params.id;
   console.log('req.params.id', id);
@@ -105,11 +105,11 @@ router.post('/:id/delete', (req, res) => {
     RETURNING *;
     `,[id]
   )
-  .then((deletedTask) => {
-      res.json(deletedTask);
-    });
+  .then((result) => {
+      res.json(result.rows);
+    })
   
-});
+})
 
 // const updateOrderIsActive = (orderId) => {
 //   return db.query(`

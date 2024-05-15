@@ -74,12 +74,11 @@ const ListContainer = () => {
 
   const handleDelete = (task_id) => {
 
-    fetch(`/api/tasks/:${task_id}/delete`, {
+    fetch(`/api/tasks/${task_id}/delete`, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json"
-      },
-      body:JSON.stringify(task_id)
+      }
     })
     .then(res => {
       if (!res.ok) {
