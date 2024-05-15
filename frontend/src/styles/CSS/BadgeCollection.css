@@ -21,6 +21,10 @@
   background-color: #f9f9f9;
   transition: transform 0.3s ease;
 }
+.badge-collection .badge-item.inactive {
+  opacity: 0.5;
+  pointer-events: none;
+}
 .badge-collection .badge-item:hover {
   transform: scale(1.05);
 }
@@ -37,8 +41,5 @@
   font-size: 14px;
   color: #666;
 }
-.inactive {
-  opacity: 0.5;
-  pointer-events: none;
-}
+
 /*# sourceMappingURL=BadgeCollection.css.map */
