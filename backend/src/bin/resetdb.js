@@ -59,8 +59,10 @@ const runTriggerFiles = async () => {
 
   // List files in the order they should be executed
   const triggerFiles = [
-    'badgeTriggers.sql'
-    // Add more trigger files here if needed
+    'badgeTriggers.sql',
+    'taskTriggers.sql',
+    //'timerTriggers.sql',
+    'calendarTriggers.sql'
   ];
 
   for (const fn of triggerFiles) {

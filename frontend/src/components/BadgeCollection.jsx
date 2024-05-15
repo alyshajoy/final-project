@@ -9,8 +9,8 @@ const BadgeCollection = ({badgesData}) => {
       <h1 className="badge-collection-title">My Badge Collection</h1>
       <div className="badge-list">
         {badgesData.map(badge => (
-          <div className={`badge-item ${badge.status ? '' : 'inactive'}`} key={badge.id}>
-            <img className="badge-image" src={badge.imageUrl} alt={badge.title} />
+          <div className={`badge-item ${badge.status ? 'active' : 'inactive'}`} key={badge.id}>
+            <img className="badge-image" src={badge.image_url} alt={badge.title} />
             <div className="badge-details">
               <h3 className="badge-title">{badge.title}</h3>
               <p className="badge-description">{badge.description}</p>
