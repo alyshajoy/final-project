@@ -84,7 +84,7 @@ const ListContainer = () => {
       if (!res.ok) {
         throw new Error('Failed to delete task');
       }
-      console.log('Delete');
+      
     const filteredTasks = tasks.filter((task) => {
       console.log('task',task)
       return task.id !== task_id
@@ -106,14 +106,31 @@ const ListContainer = () => {
   // }
 
   const handleComplete = (task_id) => {
-    const updatedTasks = tasks.map(task => {
-      if (task.task_id === task_id) {
-        // Toggle the completed status of the task
-        return { ...task, completed: !task.completed };
+
+    fetch(`api/tasks/${task_id}/completed`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json"
       }
-      return task;
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Failed to mark task as completed');
+      }
+
+      const updatedTasks = tasks.map(task => {
+        if (task.task_id === task_id) {
+          // Toggle the completed status of the task
+          return { ...task, completed: !task.completed };
+        }
+        return task;
+      });
+      setTasks(updatedTasks);
+    })
+    .catch(error => {
+      console.error('Error completing task:', error);
     });
-    setTasks(updatedTasks);
+
   };
 
   const handleUpdate = (taskId, newTitle) => {
