@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Timer Routes
 router.get('/', (req, res) => {
-  db.query(`SELECT username FROM users`)
+  db.query(`SELECT username, timer_active, timer_minutes FROM users`)
   .then(({rows}) => {
     res.json(rows);
   });
