@@ -1,0 +1,102 @@
+$pinkFull : rgba(255, 171, 171, 1);
+$pinkOpaque : rgba(255, 171, 171, 0.28);
+$blueFull : rgba(0, 56, 69, 1);
+$blueOpaque : rgba(0, 56, 69, 0.28);
+
+.pomodoro-headers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pomodoro {
+  padding: 70px 0;
+  // @include vertical-gradient-topdown(#ffffff, $pinkOpaque);
+  height: 100%
+}
+
+.timer-labels button {
+  width: 140px;
+  height: 45px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: $pinkOpaque;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 8px 15px $blueOpaque;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: 20px 10px;
+}
+
+.timer-labels button:hover {
+  background-color: $pinkFull;
+  box-shadow: 0px 15px 20px rgba(46, 108, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.button-wrapper button {
+  width: 140px;
+  height: 45px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: $blueOpaque;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 8px 15px $pinkOpaque;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: 20px 10px;
+}
+
+.settings-button button {
+  width: 140px;
+  height: 45px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: $pinkOpaque;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 8px 15px $blueOpaque;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: 20px 10px;
+}
+
+.settings-button button:hover {
+  background-color: $pinkFull;
+  box-shadow: 0px 15px 20px rgba(46, 108, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.timer-labels .active-label {
+  background-color: #FFABAB;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.button-wrapper button:hover {
+  background-color: $blueFull;
+  color: #fff;
+}
+
+.button-wrapper .active {
+  background-color: $blueFull;
+  color: #fff;
+}
+
+.time-wrapper {
+  font-size: 48px;
+  color: $blueFull;
+}

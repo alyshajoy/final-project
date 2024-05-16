@@ -6,8 +6,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 import '../../styles/CSS/Calendar.css';
 // import '../../styles/CSS/Calendar.css';
 
-function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelectedEndTime, onDoubleClickEvent }) {
+function CalendarView({ events, selectedDate, setSelectedDate, setSelectedStartTime, setSelectedEndTime, onDoubleClickEvent }) {
   const [currentView, setCurrentView] = useState('dayGridMonth');
+
   let clickTimer = useRef(null);
 
   const handleEventClick = (clickInfo) => {

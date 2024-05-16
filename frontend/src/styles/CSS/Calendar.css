@@ -97,7 +97,7 @@ h2 {
   overflow-wrap: break-word;
 }
 .fc .custom-event-title {
-  word-wrap: break-word;
+  word-wrap: break-word !important;
 }
 
 /*# sourceMappingURL=Calendar.css.map */

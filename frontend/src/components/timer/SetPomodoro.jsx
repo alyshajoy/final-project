@@ -70,7 +70,7 @@ const SetPomodoro = () => {
         </div>      
       {newTimer.work > 0 && newTimer.shortbreak > 0 && newTimer.longbreak > 0 ?
       <div className="set-timer-button-wrapper">
-        <TimerButton activeClass ={"set-timer-button"}title="Set Timer" _callback={handleSubmit} />
+        <TimerButton activeClass={"set-timer-button"} title="Set Timer" _callback={handleSubmit} />
       </div>
       : <p className="timer-alert">Set times  must be greater than 0 😖</p>
       }
