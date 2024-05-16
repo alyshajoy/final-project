@@ -40,7 +40,6 @@ router.put('/update/timer_status/:id', (req, res) => {
     WHERE id = $1
   `, [id])
   .then(({rows}) => {
-    console.log(`User ${id} has Timer Active set to true!`)
     res.json(`User ${id} has Timer Active set to true!`)
   })
 
