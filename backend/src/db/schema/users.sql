@@ -8,5 +8,7 @@ CREATE TABLE users (
     password_hash TEXT NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     last_login TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    username VARCHAR(50) NOT NULL
+    username VARCHAR(50) NOT NULL,
+    timer_active BOOLEAN NOT NULL,
+    timer_minutes INTEGER DEFAULT 0
 );
