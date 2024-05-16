@@ -7,7 +7,10 @@ const router = express.Router();
 
 // Timer Routes
 router.get('/', (req, res) => {
-  res.send('Hello Timer Api');
+  db.query(`SELECT username FROM users`)
+  .then(({rows}) => {
+    res.json(rows);
+  });
 });
 
 module.exports = router;
