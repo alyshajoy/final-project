@@ -41,7 +41,7 @@ const ListItem = (props) => {
 
   return (
     <div className="list-item-container">
-      <div><Checkbox handleComplete={handleComplete} task_id={task.task_id}/></div>
+      <div><Checkbox handleComplete={handleComplete} task_id={task.id}/></div>
       {edit 
       ? <div className="edit-form-div-container">
           <form onSubmit={handleSubmit} className="edit-form-container">
@@ -62,7 +62,7 @@ const ListItem = (props) => {
         </div>
       }
       
-      <div className="remove-task"><RemoveTask handleDelete={handleDelete} task_id={task.task_id}/></div>
+      <div className="remove-task"><RemoveTask handleDelete={handleDelete} task_id={task.id}/></div>
       
      
     </div>

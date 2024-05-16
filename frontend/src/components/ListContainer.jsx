@@ -73,11 +73,29 @@ const ListContainer = () => {
   }
 
   const handleDelete = (task_id) => {
-    console.log('Delete');
+
+    fetch(`/api/tasks/${task_id}/delete`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Failed to delete task');
+      }
+      
     const filteredTasks = tasks.filter((task) => {
-      return task.task_id !== task_id
+      console.log('task',task)
+      return task.id !== task_id
     })
     setTasks(filteredTasks);
+    })
+    
+    .catch(error => {
+      console.error('Error deleting task:', error);
+    });
+    
   }
 
   // const handleComplete = (task_id) => {
@@ -88,15 +106,44 @@ const ListContainer = () => {
   // }
 
   const handleComplete = (task_id) => {
-    const updatedTasks = tasks.map(task => {
-      if (task.task_id === task_id) {
-        // Toggle the completed status of the task
-        return { ...task, completed: !task.completed };
+    console.log('Tasks:', tasks); // Log current tasks
+    const task = tasks.find(task => task.id === task_id);
+  
+    if (!task) {
+      console.error(`Task with id ${task_id} not found`);
+      return;
+    }
+    console.log('Task found:', task); // Log the found task
+    const newStatus = !task.completed;
+  
+    fetch(`/api/tasks/${task_id}/completed`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ completed: newStatus }) // Ensure JSON body is sent
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Failed to mark task as completed');
       }
-      return task;
+      return res.json();
+    })
+    .then(updatedTask => {
+      console.log('Completed task data:', updatedTask);
+      const updatedTasks = tasks.map(t => {
+        if (t.task_id === task_id) {
+          return { ...t, completed: newStatus };
+        }
+        return t;
+      });
+      setTasks(updatedTasks);
+    })
+    .catch(error => {
+      console.error('Error completing task:', error);
     });
-    setTasks(updatedTasks);
   };
+  
 
   const handleUpdate = (taskId, newTitle) => {
     const updatedTasks = tasks.map(task => {
