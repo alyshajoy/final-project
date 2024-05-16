@@ -26,7 +26,7 @@ const ListItems = (props) => {
         value={value}
         task={task}
         tasks={tasks}
-        key={task.task_id}
+        key={task.id}
         handleDelete={handleDelete}
         handleAdd={handleAdd}
         setValue={setValue}
@@ -48,7 +48,7 @@ const ListItems = (props) => {
         value={value}
         task={task}
         tasks={tasks}
-        key={task.task_id}
+        key={task.id}
         handleDelete={handleDelete}
         handleAdd={handleAdd}
         setValue={setValue}
