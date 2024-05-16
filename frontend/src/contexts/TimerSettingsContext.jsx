@@ -8,7 +8,11 @@ const TimerSettingsContextProvider = (props) => {
   const [executing, setExecuting] = useState({});
   const [startAnimate, setStartAnimate] = useState(false);
 
-  const startTimer = () => setStartAnimate(true);
+  const startTimer = () => {
+    setStartAnimate(true);
+    // Run timer_active check
+
+  }
   const pauseTimer = () => setStartAnimate(false);
   const stopTimer = () => setStartAnimate(false);
 
