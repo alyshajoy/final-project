@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BadgeCollection from "../components/BadgeCollection";
-
+import HomeButton from "../components/buttons/HomeButton";
 const Badges = () => {
   const [badgesData, setBadgesData] = useState([]);
   
@@ -14,6 +14,7 @@ const Badges = () => {
 
   return (
     <div>
+      <HomeButton />
       <h1>Badges</h1>
       <header className="App-header">
       <BadgeCollection badgesData={badgesData}/>
