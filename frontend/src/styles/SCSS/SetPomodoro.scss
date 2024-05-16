@@ -3,13 +3,18 @@ $pinkOpaque : rgba(255, 171, 171, 0.28);
 $blueFull : rgba(0, 56, 69, 1);
 $blueOpaque : rgba(0, 56, 69, 0.28);
 
-// @mixin vertical-gradient-topdown($from, $to, $filter:true, $stop:100%) {
-//   background: $from; /* Old browsers */
-//   background: linear-gradient(to bottom, $from 40%, $to $stop); /* W3C */
-//   @if(filter == true) {
-//       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$from}', endColorstr='#{$to}',GradientType=0 ); /* IE6-9 */
-//   }
-// }
+@mixin vertical-gradient-topdown($from, $to, $filter:true, $stop:100%) {
+  background: $from; /* Old browsers */
+  background: linear-gradient(to bottom, $from 40%, $to $stop); /* W3C */
+  @if(filter == true) {
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$from}', endColorstr='#{$to}',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+html {
+  // @include vertical-gradient-topdown(#ffffff, $pinkOpaque);
+
+}
 
 .pomodoro-headers {
   display: flex;

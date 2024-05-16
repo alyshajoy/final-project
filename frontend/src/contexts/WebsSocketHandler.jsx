@@ -13,7 +13,6 @@ const WebSocketHandler = () => {
         // Event listener for incoming messages
         ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
-            console.log("websocket message",message)
             console.log("message.badge", message.badge)
             if (message.type === 'badge-earned') {
                 showNotification(message.badge); // Trigger notification on badge-earned event
