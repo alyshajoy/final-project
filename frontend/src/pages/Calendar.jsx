@@ -3,6 +3,7 @@ import CalendarView from "../components/Calendar/CalendarView";
 import AddEventButton from "../components/Calendar/AddEventButton";
 import EventForm from "../components/Calendar/EventForm";
 import HomeButton from "../components/buttons/HomeButton";
+import Footer from "../components/home/Footer";
 import '../styles/CSS/Calendar.css';
 
 const Calendar = () => {
@@ -269,6 +270,7 @@ const Calendar = () => {
           onDoubleClickEvent={handleDoubleClickEvent}
         />
       </div>
+      <Footer />
     </div>
   );
 };

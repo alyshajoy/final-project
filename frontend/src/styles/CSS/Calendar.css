@@ -1,5 +1,6 @@
 .calendar-wrapper {
   position: relative;
+  margin-bottom: 1rem;
 }
 .calendar-wrapper .add-event-button {
   position: absolute;
