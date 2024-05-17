@@ -1,0 +1,51 @@
+$pinkFull : rgba(255, 171, 171, 1);
+$pinkOpaque : rgba(255, 171, 171, 0.28);
+$blueFull : rgba(0, 56, 69, 1);
+$blueOpaque : rgba(0, 56, 69, 0.28);
+
+
+.tasks-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); // Semi-transparent background
+  z-index: 1050;
+}
+
+.tasks-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+}
+
+.tasks-modal-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.timer-task-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer-task-item button {
+  height: 7%
+}
+
+.task-seperator {
+  height: 3px;
+  color: $pinkOpaque;
+  background-color: $pinkOpaque;
+  border: $pinkOpaque;
+  margin-top: -8px;
+}

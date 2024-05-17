@@ -49,6 +49,19 @@ router.get('/', (req, res) => {
   // res.status(200).json(tasks);
 });
 
+// Get Timer Tasks
+router.get('/timer', (req, res) => {
+  db.query(`
+  SELECT title, description, priority, due_date 
+  FROM tasks
+  WHERE completed = false
+  `)
+  .then(({rows}) => {
+    console.log(rows)
+    res.json(rows);
+  })
+})
+
 //Post
 router.post('/', (req,res) => {
 console.log('req.body', req.body);
