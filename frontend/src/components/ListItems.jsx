@@ -15,7 +15,10 @@ const ListItems = (props) => {
     setComplete, 
     handleUpdate, 
     sortedTasks, 
-    sort
+    sort,
+    checked,
+    setChecked,
+    handleCheck
   } = props;
 
   const sortedMappedList = (tasks) => {
@@ -36,6 +39,9 @@ const ListItems = (props) => {
         setComplete={setComplete}
         handleUpdate={handleUpdate}
         sort={sort}
+        checked={checked}
+        setChecked={setChecked}
+        handleCheck={handleCheck}
       />
     ));
   };
@@ -58,6 +64,9 @@ const ListItems = (props) => {
         setComplete={setComplete}
         handleUpdate={handleUpdate}
         sort={sort}
+        checked={checked}
+        setChecked={setChecked}
+        handleCheck={handleCheck}
       />
     ));
   };

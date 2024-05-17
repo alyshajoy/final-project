@@ -20,6 +20,9 @@ const ListItem = (props) => {
     complete, 
     setComplete,
     sortedTasks,
+    checked,
+    setChecked,
+    handleCheck
   } = props;
 
   const [edit, setEdit] = useState(false);
@@ -30,7 +33,6 @@ const ListItem = (props) => {
   }
 
   const handleSubmit = (e) => {
-    console.log('submitted')
     e.preventDefault();
     if(edit) {
       handleUpdate(task.id, editValue); 
@@ -41,7 +43,7 @@ const ListItem = (props) => {
 
   return (
     <div className="list-item-container">
-      <div><Checkbox handleComplete={handleComplete} id={task.id}/></div>
+      <div><Checkbox handleComplete={handleComplete} id={task.id} task={task} checked={checked} setChecked={setChecked} handleCheck={handleCheck}/></div>
       {edit 
       ? <div className="edit-form-div-container">
           <form onSubmit={handleSubmit} className="edit-form-container">

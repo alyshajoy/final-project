@@ -26,6 +26,7 @@ const ListContainer = () => {
   const [complete, setComplete] = useState([]);
   const [sort, setSort] = useState(false);
   const [add, setAdd] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const handleAdd = () => {
     
@@ -33,7 +34,7 @@ const ListContainer = () => {
     user_id: 1,
     title: value,
     description: 'blank',
-    priority: 0,
+    priority: 2,
     due_date: '2024-05-10',
     completed: false,
   }
@@ -97,12 +98,13 @@ const ListContainer = () => {
     
   }
 
-  // const handleComplete = (task_id) => {
-  //   const completedTasks = tasks.filter((task) => {
-  //     return task.task_id !== task_id
-  //   })
-  //   setComplete(completedTasks);
-  // }
+  const handleCheck = (id) => {
+    const task = tasks.find(task => task.id === id);
+    if(task.completed) {
+      setChecked(!checked);
+    }
+    
+  }
 
   const handleComplete = (id) => {
     console.log('Tasks:', tasks); // Log current tasks
@@ -130,6 +132,7 @@ const ListContainer = () => {
     })
     .then(updatedTask => {
       console.log('Completed task data:', updatedTask);
+      
       const updatedTasksList = tasks.map(t => {
         if (t.id === id) {
           return updatedTask;
@@ -214,6 +217,9 @@ const ListContainer = () => {
         handleUpdate={handleUpdate}
         sortedTasks={sortedTasks}
         sort={sort}
+        checked={checked}
+        setChecked={setChecked}
+        handleCheck={handleCheck}
         />
         
       </div>
