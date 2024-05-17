@@ -5,6 +5,7 @@ import TimerButton from "./TimerButton";
 import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
 import '../../styles/CSS/FocusTimer.css';
 
+const focusIcon = 'focustask ico.png';
 
 const FocusTimer = () => {
   const { 
@@ -64,6 +65,15 @@ useEffect(() => updateExecute(executing), [executing, startAnimate])
           <div className="button-wrapper">
             <TimerButton title="Start" activeClass={ startAnimate && 'active'} _callback={startTimer} />
             <TimerButton title="Pause" activeClass={ !startAnimate && 'active'} _callback={pauseTimer} />
+        </div>
+        <div className="toggle-focus-task-container">
+          <div className="focus-task-button-wrapper">
+          <img 
+          src={require(`../../assets/timerpage_icons/${focusIcon}`)} 
+          alt='Focus task icon' 
+          />
+
+          </div>
         </div>
         <div className="settings-button">
           <TimerButton title="Settings" _callback={settingBtn} />
