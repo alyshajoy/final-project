@@ -52,10 +52,9 @@ const ListContainer = () => {
     return res.json();
   })
   .then(data => {
-    const updatedTasks = [...tasks, data]; // Add the newly created task to the tasks array
-    setTasks(prevTasks => [...prevTasks, data]);
+    setTasks(prevTasks => [...prevTasks, data[0]]);
     setValue("");
-    console.log('Hello from data')
+    console.log('Task added successfully:', data[0]);
     handleAddMode();
   })
   .catch(error => {

@@ -68,10 +68,13 @@ const title = req.body.title;
   VALUES($1, $2, $3, $4, $5, $6)
   RETURNING *;
   `,[newTask.user_id, newTask.title, newTask.description, newTask.priority, newTask.due_date, newTask.completed])
-  .then((taskEntry) => {
-    res.status(201).json(taskEntry);
+  .then((result) => {
+    console.log('result.rows', result.rows)
+    res.status(201).json(result.rows);
   })
-
+  .catch((error) => {
+    return error;
+  });
   //Post route with mock data
   // const newTask = {
   //   id: tasks.length + 1,
