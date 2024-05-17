@@ -1,5 +1,6 @@
 .calendar-wrapper {
   position: relative;
+  margin-bottom: 1rem;
 }
 .calendar-wrapper .add-event-button {
   position: absolute;
@@ -16,6 +17,10 @@ h1 {
 h2 {
   color: var(--gray);
   text-align: center;
+}
+
+.calendar h1 {
+  margin-top: 0px;
 }
 
 .fc .fc-daygrid-event {

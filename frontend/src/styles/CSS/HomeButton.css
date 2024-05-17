@@ -1,0 +1,10 @@
+.home-button img {
+  padding: 10px;
+  max-width: 1rem;
+  max-height: 1rem;
+}
+.home-button:hover {
+  color: var(--gray);
+}
+
+/*# sourceMappingURL=HomeButton.css.map */
