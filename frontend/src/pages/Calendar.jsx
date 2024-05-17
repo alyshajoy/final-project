@@ -81,6 +81,8 @@ const Calendar = () => {
       setEvents([...events, newEvent]); // Add new event to the existing events
 
       if (addToTasks) {
+        console.log("In addToTasks")
+        const task = title;
         try {
           const response = await fetch('http://localhost:3001/api/tasks/', {
               method: 'POST',
@@ -88,7 +90,7 @@ const Calendar = () => {
                   'Content-Type': 'application/json',
                   'Accept': 'application/json'
               },
-              body: JSON.stringify(newEvent),
+              body: JSON.stringify(task),
               credentials: 'include' // include cookies
           });
   
@@ -169,15 +171,33 @@ const Calendar = () => {
         // If in new mode, add a new event to the existing events
         const newEvent = { title, date, start, end };
         setEvents([...events, newEvent]);
-        
-        console.log("Event data:", {
-          title,
-          date,
-          start,
-          end
-        });
+
+        if (addToTasks) {
+          console.log("In addToTasks")
+          const task = {title: title};
+          try {
+            const response = await fetch('http://localhost:3001/api/tasks/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(task),
+                // credentials: 'include' // include cookies
+            });
+    
+            if (!response.ok) throw new Error('Network response was not ok');
+            const result = await response.json();
+            console.log("Event added successfully to to-do list:", result);
+    
+            // window.location.reload();
+          } catch (error) {
+            console.error("Error adding event to tasks:", error);
+          }
+        }
   
         try {
+          console.log("In add event to calendar")
           const response = await fetch('http://localhost:3001/api/calendar/events', {
             method: 'POST',
             headers: {
