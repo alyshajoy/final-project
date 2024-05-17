@@ -9,8 +9,7 @@ const ListItem = (props) => {
 
   const {
     value, 
-    task, 
-    key, 
+    task,  
     handleAdd, 
     handleComplete, 
     handleDelete, 

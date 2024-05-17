@@ -16,7 +16,7 @@ const Checkbox = (props) => {
 
   return (
     <label className="checkbox-container">
-      <input type="checkbox" className="checkbox" checked={checkedTasks[id]} onClick={onClick} />
+      <input type="checkbox" className="checkbox" defaultChecked={checkedTasks[id]} onClick={onClick} />
       <span className="checkmark"></span>
     </label>
   )
