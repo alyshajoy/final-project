@@ -20,6 +20,12 @@ h2 {
   text-align: center;
 }
 
+.calendar {
+
+  h1 {
+    margin-top: 0px;
+  }
+}
 .fc {
   .fc-daygrid-event {
     background-color: var(--pink); /* Example blue background, adjust color as needed */

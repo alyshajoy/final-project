@@ -233,7 +233,7 @@ const Calendar = () => {
   };
 
   return (
-    <div>
+    <div className="calendar">
       <HomeButton />
       <h1>Calendar</h1>
       

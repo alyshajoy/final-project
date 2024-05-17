@@ -128,7 +128,7 @@ function CalendarView({ events, selectedDate, setSelectedDate, setSelectedStartT
                     }
                 },
                 timeGridDay: { // Applies to the day view
-                    titleFormat: { month: 'long', day: 'numeric', year: 'numeric' } // "May 11, 2024"
+                    titleFormat: { month: 'long', day: 'numeric' } // "May 11, 2024"
                 }
             }}
           />
