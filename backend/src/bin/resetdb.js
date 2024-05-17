@@ -38,11 +38,12 @@ const runSeedFiles = async () => {
   console.log(`-> Loading Seeds ...`);
 
   const seedFiles = [
-    'users.sql',       // Ensure 'users' seeds are executed first
-    'badges.sql',      // Then 'badges'
-    'motivational_quotes.sql', // Then 'motivational_quotes'
-    'tasks.sql',       // Then 'tasks', which depends on 'users'
-    'user_badges.sql'  // Lastly 'user_badges', if it depends on 'users' and 'badges'
+    'users.sql',
+    'badges.sql',
+    'motivational_quotes.sql',
+    'tasks.sql',
+    'user_badges.sql',
+    'calendar_events.sql'
   ];
 
   // const schemaFilenames = fs.readdirSync('./src/db/seeds');

@@ -8,7 +8,19 @@ const TimerSettingsContextProvider = (props) => {
   const [executing, setExecuting] = useState({});
   const [startAnimate, setStartAnimate] = useState(false);
 
-  const startTimer = () => setStartAnimate(true);
+  const startTimer = async() => {
+    setStartAnimate(true);
+    // Set ttimer_active to true
+    try {
+      const response = await fetch(`http://localhost:3001/api/timer/update/timer_status/1`, {
+        method: "PUT",
+        headers: { accept: "application/json" }
+      })
+      console.log(response);
+    } catch (err) {
+      console.error(`Error message from startTimer: ${err.message}`)
+    }
+  }
   const pauseTimer = () => setStartAnimate(false);
   const stopTimer = () => setStartAnimate(false);
 
