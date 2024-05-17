@@ -20,6 +20,7 @@ const Calendar = () => {
   const [allDay, setAllDay] = useState(false);
   const [formMode, setFormMode] = useState('new');
   const [eventID, setEventID] = useState('');
+  const [addToTasks, setAddToTasks] = useState(false);
 
 
   // Fetch events when the component mounts
@@ -72,11 +73,34 @@ const Calendar = () => {
 
   const handleAddEvent = async (eventData) => {
     const { title, date, startTime, endTime, allDay, id } = eventData;
+    console.log("ID", id)
     if (allDay) {
 
       const start = date;
       const newEvent = { title, start, allDay: true };
       setEvents([...events, newEvent]); // Add new event to the existing events
+
+      if (addToTasks) {
+        try {
+          const response = await fetch('http://localhost:3001/api/tasks/', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+              },
+              body: JSON.stringify(newEvent),
+              credentials: 'include' // include cookies
+          });
+  
+          if (!response.ok) throw new Error('Network response was not ok');
+          const result = await response.json();
+          console.log("Event added successfully to to-do list:", result);
+  
+          // window.location.reload();
+        } catch (error) {
+          console.error("Error adding event:", error);
+        }
+      }
 
       try {
         const response = await fetch('http://localhost:3001/api/calendar/events', {
@@ -92,6 +116,7 @@ const Calendar = () => {
         if (!response.ok) throw new Error('Network response was not ok');
         const result = await response.json();
         console.log("Event added successfully:", result);
+
         window.location.reload();
       } catch (error) {
         console.error("Error adding event:", error);
@@ -112,15 +137,18 @@ const Calendar = () => {
           return event;
           
         }));
+
+        const id = eventID;
   
         try {
-          const response = await fetch(`http://localhost:3001/api/calendar/events/update/${title}`, {
+          const response = await fetch(`http://localhost:3001/api/calendar/events/update/${id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json'
             },
             body: JSON.stringify({
+              id,
               title,
               date,
               start,
@@ -258,6 +286,10 @@ const Calendar = () => {
         endTime={endTime}
         setEndTime={setEndTime}
         onDelete={() => handleDeleteEvent(eventID)}
+        addToTasks={addToTasks}
+        setAddToTasks={setAddToTasks}
+        eventID={eventID}
+        setEventID={setEventID}
       />
       <div className="calendar-wrapper">
         <AddEventButton onClick={handleOpenModalForNewEvent}/>
