@@ -20,9 +20,8 @@ const ListItem = (props) => {
     complete, 
     setComplete,
     sortedTasks,
-    checked,
-    setChecked,
-    handleCheck
+    checkedTasks,
+    setCheckedTasks
   } = props;
 
   const [edit, setEdit] = useState(false);
@@ -43,7 +42,7 @@ const ListItem = (props) => {
 
   return (
     <div className="list-item-container">
-      <div><Checkbox handleComplete={handleComplete} id={task.id} task={task} checked={checked} setChecked={setChecked} handleCheck={handleCheck}/></div>
+      <div><Checkbox handleComplete={handleComplete} id={task.id} task={task} checkedTasks={checkedTasks} setCheckedTasks={setCheckedTasks}/></div>
       {edit 
       ? <div className="edit-form-div-container">
           <form onSubmit={handleSubmit} className="edit-form-container">

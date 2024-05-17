@@ -16,9 +16,8 @@ const ListItems = (props) => {
     handleUpdate, 
     sortedTasks, 
     sort,
-    checked,
-    setChecked,
-    handleCheck
+    checkedTasks,
+    setCheckedTasks
   } = props;
 
   const sortedMappedList = (tasks) => {
@@ -39,9 +38,8 @@ const ListItems = (props) => {
         setComplete={setComplete}
         handleUpdate={handleUpdate}
         sort={sort}
-        checked={checked}
-        setChecked={setChecked}
-        handleCheck={handleCheck}
+        checkedTasks={checkedTasks}
+        setCheckedTasks={setCheckedTasks}
       />
     ));
   };
@@ -64,9 +62,8 @@ const ListItems = (props) => {
         setComplete={setComplete}
         handleUpdate={handleUpdate}
         sort={sort}
-        checked={checked}
-        setChecked={setChecked}
-        handleCheck={handleCheck}
+        checkedTasks={checkedTasks}
+        setCheckedTasks={setCheckedTasks}
       />
     ));
   };
@@ -74,7 +71,7 @@ const ListItems = (props) => {
   return (
     <div className="list-items-container">
       <ul className="list-items-container-inner">
-       {sort ?sortedMappedList(tasks) :mappedList(tasks)}
+       {sort ? sortedMappedList(tasks) : mappedList(tasks)}
       </ul>
     </div>
   );

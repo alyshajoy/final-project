@@ -13,6 +13,12 @@ const ListContainer = () => {
     .then((res) => res.json())
     .then((data) => {
       setTasks(data);
+      // Initialize checkedTasks based on completed status
+      const initialCheckedTasks = data.reduce((acc, task) => {
+        acc[task.id] = task.completed;
+        return acc;
+      }, {});
+      setCheckedTasks(initialCheckedTasks);
     })
     .catch((error) => {
       console.error('Error fetching tasks:', error);
@@ -26,7 +32,8 @@ const ListContainer = () => {
   const [complete, setComplete] = useState([]);
   const [sort, setSort] = useState(false);
   const [add, setAdd] = useState(false);
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
+  const [checkedTasks, setCheckedTasks] = useState({});
 
   const handleAdd = () => {
     
@@ -62,10 +69,6 @@ const ListContainer = () => {
     console.error('Error adding task:', error);
   });
 
-    // const copy = [...tasks, {title: value, task_id: tasks.length + 1, completed: false}];
-    // setTasks(copy);
-    // setValue("");
-    // handleAddMode();
   }
 
   const handleAddMode = () => {
@@ -98,13 +101,18 @@ const ListContainer = () => {
     
   }
 
-  const handleCheck = (id) => {
-    const task = tasks.find(task => task.id === id);
-    if(task.completed) {
-      setChecked(!checked);
-    }
+  // const handleBackendChecked = (data) => {
+  //   const checkedTasks = data.map(task => task.completed);
+  //     handleCheck
+  // }
+
+  // const handleCheck = ( id) => {
+  //   const task = tasks.find(task => task.id === id);
+  //   if(task.completed) {
+  //     setChecked(!checked);
+  //   }
     
-  }
+  // }
 
   const handleComplete = (id) => {
     console.log('Tasks:', tasks); // Log current tasks
@@ -140,6 +148,10 @@ const ListContainer = () => {
         return t;
       });
       setTasks(updatedTasksList);
+      setCheckedTasks(prevCheckedTasks => ({
+        ...prevCheckedTasks,
+        [id]: updatedTask.completed,
+      }));
     })
     .catch(error => {
       console.error('Error completing task:', error);
@@ -217,9 +229,11 @@ const ListContainer = () => {
         handleUpdate={handleUpdate}
         sortedTasks={sortedTasks}
         sort={sort}
-        checked={checked}
-        setChecked={setChecked}
-        handleCheck={handleCheck}
+        checkedTasks={checkedTasks}
+        setCheckedTasks={setCheckedTasks}
+        // checked={checked}
+        // setChecked={setChecked}
+        // handleCheck={handleCheck}
         />
         
       </div>
