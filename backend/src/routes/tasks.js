@@ -132,19 +132,20 @@ router.patch('/:id/completed', (req, res) => {
 
 //Edit title route
 router.patch('/:id/edit', (req, res) => {
-  const title = req.body.title;
+  const { title } = req.body;
   const id = req.params.id;
 
   db.query(
     `
     UPDATE tasks
     SET title = $1
-    WHERE id = $2;
+    WHERE id = $2
+    RETURNING*;
     `
     ,[title, id]
   )
   .then((result) => {
-    res.json(result.rows);
+    res.json(result.rows[0]);
   })
   .catch((error) => {
     return error;
