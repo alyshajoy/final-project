@@ -131,13 +131,13 @@ const ListContainer = () => {
     })
     .then(updatedTask => {
       console.log('Completed task data:', updatedTask);
-      const updatedTasks = tasks.map(t => {
+      const updatedTasksList = tasks.map(t => {
         if (t.id === id) {
-          return { ...t, completed: newStatus };
+          return updatedTask;
         }
         return t;
       });
-      setTasks(updatedTasks);
+      setTasks(updatedTasksList);
     })
     .catch(error => {
       console.error('Error completing task:', error);
@@ -146,13 +146,33 @@ const ListContainer = () => {
   
 
   const handleUpdate = (id, newTitle) => {
-    const updatedTasks = tasks.map(task => {
-      if (task.id === id) {
-        return { ...task, title: newTitle };
+
+    fetch(`/api/tasks/${id}/edit`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({title: newTitle})
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Failed to edit task');
       }
-      return task;
+      return res.json();
+    })
+    .then(updatedTask => {
+      const updatedTasksList = tasks.map(t => {
+        if (t.id === id) {
+          return updatedTask;
+        }
+        return t;
+      });
+      setTasks(updatedTasksList);
+    })
+    .catch(error => {
+      console.error('Error editing task:', error);
     });
-    setTasks(updatedTasks);
+    
   };
 
   const sortedTasks = [...tasks].sort((a, b) => a.priority - b.priority);
