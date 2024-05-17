@@ -43,7 +43,7 @@ const ListContainer = () => {
     headers: {
       "Content-Type": "application/json"
     },
-    body:JSON.stringify(newTask)
+    body:JSON.stringify({task:newTask})
   })
   .then(res => {
     if (!res.ok) {

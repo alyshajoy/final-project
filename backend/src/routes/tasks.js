@@ -52,16 +52,9 @@ router.get('/', (req, res) => {
 //Post - Add
 router.post('/', (req,res) => {
 console.log('req.body', req.body);
-const title = req.body.title;
-  const newTask = {
-    user_id: 1,
-    title: title,
-    description: 'blank',
-    priority: 0,
-    due_date: '2024-05-10',
-    completed: false,
-    
-  }
+
+const newTask = req.body.task;
+
   // (1, 'Finish Project', 'Complete the final touches on the project.', 1, '2024-05-10', 'false', NOW(), NOW()),
   db.query(`
   INSERT INTO tasks(user_id, title, description, priority, due_date, completed) 
