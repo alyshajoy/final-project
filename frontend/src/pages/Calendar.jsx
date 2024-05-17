@@ -173,7 +173,6 @@ const Calendar = () => {
         setEvents([...events, newEvent]);
 
         if (addToTasks) {
-          console.log("In addToTasks")
           const task = {title: title};
           try {
             const response = await fetch('http://localhost:3001/api/tasks/', {
@@ -183,7 +182,6 @@ const Calendar = () => {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify(task),
-                // credentials: 'include' // include cookies
             });
     
             if (!response.ok) throw new Error('Network response was not ok');

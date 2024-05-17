@@ -124,10 +124,14 @@ function CalendarView({ events, selectedDate, setSelectedDate, setSelectedStartT
                       hour: 'numeric',
                       meridiem: 'short',
                       hour12: true
-                    }
+                    },
+                    slotMinTime: "06:00:00",
+                    slotMaxTime: "24:00:00"
                 },
                 timeGridDay: { // Applies to the day view
-                    titleFormat: { month: 'long', day: 'numeric' } // "May 11"
+                    titleFormat: { month: 'long', day: 'numeric' }, // "May 11"
+                    slotMinTime: "06:00:00",
+                    slotMaxTime: "24:00:00"
                 }
             }}
           />
