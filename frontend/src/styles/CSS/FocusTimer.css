@@ -113,4 +113,11 @@
   width: 15%;
 }
 
+.timer-task-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -15px;
+}
+
 /*# sourceMappingURL=FocusTimer.css.map */

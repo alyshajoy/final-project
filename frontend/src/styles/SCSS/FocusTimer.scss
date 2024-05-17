@@ -118,3 +118,10 @@ $blueOpaque : rgba(0, 56, 69, 0.28);
   height: 15%;
   width: 15%;
 }
+
+.timer-task-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -15px;
+}
