@@ -8,8 +8,6 @@ import "../../styles/CSS/FocusTimer.css";
 
 const focusIcon = "focustask ico.png";
 
-const focusTask = "Some Task";
-
 const FocusTimer = () => {
   const {
     pomodoro,
@@ -23,6 +21,7 @@ const FocusTimer = () => {
     updateExecute,
     openTaskModal,
     viewTaskModal,
+    focusTask
   } = useContext(TimerSettingsContext);
 
   useEffect(() => updateExecute(executing), [executing, startAnimate]);
@@ -91,12 +90,12 @@ const FocusTimer = () => {
             </div>
             <div className="timer-task-label">
               <h4>
-                {focusTask ? (
+                {focusTask === '' ? (
+                  <em>Select a task to focus on.</em>
+                ) : (
                   <div className="focus-task-name">
                     <em>{focusTask}</em>
                   </div>
-                ) : (
-                  <em>Select a task to focus on.</em>
                 )}
               </h4>
             </div>

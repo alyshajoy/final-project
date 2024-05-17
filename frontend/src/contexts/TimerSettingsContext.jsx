@@ -8,6 +8,7 @@ const TimerSettingsContextProvider = (props) => {
   const [executing, setExecuting] = useState({});
   const [startAnimate, setStartAnimate] = useState(false);
   const [openTaskModal, setOpenTaskModal] = useState(false);
+  const [focusTask, setFocusTask] = useState("");
 
   const viewTaskModal = () => {
     if (!openTaskModal) {
@@ -18,6 +19,11 @@ const TimerSettingsContextProvider = (props) => {
       console.log("This is from context: ", openTaskModal)
     };
   }
+
+  const newFocusTask = (task) => {
+    setFocusTask(task);
+  }
+  
   const startTimer = async() => {
     setStartAnimate(true);
     // Set ttimer_active to true
@@ -93,7 +99,9 @@ const TimerSettingsContextProvider = (props) => {
         setCurrentTimer,
         children,
         openTaskModal,
-        viewTaskModal
+        viewTaskModal,
+        focusTask,
+        newFocusTask
         }}>
         {props.children}
       </TimerSettingsContext.Provider>
