@@ -3,12 +3,12 @@ import '../../styles/CSS/Checkbox.css';
 
 const Checkbox = (props) => {
 
-  const {task_id, handleComplete} = props;
+  const {id, handleComplete} = props;
 
   return (
     <label className="checkbox-container">
-      <input type="checkbox" className="checkbox" onClick={() => handleComplete(task_id)}/>
-      <span class="checkmark"></span>
+      <input type="checkbox" className="checkbox" onClick={() => handleComplete(id)}/>
+      <span className="checkmark"></span>
     </label>
   )
 };

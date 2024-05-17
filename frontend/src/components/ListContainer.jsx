@@ -72,9 +72,9 @@ const ListContainer = () => {
     setAdd(!add);
   }
 
-  const handleDelete = (task_id) => {
+  const handleDelete = (id) => {
 
-    fetch(`/api/tasks/${task_id}/delete`, {
+    fetch(`/api/tasks/${id}/delete`, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json"
@@ -87,7 +87,7 @@ const ListContainer = () => {
       
     const filteredTasks = tasks.filter((task) => {
       console.log('task',task)
-      return task.id !== task_id
+      return task.id !== id
     })
     setTasks(filteredTasks);
     })
@@ -105,18 +105,18 @@ const ListContainer = () => {
   //   setComplete(completedTasks);
   // }
 
-  const handleComplete = (task_id) => {
+  const handleComplete = (id) => {
     console.log('Tasks:', tasks); // Log current tasks
-    const task = tasks.find(task => task.id === task_id);
+    const task = tasks.find(task => task.id === id);
   
     if (!task) {
-      console.error(`Task with id ${task_id} not found`);
+      console.error(`Task with id ${id} not found`);
       return;
     }
     console.log('Task found:', task); // Log the found task
     const newStatus = !task.completed;
   
-    fetch(`/api/tasks/${task_id}/completed`, {
+    fetch(`/api/tasks/${id}/completed`, {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json"
@@ -132,7 +132,7 @@ const ListContainer = () => {
     .then(updatedTask => {
       console.log('Completed task data:', updatedTask);
       const updatedTasks = tasks.map(t => {
-        if (t.task_id === task_id) {
+        if (t.id === id) {
           return { ...t, completed: newStatus };
         }
         return t;
@@ -145,9 +145,9 @@ const ListContainer = () => {
   };
   
 
-  const handleUpdate = (taskId, newTitle) => {
+  const handleUpdate = (id, newTitle) => {
     const updatedTasks = tasks.map(task => {
-      if (task.task_id === taskId) {
+      if (task.id === id) {
         return { ...task, title: newTitle };
       }
       return task;

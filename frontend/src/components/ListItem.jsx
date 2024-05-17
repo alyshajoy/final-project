@@ -33,7 +33,7 @@ const ListItem = (props) => {
     console.log('submitted')
     e.preventDefault();
     if(edit) {
-      handleUpdate(task.task_id, editValue); // Assuming `handleUpdate` and `value` are received via props
+      handleUpdate(task.id, editValue); 
       setEdit(false); // Exiting edit mode
     }
   }
@@ -41,7 +41,7 @@ const ListItem = (props) => {
 
   return (
     <div className="list-item-container">
-      <div><Checkbox handleComplete={handleComplete} task_id={task.id}/></div>
+      <div><Checkbox handleComplete={handleComplete} id={task.id}/></div>
       {edit 
       ? <div className="edit-form-div-container">
           <form onSubmit={handleSubmit} className="edit-form-container">
@@ -56,13 +56,13 @@ const ListItem = (props) => {
         </div>
       : <div 
           className={task.completed?"list-item-title-strike":"list-item-title"} 
-          onClick={() => handleEdit(task.task_id)}> 
+          onClick={() => handleEdit(task.id)}> 
           {task.title} P - 
           {task.priority} 
         </div>
       }
       
-      <div className="remove-task"><RemoveTask handleDelete={handleDelete} task_id={task.id}/></div>
+      <div className="remove-task"><RemoveTask handleDelete={handleDelete} id={task.id}/></div>
       
      
     </div>
