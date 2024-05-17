@@ -8,14 +8,12 @@ body, html {
 .home-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .home-content {
   flex: 1;
   padding-bottom: 0px;
   margin-bottom: 0px;
-  max-height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -8,7 +8,7 @@ body, html {
 .home-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  // min-height: 100vh;
 }
 
 .home-content {
@@ -16,7 +16,7 @@ body, html {
   // padding: 20px;
   padding-bottom: 0px;
   margin-bottom: 0px;
-  max-height: 700px;
+  // max-height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
