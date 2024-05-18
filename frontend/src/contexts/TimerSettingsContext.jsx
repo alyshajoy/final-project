@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 
+
 export const TimerSettingsContext = createContext()
 
 const TimerSettingsContextProvider = (props) => {
@@ -23,7 +24,7 @@ const TimerSettingsContextProvider = (props) => {
   const newFocusTask = (task) => {
     setFocusTask(task);
   }
-  
+
   const startTimer = async() => {
     setStartAnimate(true);
     // Set ttimer_active to true
@@ -101,7 +102,7 @@ const TimerSettingsContextProvider = (props) => {
         openTaskModal,
         viewTaskModal,
         focusTask,
-        newFocusTask
+        newFocusTask,
         }}>
         {props.children}
       </TimerSettingsContext.Provider>

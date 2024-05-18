@@ -57,7 +57,6 @@ router.get('/timer', (req, res) => {
   WHERE completed = false
   `)
   .then(({rows}) => {
-    console.log(rows)
     res.json(rows);
   })
 })
