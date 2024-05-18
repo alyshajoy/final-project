@@ -13,6 +13,12 @@ const ListContainer = () => {
     .then((res) => res.json())
     .then((data) => {
       setTasks(data);
+      // Initialize checkedTasks based on completed status
+      const initialCheckedTasks = data.reduce((acc, task) => {
+        acc[task.id] = task.completed;
+        return acc;
+      }, {});
+      setCheckedTasks(initialCheckedTasks);
     })
     .catch((error) => {
       console.error('Error fetching tasks:', error);
@@ -26,6 +32,8 @@ const ListContainer = () => {
   const [complete, setComplete] = useState([]);
   const [sort, setSort] = useState(false);
   const [add, setAdd] = useState(false);
+  // const [checked, setChecked] = useState(false);
+  const [checkedTasks, setCheckedTasks] = useState({});
 
   const handleAdd = () => {
     
@@ -33,7 +41,7 @@ const ListContainer = () => {
     user_id: 1,
     title: value,
     description: 'blank',
-    priority: 0,
+    priority: 2,
     due_date: '2024-05-10',
     completed: false,
   }
@@ -43,7 +51,7 @@ const ListContainer = () => {
     headers: {
       "Content-Type": "application/json"
     },
-    body:JSON.stringify(newTask)
+    body:JSON.stringify({task:newTask})
   })
   .then(res => {
     if (!res.ok) {
@@ -52,29 +60,24 @@ const ListContainer = () => {
     return res.json();
   })
   .then(data => {
-    const updatedTasks = [...tasks, data]; // Add the newly created task to the tasks array
-    setTasks(prevTasks => [...prevTasks, data]);
+    setTasks(prevTasks => [...prevTasks, data[0]]);
     setValue("");
-    console.log('Hello from data')
+    console.log('Task added successfully:', data[0]);
     handleAddMode();
   })
   .catch(error => {
     console.error('Error adding task:', error);
   });
 
-    // const copy = [...tasks, {title: value, task_id: tasks.length + 1, completed: false}];
-    // setTasks(copy);
-    // setValue("");
-    // handleAddMode();
   }
 
   const handleAddMode = () => {
     setAdd(!add);
   }
 
-  const handleDelete = (task_id) => {
+  const handleDelete = (id) => {
 
-    fetch(`/api/tasks/${task_id}/delete`, {
+    fetch(`/api/tasks/${id}/delete`, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json"
@@ -87,7 +90,7 @@ const ListContainer = () => {
       
     const filteredTasks = tasks.filter((task) => {
       console.log('task',task)
-      return task.id !== task_id
+      return task.id !== id
     })
     setTasks(filteredTasks);
     })
@@ -98,25 +101,31 @@ const ListContainer = () => {
     
   }
 
-  // const handleComplete = (task_id) => {
-  //   const completedTasks = tasks.filter((task) => {
-  //     return task.task_id !== task_id
-  //   })
-  //   setComplete(completedTasks);
+  // const handleBackendChecked = (data) => {
+  //   const checkedTasks = data.map(task => task.completed);
+  //     handleCheck
   // }
 
-  const handleComplete = (task_id) => {
+  // const handleCheck = ( id) => {
+  //   const task = tasks.find(task => task.id === id);
+  //   if(task.completed) {
+  //     setChecked(!checked);
+  //   }
+    
+  // }
+
+  const handleComplete = (id) => {
     console.log('Tasks:', tasks); // Log current tasks
-    const task = tasks.find(task => task.id === task_id);
+    const task = tasks.find(task => task.id === id);
   
     if (!task) {
-      console.error(`Task with id ${task_id} not found`);
+      console.error(`Task with id ${id} not found`);
       return;
     }
     console.log('Task found:', task); // Log the found task
     const newStatus = !task.completed;
   
-    fetch(`/api/tasks/${task_id}/completed`, {
+    fetch(`/api/tasks/${id}/completed`, {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json"
@@ -131,13 +140,18 @@ const ListContainer = () => {
     })
     .then(updatedTask => {
       console.log('Completed task data:', updatedTask);
-      const updatedTasks = tasks.map(t => {
-        if (t.task_id === task_id) {
-          return { ...t, completed: newStatus };
+      
+      const updatedTasksList = tasks.map(t => {
+        if (t.id === id) {
+          return updatedTask;
         }
         return t;
       });
-      setTasks(updatedTasks);
+      setTasks(updatedTasksList);
+      setCheckedTasks(prevCheckedTasks => ({
+        ...prevCheckedTasks,
+        [id]: updatedTask.completed,
+      }));
     })
     .catch(error => {
       console.error('Error completing task:', error);
@@ -145,14 +159,34 @@ const ListContainer = () => {
   };
   
 
-  const handleUpdate = (taskId, newTitle) => {
-    const updatedTasks = tasks.map(task => {
-      if (task.task_id === taskId) {
-        return { ...task, title: newTitle };
+  const handleUpdate = (id, newTitle) => {
+
+    fetch(`/api/tasks/${id}/edit`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({title: newTitle})
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Failed to edit task');
       }
-      return task;
+      return res.json();
+    })
+    .then(updatedTask => {
+      const updatedTasksList = tasks.map(t => {
+        if (t.id === id) {
+          return updatedTask;
+        }
+        return t;
+      });
+      setTasks(updatedTasksList);
+    })
+    .catch(error => {
+      console.error('Error editing task:', error);
     });
-    setTasks(updatedTasks);
+    
   };
 
   const sortedTasks = [...tasks].sort((a, b) => a.priority - b.priority);
@@ -195,6 +229,11 @@ const ListContainer = () => {
         handleUpdate={handleUpdate}
         sortedTasks={sortedTasks}
         sort={sort}
+        checkedTasks={checkedTasks}
+        setCheckedTasks={setCheckedTasks}
+        // checked={checked}
+        // setChecked={setChecked}
+        // handleCheck={handleCheck}
         />
         
       </div>

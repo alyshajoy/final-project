@@ -1,14 +1,23 @@
 import React from "react";
 import '../../styles/CSS/Checkbox.css';
 
+
 const Checkbox = (props) => {
 
-  const {task_id, handleComplete} = props;
+  const {id, handleComplete, checkedTasks, setCheckedTasks} = props;
+
+  const onClick = () => {
+    handleComplete(id);
+    setCheckedTasks(prevCheckedTasks => ({
+      ...prevCheckedTasks,
+      [id]: !prevCheckedTasks[id],
+    }));
+  };
 
   return (
     <label className="checkbox-container">
-      <input type="checkbox" className="checkbox" onClick={() => handleComplete(task_id)}/>
-      <span class="checkmark"></span>
+      <input type="checkbox" className="checkbox" defaultChecked={checkedTasks[id]} onClick={onClick} />
+      <span className="checkmark"></span>
     </label>
   )
 };
