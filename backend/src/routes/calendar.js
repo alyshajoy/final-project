@@ -62,16 +62,21 @@ router.delete('/events/delete/:id', async (req, res) => {
 
 // Update Events
 router.put('/events/update/:id', async (req, res) => {
+  console.log("in update route");
+
+  const { id } = req.params;
 
   const { title, date, start, end, allDay } = req.body;
 
   try {
     const queryText = `
       UPDATE calendar_events
-      SET date = $2, start_time = $3, end_time = $4, all_day = $5
-      WHERE title = $1;
+      SET title = $1, date = $2, start_time = $3, end_time = $4, all_day = $5
+      WHERE id = $6;
     `;
-    const queryParams = [title, date, start, end, allDay]
+    const queryParams = [title, date, start, end, allDay, id]
+
+    console.log("Update query params: ", queryParams);
 
     await db.query(queryText, queryParams);
       res.status(200).send({ message: 'Event updated successfully' }); // Changed message to indicate update

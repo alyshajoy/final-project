@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/CSS/CalendarFormModal.css'
 
-function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSubmit, setStartTime, setEndTime, setAllDay, initialDate, initialStartTime, initialEndTime, mode, title, date, startTime, endTime }) {
+function EventForm({ setTitle, eventID, setEventID, setDate, onDelete, allDay, isOpen, onClose, onSubmit, setStartTime, setEndTime, setAllDay, initialDate, initialStartTime, initialEndTime, mode, title, date, startTime, endTime, addToTasks, setAddToTasks }) {
 
     useEffect(() => {
         if (isOpen) {
@@ -72,10 +72,9 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
         }
 
         if (mode === 'edit') {
-          // Include the event ID in the eventData if in 'edit' mode
-          eventData.id = title; // Make sure event.id is accessible and passed to the form
+            eventData.id = eventID;
         }
-
+        
         onSubmit(eventData);
         onClose(); // Close modal after submission
     };
@@ -106,6 +105,10 @@ function EventForm({ setTitle, setDate, onDelete, allDay, isOpen, onClose, onSub
                     <label>
                         All Day:
                         <input type="checkbox" checked={allDay} onChange={e => setAllDay(e.target.checked)} />
+                    </label>
+                    <label>
+                        Add to To-Do List:
+                        <input type="checkbox" checked={addToTasks} onChange={e => setAddToTasks(e.target.checked)} />
                     </label>
                     <div className="modal-actions">
                     <button type="submit">
