@@ -49,7 +49,6 @@ router.get('/', (req, res) => {
   // res.status(200).json(tasks);
 });
 
-<<<<<<< HEAD
 // Get Timer Tasks
 router.get('/timer', (req, res) => {
   db.query(`
@@ -63,9 +62,7 @@ router.get('/timer', (req, res) => {
 })
 
 //Post
-=======
 //Post - Add
->>>>>>> main
 router.post('/', (req,res) => {
 console.log('req.body', req.body);
 
