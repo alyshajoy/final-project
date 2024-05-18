@@ -31,7 +31,7 @@ useEffect(() => {
 const taskmodalmap = timerTasks.map((el, index) => (
   <li key={index}>
       <div className="timer-task-item">
-        <p>{el.title}</p>
+        <p><b>{el.title}</b></p>
         <button onClick={e => newFocusTask(el.title)}>Focus Task</button>
       </div>
         <div className="timer-task-description">
