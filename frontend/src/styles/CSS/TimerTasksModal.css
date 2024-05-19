@@ -18,11 +18,19 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 500px;
+  position: absolute;
+  overflow-y: scroll;
+  max-height: 50%;
 }
 
 .tasks-modal-header {
   display: flex;
   justify-content: space-between;
+  margin-left: 10px;
+}
+
+.timer-tasks-wrapper {
+  margin-left: -30px;
 }
 
 .timer-task-item {
@@ -41,12 +49,16 @@
   color: rgba(255, 171, 171, 0.28);
   background-color: rgba(255, 171, 171, 0.28);
   border: rgba(255, 171, 171, 0.28);
-  margin-top: -8px;
+  margin-top: 7px;
 }
 
 .timer-task-description {
-  margin-top: -10px;
+  margin-top: -15px;
   margin-bottom: 20px;
+}
+
+.timer-task-complete {
+  margin-top: -10px;
 }
 
 /*# sourceMappingURL=TimerTasksModal.css.map */

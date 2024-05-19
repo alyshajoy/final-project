@@ -24,11 +24,19 @@ $blueOpaque : rgba(0, 56, 69, 0.28);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 500px;
+  position: absolute;
+  overflow-y: scroll;
+  max-height: 50%;
 }
 
 .tasks-modal-header {
   display: flex;
   justify-content: space-between;
+  margin-left: 10px;
+}
+
+.timer-tasks-wrapper {
+  margin-left: -30px;
 }
 
 .timer-task-item {
@@ -47,10 +55,14 @@ $blueOpaque : rgba(0, 56, 69, 0.28);
   color: $pinkOpaque;
   background-color: $pinkOpaque;
   border: $pinkOpaque;
-  margin-top: -8px;
+  margin-top: 7px;
 }
 
 .timer-task-description {
-  margin-top: -10px;
+  margin-top: -15px;
   margin-bottom: 20px;
+}
+
+.timer-task-complete {
+  margin-top: -10px;
 }

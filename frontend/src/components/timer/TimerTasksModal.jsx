@@ -37,6 +37,9 @@ const taskmodalmap = timerTasks.map((el, index) => (
         <div className="timer-task-description">
         <small>{el.description}</small>
         </div>
+        <div className="timer-task-complete">
+        <button>Task Complete</button>
+        </div>
         <hr className="task-seperator" />
   </li>
 ))
@@ -48,9 +51,11 @@ return (
         <button onClick={e => newFocusTask('')}>Clear Focus Task</button>
         <button onClick={viewTaskModal}>X</button>
       </div>
+      <div className="timer-tasks-wrapper">
         <ul className="timer-task-list">
           {taskmodalmap}
         </ul>
+      </div>
         
     </div>
   </div>
