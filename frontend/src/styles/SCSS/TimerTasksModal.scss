@@ -39,6 +39,10 @@ $blueOpaque : rgba(0, 56, 69, 0.28);
   margin-left: -30px;
 }
 
+.timer-task-list {
+  list-style-type: none;
+}
+
 .timer-task-item {
   display: flex;
   flex-direction: row;

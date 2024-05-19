@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
 import '../../styles/CSS/TimerTasksModal.css'
+import Checkbox from "../buttons/Checkbox";
 
 const TimerTasksModal = () => {
 
@@ -11,6 +12,8 @@ const {
 } = useContext(TimerSettingsContext)
 
 const [timerTasks, setTimerTasks] = useState([]);
+const [checkedTasks, setCheckedTasks] = useState({});
+
 
 useEffect(() => {
   const getTimerTasks = async() => {
@@ -27,10 +30,55 @@ useEffect(() => {
   getTimerTasks()
 }, []);
 
+const handleComplete = (id) => {
+  console.log('Tasks:', timerTasks); // Log current tasks
+  const task = timerTasks.find(task => task.id === id);
+
+  if (!task) {
+    console.error(`Task with id ${id} not found`);
+    return;
+  }
+  console.log('Task found:', task); // Log the found task
+  const newStatus = !task.completed;
+
+  fetch(`/api/tasks/${id}/completed`, {
+    method: 'PATCH',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ completed: newStatus }) // Ensure JSON body is sent
+  })
+  .then(res => {
+    if (!res.ok) {
+      throw new Error('Failed to mark task as completed');
+    }
+    return res.json();
+  })
+  .then(updatedTask => {
+    console.log('Completed task data:', updatedTask);
+    
+    const updatedTasksList = timerTasks.map(t => {
+      if (t.id === id) {
+        return updatedTask;
+      }
+      return t;
+    });
+    setTimerTasks(updatedTasksList);
+    setCheckedTasks(prevCheckedTasks => ({
+      ...prevCheckedTasks,
+      [id]: updatedTask.completed,
+    }));
+  })
+  .catch(error => {
+    console.error('Error completing task:', error);
+  });
+};
+
 
 const taskmodalmap = timerTasks.map((el, index) => (
   <li key={index}>
       <div className="timer-task-item">
+        <div><Checkbox handleComplete={handleComplete} id={el.id} checkedTasks={checkedTasks} setCheckedTasks={setCheckedTasks}/></div>
         <p><b>{el.title}</b></p>
         <button onClick={e => newFocusTask(el.title)}>Focus Task</button>
       </div>
