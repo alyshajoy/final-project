@@ -22,7 +22,7 @@ useEffect(() => {
       if (!response.ok) throw new Error ('Data failed to fetch'); 
       const jsonData = await response.json();
       setTimerTasks(jsonData)
-      
+
       const initialCheckedTasks = jsonData.reduce((acc, task) => {
         acc[task.id] = task.completed;
         return acc;
@@ -90,9 +90,6 @@ const taskmodalmap = timerTasks.map((el, index) => (
       </div>
         <div className="timer-task-description">
         <small>{el.description}</small>
-        </div>
-        <div className="timer-task-complete">
-        <button>Task Complete</button>
         </div>
         <hr className="task-seperator" />
   </li>
