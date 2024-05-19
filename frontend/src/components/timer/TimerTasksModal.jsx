@@ -22,6 +22,12 @@ useEffect(() => {
       if (!response.ok) throw new Error ('Data failed to fetch'); 
       const jsonData = await response.json();
       setTimerTasks(jsonData)
+      
+      const initialCheckedTasks = jsonData.reduce((acc, task) => {
+        acc[task.id] = task.completed;
+        return acc;
+      }, {});
+      setCheckedTasks(initialCheckedTasks);
 
     } catch (err) {
       console.error("getTimerTasks error message:", err.message)
