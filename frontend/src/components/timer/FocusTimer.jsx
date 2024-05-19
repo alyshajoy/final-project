@@ -5,6 +5,7 @@ import TimerButton from "./TimerButton";
 import TimerTasksModal from "./TimerTasksModal";
 import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
 import "../../styles/CSS/FocusTimer.css";
+import Footer from "../home/Footer";
 
 const focusIcon = "focustask ico.png";
 
@@ -103,11 +104,12 @@ const FocusTimer = () => {
           <div className="settings-button">
             <TimerButton title="Settings" _callback={settingBtn} />
           </div>
-          {openTaskModal === true && 
+          {openTaskModal && 
             <TimerTasksModal />
           }
         </>
       )}
+      <Footer />
     </div>
   );
 };
