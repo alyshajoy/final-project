@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState, useMemo } from "react";
+import { createContext, useCallback, useState, useRef } from "react";
 
 
 export const TimerSettingsContext = createContext()
@@ -11,6 +11,10 @@ const TimerSettingsContextProvider = (props) => {
   const [openTaskModal, setOpenTaskModal] = useState(false);
   const [focusTask, setFocusTask] = useState("");
   const [userInfo, setUserInfo] = useState([]);
+  const [minutes, setMinutes] = useState(0)
+  const [isPaused, setIsPaused] = useState(true)
+  const isPausedRef = useRef(isPaused);
+  const intervalRef = useRef(null);
 
   const viewTaskModal = () => {
     if (!openTaskModal) {
@@ -43,11 +47,34 @@ const TimerSettingsContextProvider = (props) => {
     
   }, []);
   
-  const contextValue = useMemo(() => ({ userInfo, fetchUser}), [userInfo, fetchUser])
+  const incMinutes = () => {
+    if (!isPausedRef.current) {
+      setMinutes(prevMinutes => prevMinutes + 1);
+    }
+  }
+  
+  const startInc = () => {
+    if (isPausedRef.current) {
+      setIsPaused(false);
+      isPausedRef.current = false;
+      intervalRef.current = setInterval(incMinutes, 2000)
+    }
+  };
+
+  const stopInc = () => {
+    clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      setIsPaused(true)
+      isPausedRef.current = true;
+      setMinutes(0);
+    }
+
+  
 
   const startTimer = async() => {
     setStartAnimate(true);
-    // Set timer_active to true
+    startInc();
+    // Set timer_active in db to true
     try {
       const response = await fetch(`http://localhost:3001/api/timer/update/timer_status/1`, {
         method: "PUT",
@@ -58,8 +85,16 @@ const TimerSettingsContextProvider = (props) => {
       console.error(`Error message from startTimer: ${err.message}`)
     }
   }
-  const pauseTimer = () => setStartAnimate(false);
-  const stopTimer = () => setStartAnimate(false);
+  const pauseTimer = () => {
+    setStartAnimate(false);
+    isPausedRef.current = true;
+    setIsPaused(true);
+  }
+  const stopTimer = () => {
+    setStartAnimate(false);
+    setIsPaused(true);
+    stopInc();
+  }
 
   const settingBtn = () => {
     setExecuting({})
@@ -125,6 +160,7 @@ const TimerSettingsContextProvider = (props) => {
         newFocusTask,
         userInfo,
         fetchUser,
+        minutes
         }}>
         {props.children}
       </TimerSettingsContext.Provider>

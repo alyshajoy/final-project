@@ -24,10 +24,15 @@ const FocusTimer = () => {
     viewTaskModal,
     focusTask,
     fetchUser,
-    userInfo
+    userInfo,
+    minutes
   } = useContext(TimerSettingsContext);
 
   //Hard coded user info for demo
+
+  useEffect(() => {
+    console.log(minutes);
+  }, [minutes])
 
   useEffect(() => {
     updateExecute(executing);
