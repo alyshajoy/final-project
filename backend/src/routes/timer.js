@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
   const { id } = req.params;
 
   db.query(`
-  SELECT username, timer_active, timer_minutes
+  SELECT username, timer_active, timer_minutes, timer_uses
   FROM users
   WHERE id = $1
   `, [id])
@@ -56,6 +56,9 @@ router.put('/update/timer_minutes/:id', (req, res) => {
   SET timer_minutes = $1
   WHERE id = $2
   `, [minutes_added, id])
+  .then(({rows}) => {
+    res.json(`User ${id} has added ${minutes_added} minutes!`)
+  })
 });
 
 // Update timer uses 
@@ -68,7 +71,10 @@ router.put('/update/timer_uses/:id', (req, res) => {
   UPDATE users
   SET timer_minutes = $1
   WHERE id = $2
-  `, [timer_used, id]);
+  `, [timer_used, id])
+  .then(({rows}) => {
+    res.json(`User ${id} has used the timer ${timer_used} times!`)
+  })
 
 });
 
