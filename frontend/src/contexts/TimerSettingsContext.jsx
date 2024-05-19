@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 
+
 export const TimerSettingsContext = createContext()
 
 const TimerSettingsContextProvider = (props) => {
@@ -7,6 +8,22 @@ const TimerSettingsContextProvider = (props) => {
   const [pomodoro, setPomodoro] = useState(0);
   const [executing, setExecuting] = useState({});
   const [startAnimate, setStartAnimate] = useState(false);
+  const [openTaskModal, setOpenTaskModal] = useState(false);
+  const [focusTask, setFocusTask] = useState("");
+
+  const viewTaskModal = () => {
+    if (!openTaskModal) {
+      setOpenTaskModal(true);
+      console.log("This is from context: !", openTaskModal)
+    } else {
+      setOpenTaskModal(false);
+      console.log("This is from context: !", openTaskModal)
+    };
+  }
+
+  const newFocusTask = (task) => {
+    setFocusTask(task);
+  }
 
   const startTimer = async() => {
     setStartAnimate(true);
@@ -81,7 +98,11 @@ const TimerSettingsContextProvider = (props) => {
         pauseTimer,
         settingBtn,
         setCurrentTimer,
-        children
+        children,
+        openTaskModal,
+        viewTaskModal,
+        focusTask,
+        newFocusTask,
         }}>
         {props.children}
       </TimerSettingsContext.Provider>

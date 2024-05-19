@@ -100,3 +100,28 @@ $blueOpaque : rgba(0, 56, 69, 0.28);
   font-size: 48px;
   color: $blueFull;
 }
+
+.toggle-focus-task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus-task-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus-task-button-wrapper img {
+  cursor: pointer;
+  height: 8%;
+  width: 8%;
+}
+
+.timer-task-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -15px;
+}

@@ -95,4 +95,29 @@
   color: rgb(0, 56, 69);
 }
 
+.toggle-focus-task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus-task-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.focus-task-button-wrapper img {
+  cursor: pointer;
+  height: 8%;
+  width: 8%;
+}
+
+.timer-task-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -15px;
+}
+
 /*# sourceMappingURL=FocusTimer.css.map */
