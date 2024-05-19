@@ -45,5 +45,31 @@ router.put('/update/timer_status/:id', (req, res) => {
 
 });
 
+// Update timer minutes
+router.put('/update/timer_minutes/:id', (req, res) => {
+
+  const { id } = req.params;
+  const { minutes_added } = req.body
+
+  db.query(`
+  UPDATE users
+  SET timer_minutes = $1
+  WHERE id = $2
+  `, [minutes_added, id])
+});
+
+// Update timer uses 
+router.put('/update/timer_uses/:id', (req, res) => {
+
+  const { id } = req.params;
+  const { timer_used } = req.body
+
+  db.query(`
+  UPDATE users
+  SET timer_minutes = $1
+  WHERE id = $2
+  `, [timer_used, id]);
+
+});
 
 module.exports = router;
