@@ -49,17 +49,6 @@ router.get('/', (req, res) => {
   // res.status(200).json(tasks);
 });
 
-// Get Timer Tasks
-router.get('/timer', (req, res) => {
-  db.query(`
-  SELECT title, description, priority, due_date 
-  FROM tasks
-  WHERE completed = false
-  `)
-  .then(({rows}) => {
-    res.json(rows);
-  })
-})
 
 //Post
 //Post - Add

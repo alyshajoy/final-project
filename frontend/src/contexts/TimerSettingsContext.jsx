@@ -14,10 +14,10 @@ const TimerSettingsContextProvider = (props) => {
   const viewTaskModal = () => {
     if (!openTaskModal) {
       setOpenTaskModal(true);
-      console.log("This is from context: ", openTaskModal)
+      console.log("This is from context: !", openTaskModal)
     } else {
       setOpenTaskModal(false);
-      console.log("This is from context: ", openTaskModal)
+      console.log("This is from context: !", openTaskModal)
     };
   }
 

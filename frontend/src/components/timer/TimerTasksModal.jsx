@@ -18,7 +18,7 @@ const [checkedTasks, setCheckedTasks] = useState({});
 useEffect(() => {
   const getTimerTasks = async() => {
     try {
-      const response = await fetch('http://localhost:3001/api/tasks/timer')
+      const response = await fetch('http://localhost:3001/api/tasks/')
       if (!response.ok) throw new Error ('Data failed to fetch'); 
       const jsonData = await response.json();
       setTimerTasks(jsonData)
@@ -78,7 +78,7 @@ const handleComplete = (id) => {
 const taskmodalmap = timerTasks.map((el, index) => (
   <li key={index}>
       <div className="timer-task-item">
-        <div><Checkbox handleComplete={handleComplete} id={el.id} checkedTasks={checkedTasks} setCheckedTasks={setCheckedTasks}/></div>
+        <div><Checkbox handleComplete={handleComplete} id={el.id} task={el} checkedTasks={checkedTasks} setCheckedTasks={setCheckedTasks}/></div>
         <p><b>{el.title}</b></p>
         <button onClick={e => newFocusTask(el.title)}>Focus Task</button>
       </div>
