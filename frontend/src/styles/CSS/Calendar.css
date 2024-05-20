@@ -35,8 +35,8 @@ h2 {
   text-overflow: ellipsis;
   max-width: 100%; /* Ensure it doesn't exceed the cell width */
 }
-.fc .fc-timegrid-view {
-  font-size: 0.4em !important;
+.fc .fc-timegrid-event {
+  font-size: 0.6em !important;
 }
 .fc .fc-daygrid-event-dot {
   display: none;
