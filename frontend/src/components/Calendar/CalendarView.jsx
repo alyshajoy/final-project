@@ -5,8 +5,9 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import '../../styles/CSS/Calendar.css';
 
-function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelectedEndTime, onDoubleClickEvent }) {
+function CalendarView({ events, selectedDate, setSelectedDate, setSelectedStartTime, setSelectedEndTime, onDoubleClickEvent }) {
   const [currentView, setCurrentView] = useState('dayGridMonth');
+
   let clickTimer = useRef(null);
 
   const handleEventClick = (clickInfo) => {
@@ -123,10 +124,14 @@ function CalendarView({ events, setSelectedDate, setSelectedStartTime, setSelect
                       hour: 'numeric',
                       meridiem: 'short',
                       hour12: true
-                    }
+                    },
+                    slotMinTime: "06:00:00",
+                    slotMaxTime: "24:00:00"
                 },
                 timeGridDay: { // Applies to the day view
-                    titleFormat: { month: 'long', day: 'numeric', year: 'numeric' } // "May 11, 2024"
+                    titleFormat: { month: 'long', day: 'numeric' }, // "May 11"
+                    slotMinTime: "06:00:00",
+                    slotMaxTime: "24:00:00"
                 }
             }}
           />

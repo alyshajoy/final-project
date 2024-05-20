@@ -28,6 +28,12 @@ const SetPomodoro = () => {
   }
 
   const decrement = (timer) => {
+    if (newTimer[timer] < 2) {
+      setNewTimer(newTimer => ({
+        ...newTimer,
+        [timer]: 1
+      }))
+    }
     setNewTimer(newTimer => ({
       ...newTimer,
       [timer]: newTimer[timer] - 1

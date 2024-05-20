@@ -8,10 +8,12 @@
   --fc-event-border-color: #ffabab;
   --fc-highlight-color: rgba(0, 56, 69, 0.1);
   --fc-button-bg-color: var(--gray);
+  --primary-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .App {
   padding: 1.5rem;
+  padding-bottom: 0px;
 }
 
 /*# sourceMappingURL=Global.css.map */

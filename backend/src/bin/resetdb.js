@@ -21,7 +21,7 @@ const runSchemaFiles = async () => {
     'badges.sql',
     'user_badges.sql',
     'motivational_quotes.sql',
-    'calendar_events.sql'
+    'calendar_events.sql',
   ];
 
   // const schemaFilenames = fs.readdirSync('./src/db/schema');
@@ -38,11 +38,12 @@ const runSeedFiles = async () => {
   console.log(`-> Loading Seeds ...`);
 
   const seedFiles = [
-    'users.sql',       // Ensure 'users' seeds are executed first
-    'badges.sql',      // Then 'badges'
-    'motivational_quotes.sql', // Then 'motivational_quotes'
-    'tasks.sql',       // Then 'tasks', which depends on 'users'
-    'user_badges.sql'  // Lastly 'user_badges', if it depends on 'users' and 'badges'
+    'users.sql',
+    'badges.sql',
+    'motivational_quotes.sql',
+    'tasks.sql',
+    'user_badges.sql',
+    'calendar_events.sql'
   ];
 
   // const schemaFilenames = fs.readdirSync('./src/db/seeds');
@@ -53,7 +54,21 @@ const runSeedFiles = async () => {
     await db.query(sql);
   }
 };
+const runTriggerFiles = async () => {
+  console.log(`-> Loading Trigger Files ...`);
 
+  // List files in the order they should be executed
+  const triggerFiles = [
+    'badgeTriggers.sql'
+    // Add more trigger files here if needed
+  ];
+
+  for (const fn of triggerFiles) {
+    const sql = fs.readFileSync(`./src/db/triggers/${fn}`, 'utf8');
+    console.log(`\t-> Running ${fn}`);
+    await db.query(sql);
+  }
+};
 const runResetDB = async () => {
 
   try {
@@ -62,6 +77,7 @@ const runResetDB = async () => {
 
     await runSchemaFiles();
     await runSeedFiles();
+    await runTriggerFiles();
     process.exit();
   } catch (err) {
     console.error(`Failed due to error: ${err}`);

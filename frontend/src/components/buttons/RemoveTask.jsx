@@ -4,11 +4,11 @@ import { faTrash } from '@fortawesome/fontawesome-free-solid';
 
 const RemoveTask = (props) => {
 
-  const {task_id, handleDelete} = props;
+  const {id, handleDelete} = props;
 
   return (
     <>
-      <FontAwesomeIcon icon={faTrash}  onClick={() => handleDelete(task_id)}/>
+      <FontAwesomeIcon icon={faTrash}  onClick={() => handleDelete(id)}/>
     </>
   )
 };

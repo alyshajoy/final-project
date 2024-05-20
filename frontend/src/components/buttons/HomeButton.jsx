@@ -1,15 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import "../../styles/CSS/HomeButton.css";
 
 const HomeButton = () => {
-    const navigate = useNavigate();
-
-    const goToHome = () => {
-        navigate('/');  // Navigate to the home route
-    };
 
     return (
-        <button onClick={goToHome}>Home</button>
+        <a href={'/'} className="home-button">
+            <img src={require("../../assets/homepage_icons/back.png")} alt="back"/>
+        </a>
     );
 };
 

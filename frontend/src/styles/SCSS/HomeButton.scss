@@ -1,0 +1,12 @@
+.home-button {
+
+  img {
+    padding: 10px;
+    max-width: 1rem;
+    max-height: 1rem;
+  }
+
+  &:hover {
+      color: var(--gray);
+  }
+}
