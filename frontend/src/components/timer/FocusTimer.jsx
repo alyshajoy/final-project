@@ -22,10 +22,41 @@ const FocusTimer = () => {
     updateExecute,
     openTaskModal,
     viewTaskModal,
-    focusTask
+    focusTask,
+    fetchUser,
+    userInfo,
+    minutes
   } = useContext(TimerSettingsContext);
 
-  useEffect(() => updateExecute(executing), [executing, startAnimate]);
+  //Hard coded user info for demo
+
+  useEffect(() => {
+    console.log(minutes);
+  }, [minutes])
+
+  useEffect(() => {
+    updateExecute(executing);
+    return () => {
+      console.log(`Cleanup: Stopping execution-related operations for ${executing}`) 
+    }
+  }, [executing]);
+
+  useEffect(() => {
+    fetchUser(1);
+    return () => {
+      console.log(`Cleanup: Component unmounted`);
+    }
+  }, [fetchUser]);
+
+  useEffect(() => {
+    console.log(`Start Animate: ${startAnimate}, UserInfo: ${userInfo}`);
+    return () => {
+      console.log(`Cleanup: Stopping animation or user related operations`);
+
+    };
+  }, [startAnimate, userInfo]);
+
+  // useEffect(() => updateExecute(executing), [executing, startAnimate] );
 
   return (
     <div className="container">
@@ -110,6 +141,7 @@ const FocusTimer = () => {
         </>
       )}
       <Footer />
+      {console.log(userInfo)}
     </div>
   );
 };
