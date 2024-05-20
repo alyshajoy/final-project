@@ -1,7 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ListHeader from "./ListHeader";
 import ListFooter from "./ListFooter";
+import Footer from "../components/home/Footer";
 import ListItems from "./ListItems";
 // import addButton from '../assets/addButton.svg';
 import { ReactComponent as AddButton } from '../assets/addButton.svg';
@@ -32,6 +33,7 @@ const ListContainer = () => {
   const [complete, setComplete] = useState([]);
   const [sort, setSort] = useState(false);
   const [add, setAdd] = useState(false);
+  const addButtonClicked = useRef(false);
   // const [checked, setChecked] = useState(false);
   const [checkedTasks, setCheckedTasks] = useState({});
 
@@ -74,6 +76,14 @@ const ListContainer = () => {
   const handleAddMode = () => {
     setAdd(!add);
   }
+
+  const handleAddBlur = () => {
+    setTimeout(() => {
+      if (!addButtonClicked.current) {
+        setAdd(false);
+      }
+    }, 150);
+  };
 
   const handleDelete = (id) => {
 
@@ -202,7 +212,12 @@ const ListContainer = () => {
       </div>
       {add
       ?<form className="add-form-container">
-      <input value={value} onChange={e => setValue(e.target.value)}/>
+      <input 
+      value={value} 
+      onChange={e => setValue(e.target.value)}
+      autoFocus
+      onBlur={handleAddBlur}
+      />
       <button type="button" onClick={handleAdd}> 
         <AddButton className="add-button"/>
       </button>
@@ -238,7 +253,7 @@ const ListContainer = () => {
         
       </div>
       <div>
-        <ListFooter />
+        <Footer />
       </div>
     </>
   );
