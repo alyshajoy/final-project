@@ -11,6 +11,7 @@ const TimerSettingsContextProvider = (props) => {
   const [openTaskModal, setOpenTaskModal] = useState(false);
   const [focusTask, setFocusTask] = useState("");
   const [userInfo, setUserInfo] = useState([]);
+  const [timerUses, setTimerUses] = useState(0);
   const [minutes, setMinutes] = useState(0)
   const [isPaused, setIsPaused] = useState(true)
   const isPausedRef = useRef(isPaused);
@@ -64,18 +65,53 @@ const TimerSettingsContextProvider = (props) => {
 
     }
   };
+
+  const updateUserUses = async(id) => {
+    if (userInfo.length !== 0) {
+        try {
+          const response = await fetch(`http://localhost:3001/api/timer/update/timer_uses/${id}`, {
+            method: "PUT",
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify({timer_uses: timerUses + userInfo[0]['timer_uses']})
+          })
+          if (!response.ok) new Error ('User timer minutes failed to fetch');
+          const data = await response.json();
+          console.log('Update successful: ', data);
+        } catch (err) {
+          console.error(`Error message from updateUserMinutes: ${err.message}`)
+        }
+
+    }
+  };
+
+  const updateUserActive = async (id) => {
+
+    try {
+      const response = await fetch(`http://localhost:3001/api/timer/update/timer_status/${id}`, {
+        method: "PUT",
+        headers: { accept: "application/json" }
+      })
+    } catch (err) {
+      console.error(`Error message from startTimer: ${err.message}`)
+    }
+
+  }
+  
   
   const incMinutes = () => {
     if (!isPausedRef.current) {
       setMinutes(prevMinutes => prevMinutes + 1);
     }
   }
+  const incUses = () => {
+    setTimerUses(prevUses => prevUses + 1);
+  }
   
   const startInc = () => {
     if (isPausedRef.current) {
       setIsPaused(false);
       isPausedRef.current = false;
-      intervalRef.current = setInterval(incMinutes, 60000)
+      intervalRef.current = setInterval(incMinutes, 59000)
     }
   };
 
@@ -90,16 +126,13 @@ const TimerSettingsContextProvider = (props) => {
   
 
   const startTimer = async() => {
-    setStartAnimate(true);
-    startInc();
-    // Set timer_active in db to true
     try {
-      const response = await fetch(`http://localhost:3001/api/timer/update/timer_status/1`, {
-        method: "PUT",
-        headers: { accept: "application/json" }
-      })
+      await setStartAnimate(true);
+      await startInc();
+      await incUses();
+      await updateUserActive(userInfo[0]['id'])
     } catch (err) {
-      console.error(`Error message from startTimer: ${err.message}`)
+      console.error('An error occurred in startTimer', err.message)
     }
   }
   const pauseTimer = () => {
@@ -107,10 +140,15 @@ const TimerSettingsContextProvider = (props) => {
     isPausedRef.current = true;
     setIsPaused(true);
   }
-  const stopTimer = () => {
-    updateUserMinutes(userInfo[0]['id']);
-    setStartAnimate(false);
-    stopInc();
+  const stopTimer = async() => {
+    try {
+      await updateUserMinutes(userInfo[0]['id'])
+      await updateUserUses(userInfo[0]['id'])
+      await setStartAnimate(false)
+      await stopInc()
+    } catch (err) {
+      console.error('An error occurred in startTimer', err.message) 
+    }
   }
 
   const settingBtn = () => {

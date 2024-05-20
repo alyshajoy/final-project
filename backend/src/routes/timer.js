@@ -73,19 +73,30 @@ router.put('/update/timer_minutes/:id', async(req, res) => {
 });
 
 // Update timer uses 
-router.put('/update/timer_uses/:id', (req, res) => {
+router.put('/update/timer_uses/:id', async(req, res) => {
 
   const { id } = req.params;
-  const { timer_used } = req.body
+  const { timer_uses } = req.body;
+  console.log('timer count: ', timer_uses);
 
-  db.query(`
-  UPDATE users
-  SET timer_minutes = $1
-  WHERE id = $2
-  `, [timer_used, id])
-  .then(({rows}) => {
-    res.json(`User ${id} has used the timer ${timer_used} times!`)
-  })
+  if (typeof timer_uses !== 'number') {
+    console.error('Invalid input: ', req.body);
+    return res.status(400).json({ error: 'Invalid Input'});
+  }
+
+  try {
+    const result = await db.query(`
+    UPDATE users
+    SET timer_uses = $1
+    WHERE id = $2
+    RETURNING *
+    `, [timer_uses, id])
+    console.log('Database update result: ', result.rows);
+    res.status(200).json({ success: true, result: result.rows })
+  } catch (err) {
+    console.error('Database update failed: ', err.message)
+    res.status(500).json({ error: 'Database update failed' });
+  }
 
 });
 
