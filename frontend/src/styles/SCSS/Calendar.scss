@@ -40,6 +40,10 @@ h2 {
     max-width: 100%; /* Ensure it doesn't exceed the cell width */
   }
 
+  .fc-timegrid-view {
+    font-size: 0.4em !important;
+  }
+
   .fc-daygrid-event-dot {
     display: none;
   }
@@ -88,7 +92,7 @@ h2 {
     border: none;
     background-color: transparent;
     color: var(--pink);
-    padding: 2px 5px 6px 2px;
+    padding: 2px 0px 6px 0px;
 
     &:hover, &:focus, &:active {
       background-color: transparent !important;
@@ -100,7 +104,7 @@ h2 {
   }
 
   .fc-toolbar-title {
-    margin: 0 5px !important; // Adjust space between buttons and title
+    margin: 0 0px !important; // Adjust space between buttons and title
     display: inline-block !important;
     font-size: 14px;
     letter-spacing: -0.4px;

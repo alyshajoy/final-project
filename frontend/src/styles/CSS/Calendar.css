@@ -35,6 +35,9 @@ h2 {
   text-overflow: ellipsis;
   max-width: 100%; /* Ensure it doesn't exceed the cell width */
 }
+.fc .fc-timegrid-view {
+  font-size: 0.4em !important;
+}
 .fc .fc-daygrid-event-dot {
   display: none;
 }
@@ -72,7 +75,7 @@ h2 {
   border: none;
   background-color: transparent;
   color: var(--pink);
-  padding: 2px 5px 6px 2px;
+  padding: 2px 0px 6px 0px;
 }
 .fc .fc-prev-button:hover, .fc .fc-prev-button:focus, .fc .fc-prev-button:active, .fc .fc-next-button:hover, .fc .fc-next-button:focus, .fc .fc-next-button:active {
   background-color: transparent !important;
@@ -81,7 +84,7 @@ h2 {
   box-shadow: none !important;
 }
 .fc .fc-toolbar-title {
-  margin: 0 5px !important;
+  margin: 0 0px !important;
   display: inline-block !important;
   font-size: 14px;
   letter-spacing: -0.4px;
