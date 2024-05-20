@@ -9,7 +9,8 @@ import Footer from "../home/Footer";
 
 const focusIcon = "focustask ico.png";
 
-const FocusTimer = () => {
+const FocusTimer = (props) => {
+
   const {
     pomodoro,
     executing,

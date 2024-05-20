@@ -41,7 +41,7 @@ const ListContainer = () => {
     user_id: 1,
     title: value,
     description: 'blank',
-    priority: 2,
+    priority: 1,
     due_date: '2024-05-10',
     completed: false,
   }

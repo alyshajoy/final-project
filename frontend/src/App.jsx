@@ -3,6 +3,7 @@ import './App.css';
 import BadgeNotification from './components/BadgeNotification.jsx';
 import {BrowserRouter, Link, Routes, Route} from 'react-router-dom';
 import {NotificationProvider} from './contexts/NotificationContext';
+import TimerSettingsContextProvider from './contexts/TimerSettingsContext.jsx';
 import './styles/CSS/Global.css';
 
 import Home from './pages/Home.jsx';
@@ -19,6 +20,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NotificationProvider>
+        <TimerSettingsContextProvider>
           <BadgeNotification />
           <WebSocketHandler />
           {/* <Link to="/">Home</Link> <br/>
@@ -26,7 +28,7 @@ function App() {
           <Link to="/timer">Timer</Link> <br/>
           <Link to="/calendar">Calendar</Link> <br/>
           <Link to="/tasks">Tasks</Link> <br/>
-          <Link to="/register">Register</Link> <br/> */}
+        <Link to="/register">Register</Link> <br/> */}
         
 
           <Routes>
@@ -38,6 +40,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<h2>404 Page not found</h2>} />
           </Routes>
+        </TimerSettingsContextProvider>
         </NotificationProvider>
       </BrowserRouter>   
       
