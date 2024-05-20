@@ -1,7 +1,7 @@
 import React from "react";
-import '../styles/CSS/ListContainer.css'
-import { ReactComponent as TodoIcon } from '../assets/TodoIcon.svg';
-import { ReactComponent as SortButton } from '../assets/SortButton.svg';
+import '../../styles/CSS/ListContainer.css'
+// import { ReactComponent as TodoIcon } from '../../assets/TodoIcon.svg';
+// import { ReactComponent as SortButton } from '../../assets/SortButton.svg';
 const ListHeader = (props) => {
   
   const {sort, setSort, toggleSort} = props;

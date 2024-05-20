@@ -2,9 +2,9 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import ListHeader from "./ListHeader";
 import ListFooter from "./ListFooter";
-import Footer from "../components/home/Footer";
+import Footer from "../home/Footer";
 import ListItems from "./ListItems";
-import { ReactComponent as AddButton } from '../assets/addButton.svg';
+import { ReactComponent as AddButton } from '../../assets/taskspage_icons/addButton.svg';
 
 const ListContainer = () => {
 

@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import RemoveTask from "./buttons/RemoveTask";
-import Checkbox from "./buttons/Checkbox";
-import '../styles/CSS/ListItems.css';
-import { ReactComponent as UpdateButton } from '../assets/UpdateButton.svg';
+import RemoveTask from "../buttons/RemoveTask";
+import Checkbox from "../buttons/Checkbox";
+import '../../styles/CSS/ListItems.css';
+import { ReactComponent as UpdateButton } from '../../assets/taskspage_icons/UpdateButton.svg';
 
 const ListItem = (props) => {
 
