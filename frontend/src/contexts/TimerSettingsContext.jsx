@@ -46,6 +46,24 @@ const TimerSettingsContextProvider = (props) => {
     }
     
   }, []);
+
+  const updateUserMinutes = async(id) => {
+    if (userInfo.length !== 0) {
+        try {
+          const response = await fetch(`http://localhost:3001/api/timer/update/timer_minutes/${id}`, {
+            method: "PUT",
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify({timer_minutes: minutes + userInfo[0]['timer_minutes']})
+          })
+          if (!response.ok) new Error ('User timer minutes failed to fetch');
+          const data = await response.json();
+          console.log('Update successful: ', data);
+        } catch (err) {
+          console.error(`Error message from updateUserMinutes: ${err.message}`)
+        }
+
+    }
+  };
   
   const incMinutes = () => {
     if (!isPausedRef.current) {
@@ -57,7 +75,7 @@ const TimerSettingsContextProvider = (props) => {
     if (isPausedRef.current) {
       setIsPaused(false);
       isPausedRef.current = false;
-      intervalRef.current = setInterval(incMinutes, 2000)
+      intervalRef.current = setInterval(incMinutes, 60000)
     }
   };
 
@@ -80,7 +98,6 @@ const TimerSettingsContextProvider = (props) => {
         method: "PUT",
         headers: { accept: "application/json" }
       })
-      console.log(response);
     } catch (err) {
       console.error(`Error message from startTimer: ${err.message}`)
     }
@@ -91,8 +108,8 @@ const TimerSettingsContextProvider = (props) => {
     setIsPaused(true);
   }
   const stopTimer = () => {
+    updateUserMinutes(userInfo[0]['id']);
     setStartAnimate(false);
-    setIsPaused(true);
     stopInc();
   }
 
