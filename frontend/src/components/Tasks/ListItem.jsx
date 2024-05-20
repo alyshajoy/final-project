@@ -61,7 +61,7 @@ const ListItem = (props) => {
           {task.title} 
         </div>
       }
-      <div><ListItemTimer /></div>
+      <div><ListItemTimer title={task.title}/></div>
       <div className="remove-task"><RemoveTask handleDelete={handleDelete} id={task.id}/></div>
       
      
