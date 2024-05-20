@@ -2,19 +2,22 @@
   background-color: rgba(248, 177, 185, 0.5);
   height: 30px;
   margin-top: 20px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
 
 .header-container {
   background-color: white;
   height: 40px;
   width: 80%;
-  margin: 20px auto;
+  margin: 0px auto 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 2px;
-  border: 1px solid black;
 
   button {
     border: 0px;
@@ -54,17 +57,18 @@
   align-items: center;
 
   input {
-    width: 70%;
+    width: 60%;
     background-color: #00384528;
-    height: 40px;
+    height: 30px;
     border: 0px;
     color: #003845;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 18px;
   padding: 3px;
   padding-left: 2%;
   padding-top: 2%;
   border: 0px;
+  margin: 10px;
   }
 
   input:focus{
@@ -77,8 +81,8 @@
 
     .add-button {
       position: relative;
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
     }
 
   }

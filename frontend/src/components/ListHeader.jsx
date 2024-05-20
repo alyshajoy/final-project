@@ -10,8 +10,8 @@ const ListHeader = (props) => {
     <div className="header-container">
       
       <h1 className="list-title">To Do List </h1>
-      <TodoIcon className="todo-icon"/> 
-      <button onClick={toggleSort}><SortButton className="sort-button"/></button>
+      {/* <TodoIcon className="todo-icon"/>  */}
+      {/* <button onClick={toggleSort}><SortButton className="sort-button"/></button> */}
     </div>
   );
 };
