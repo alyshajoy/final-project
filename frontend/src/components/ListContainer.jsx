@@ -4,7 +4,6 @@ import ListHeader from "./ListHeader";
 import ListFooter from "./ListFooter";
 import Footer from "../components/home/Footer";
 import ListItems from "./ListItems";
-// import addButton from '../assets/addButton.svg';
 import { ReactComponent as AddButton } from '../assets/addButton.svg';
 
 const ListContainer = () => {
@@ -34,7 +33,6 @@ const ListContainer = () => {
   const [sort, setSort] = useState(false);
   const [add, setAdd] = useState(false);
   const addButtonClicked = useRef(false);
-  // const [checked, setChecked] = useState(false);
   const [checkedTasks, setCheckedTasks] = useState({});
 
   const handleAdd = () => {
@@ -64,7 +62,6 @@ const ListContainer = () => {
   .then(data => {
     setTasks(prevTasks => [...prevTasks, data[0]]);
     setValue("");
-    console.log('Task added successfully:', data[0]);
     handleAddMode();
   })
   .catch(error => {
@@ -99,7 +96,6 @@ const ListContainer = () => {
       }
       
     const filteredTasks = tasks.filter((task) => {
-      console.log('task',task)
       return task.id !== id
     })
     setTasks(filteredTasks);
@@ -111,28 +107,13 @@ const ListContainer = () => {
     
   }
 
-  // const handleBackendChecked = (data) => {
-  //   const checkedTasks = data.map(task => task.completed);
-  //     handleCheck
-  // }
-
-  // const handleCheck = ( id) => {
-  //   const task = tasks.find(task => task.id === id);
-  //   if(task.completed) {
-  //     setChecked(!checked);
-  //   }
-    
-  // }
-
   const handleComplete = (id) => {
-    console.log('Tasks:', tasks); // Log current tasks
     const task = tasks.find(task => task.id === id);
   
     if (!task) {
       console.error(`Task with id ${id} not found`);
       return;
     }
-    console.log('Task found:', task); // Log the found task
     const newStatus = !task.completed;
   
     fetch(`/api/tasks/${id}/completed`, {
@@ -149,7 +130,6 @@ const ListContainer = () => {
       return res.json();
     })
     .then(updatedTask => {
-      console.log('Completed task data:', updatedTask);
       
       const updatedTasksList = tasks.map(t => {
         if (t.id === id) {
@@ -246,9 +226,6 @@ const ListContainer = () => {
         sort={sort}
         checkedTasks={checkedTasks}
         setCheckedTasks={setCheckedTasks}
-        // checked={checked}
-        // setChecked={setChecked}
-        // handleCheck={handleCheck}
         />
         
       </div>
