@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import RemoveTask from "../buttons/RemoveTask";
-import Checkbox from "../buttons/Checkbox";
+import RemoveTask from "./RemoveTask";
+import Checkbox from "./Checkbox";
 import '../../styles/CSS/ListItems.css';
 import { ReactComponent as UpdateButton } from '../../assets/taskspage_icons/UpdateButton.svg';
 
