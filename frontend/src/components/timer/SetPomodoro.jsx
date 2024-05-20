@@ -41,8 +41,7 @@ const SetPomodoro = () => {
     
   }
   return (
-    <html className="pomodoro">
-    <body>
+    <div className="pomodoro">
     <div className="pomodoro-form-container">
       <h2 className="pomodoro-headers">Settings</h2>
         <div className="timer-setting-bubble">
@@ -76,8 +75,7 @@ const SetPomodoro = () => {
       : <p className="timer-alert">Set times  must be greater than 0 😖</p>
       }
     </div>
-    </body>
-    </html>
+    </div>
   )
 }
 
