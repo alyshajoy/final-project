@@ -64,26 +64,37 @@ function CalendarView({ events, selectedDate, setSelectedDate, setSelectedStartT
 
   function renderEventContent(eventInfo) {
     const viewType = eventInfo.view.type;
-
-    // Check the view type to determine the content to render
-    if (viewType === 'timeGridWeek') {
+  
+    // Specific handling for the Month view (dayGridMonth)
+    if (viewType === 'dayGridMonth') {
+      // For Month view, show only the event time
       return (
-        <div className="custom-event-title">
-            {eventInfo.event.title}
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <div className="custom-event-time">
-            {eventInfo.timeText}
-          </div>
-          <div className="custom-event-title">
-            {eventInfo.event.title}
-          </div>
+        <div className="custom-event-time-only">
+          {eventInfo.event.start.toLocaleTimeString([], { hourCycle: 'h23', hour: 'numeric', minute: '2-digit', hour12: true })}
         </div>
       );
     }
+  
+    // Handling for the Week view (timeGridWeek)
+    if (viewType === 'timeGridWeek') {
+      return (
+        <div className="custom-event-title">
+          {eventInfo.event.title}
+        </div>
+      );
+    }
+  
+    // Default rendering for other views
+    return (
+      <div>
+        <div className="custom-event-time">
+          {eventInfo.timeText}
+        </div>
+        <div className="custom-event-title">
+          {eventInfo.event.title}
+        </div>
+      </div>
+    );
   }
 
   return (
