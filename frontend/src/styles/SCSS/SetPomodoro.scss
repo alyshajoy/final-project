@@ -22,6 +22,12 @@ html {
   align-items: center;
 }
 
+.pomodoro-form-container {
+  h2 {
+    color: #000;
+  }
+}
+
 
 .pomodoro {
   // padding: 70px 0;
@@ -44,6 +50,12 @@ html {
   align-items: center;
   margin-left: 5%;
   margin-right: 5%;
+  margin-top: 30px;
+
+  p {
+    font-size: 22px;
+    color: $blueFull;
+  }
   
 }
 
@@ -120,7 +132,7 @@ html {
 .timer-description {
   display: flex;
   justify-content: center;
-  margin-top: -22px;
+  margin-top: -15px;
 }
 
 .set-timer-button:hover {
@@ -136,4 +148,13 @@ html {
   color:#000;
   border-radius: 50px;
   text-align: center;
+}
+
+.focus-timer-hr {
+  height: 3px;
+  color: $pinkOpaque;
+  background-color: $pinkOpaque;
+  border: $pinkOpaque;
+  margin-top: -7px;
+
 }
