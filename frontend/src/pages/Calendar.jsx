@@ -82,7 +82,14 @@ const Calendar = () => {
 
       if (addToTasks) {
         console.log("In addToTasks")
-        const task = title;
+        const task = {
+          title: title,
+          user_id: 1,
+          description: "",
+          priority: 2,
+          due_date: date,
+          completed: false
+        };
         try {
           const response = await fetch('http://localhost:3001/api/tasks/', {
               method: 'POST',
@@ -173,7 +180,16 @@ const Calendar = () => {
         setEvents([...events, newEvent]);
 
         if (addToTasks) {
-          const task = {title: title};
+          const taskDetails = {
+            task: {
+              title: title,
+              user_id: 1,
+              description: "",
+              priority: 2,
+              due_date: date,
+              completed: false
+            }
+          };
           try {
             const response = await fetch('http://localhost:3001/api/tasks/', {
                 method: 'POST',
@@ -181,7 +197,7 @@ const Calendar = () => {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify(task),
+                body: JSON.stringify(taskDetails),
             });
     
             if (!response.ok) throw new Error('Network response was not ok');

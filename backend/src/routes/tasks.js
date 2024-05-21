@@ -5,39 +5,6 @@ const router = express.Router();
 
 //Prefix '/api/tasks' for endpoint
 
-// const tasks = [
-//   {
-//     task_id: 1,
-//     title: "Finish Project",
-//     completed: false,
-//     priority: 1
-//   },
-//   {
-//     task_id: 2,
-//     title: "Start Blog Post",
-//     completed: false,
-//     priority: 3
-//   },
-//   {
-//     task_id: 3,
-//     title: "Update Resume",
-//     completed: false,
-//     priority: 2
-//   },
-//   {
-//     task_id: 4,
-//     title: "Write draft for email",
-//     completed: false,
-//     priority: 3
-//   },
-//   {
-//     task_id: 5,
-//     title: "Read Chapter 1",
-//     completed: false,
-//     priority: 1
-//   },
-// ]
-
 // Tasks Routes
 
 //Get 
@@ -46,7 +13,6 @@ router.get('/', (req, res) => {
   .then(({rows}) => {
       res.json(rows);
     });
-  // res.status(200).json(tasks);
 });
 
 
@@ -64,29 +30,17 @@ const newTask = req.body.task;
   RETURNING *;
   `,[newTask.user_id, newTask.title, newTask.description, newTask.priority, newTask.due_date, newTask.completed])
   .then((result) => {
-    console.log('result.rows', result.rows)
     res.status(201).json(result.rows);
   })
   .catch((error) => {
     return error;
   });
-  //Post route with mock data
-  // const newTask = {
-  //   id: tasks.length + 1,
-  //   title: req.body.title,
-  //   completed: false,
-  //   priority: 0
-  // }
-  // tasks.push(newTask);
-  // res.status(201).json(tasks);
 
 })
 
 //Delete Route
 router.delete('/:id/delete', (req, res) => {
-  console.log(req.params);
   const id = req.params.id;
-  console.log('req.params.id', id);
   db.query(
     `
     DELETE FROM tasks
@@ -106,7 +60,6 @@ router.delete('/:id/delete', (req, res) => {
 
 //Edit completed route
 router.patch('/:id/completed', (req, res) => {
-  console.log('req.body', req.body);
   const completed = req.body.completed;
   const id = req.params.id;
 

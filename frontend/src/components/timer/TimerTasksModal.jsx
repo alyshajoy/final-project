@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
 import '../../styles/CSS/TimerTasksModal.css'
-import Checkbox from "../buttons/Checkbox";
+import Checkbox from "../Tasks/Checkbox.jsx";
 
 const TimerTasksModal = () => {
+
+const focusIcon = "timer-icon.png";
+
 
 const {
   viewTaskModal,
@@ -80,14 +83,24 @@ const handleComplete = (id) => {
   });
 };
 
+const clearModal = async(task) => {
+  await newFocusTask(task);
+  await viewTaskModal();
+}
+
 
 const taskmodalmap = timerTasks.map((el, index) => (
   <li key={index}>
       <div className="timer-task-item">
         <div><Checkbox handleComplete={handleComplete} id={el.id} task={el} checkedTasks={checkedTasks} setCheckedTasks={setCheckedTasks}/></div>
         <p><b>{el.title}</b></p>
-        <button onClick={e => newFocusTask(el.title)}>Focus Task</button>
+        <img
+                src={require(`../../assets/homepage_icons/${focusIcon}`)}
+                alt="Focus task icon"
+                onClick={e => clearModal(el.title)}
+              />
       </div>
+        
         <hr className="task-seperator" />
   </li>
 ))
@@ -95,9 +108,10 @@ const taskmodalmap = timerTasks.map((el, index) => (
 return (
   <div className="tasks-modal-overlay">
     <div className="tasks-modal-content">
+        <h3 className="pomodoro-headers">To-Do List</h3>
       <div className="tasks-modal-header">
+        <img src={require("../../assets/homepage_icons/back.png")} alt="back" onClick={viewTaskModal}/>
         <button onClick={e => newFocusTask('')}>Clear Focus Task</button>
-        <button onClick={viewTaskModal}>X</button>
       </div>
       <div className="timer-tasks-wrapper">
         <ul className="timer-task-list">
