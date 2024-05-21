@@ -21,6 +21,10 @@
   background-color: #f9f9f9;
   transition: transform 0.3s ease;
 }
+.badge-collection .badge-item.active {
+  border-color: green; /* change to the color you want */
+  background-color: rgba(0, 255, 0, 0.1);
+}
 .badge-collection .badge-item.inactive {
   opacity: 0.5;
   pointer-events: none;
@@ -29,8 +33,8 @@
   transform: scale(1.05);
 }
 .badge-collection .badge-item .badge-image {
-  width: 10px;
-  height: 10px;
+  width: 50px;
+  height: 50px;
   margin-bottom: 5px;
 }
 .badge-collection .badge-item .badge-details h3 {
