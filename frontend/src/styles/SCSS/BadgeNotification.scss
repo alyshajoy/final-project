@@ -16,6 +16,7 @@
   transition: transform 0.3s ease-out;
   border-radius: 10px;
   opacity: 0;
+  z-index: 9999;
 }
 .badge-notification.active {
   transform: translate(-50%, -50%) scale(1);

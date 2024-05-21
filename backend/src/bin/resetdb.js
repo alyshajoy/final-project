@@ -61,7 +61,7 @@ const runTriggerFiles = async () => {
   const triggerFiles = [
     'badgeTriggers.sql',
     'taskTriggers.sql',
-    //'timerTriggers.sql',
+    'timerTriggers.sql',
     'calendarTriggers.sql'
   ];
 

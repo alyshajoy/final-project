@@ -3,7 +3,7 @@ DECLARE
     completed_count INTEGER;
 BEGIN
     SELECT COUNT(*) INTO completed_count FROM calendar_events WHERE user_id = NEW.user_id;
-    IF completed_count >= 20 THEN
+    IF completed_count >= 25 THEN
         -- Check if badge ID 2 is not already active
         IF NOT EXISTS (SELECT 1 FROM user_badges WHERE id = 2 AND status = true) THEN
             -- Send notification for badge ID 1
@@ -17,6 +17,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER completed_events
-AFTER UPDATE ON calendar_events
+AFTER INSERT OR UPDATE ON calendar_events
 FOR EACH ROW
 EXECUTE PROCEDURE completed_events();
