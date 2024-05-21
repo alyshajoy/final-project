@@ -26,7 +26,13 @@
 .tasks-modal-header {
   display: flex;
   justify-content: space-between;
-  margin-left: 10px;
+  margin-left: 15px;
+  margin-bottom: 25px;
+}
+.tasks-modal-header img {
+  max-width: 1rem;
+  max-height: 1rem;
+  cursor: pointer;
 }
 
 .timer-tasks-wrapper {
@@ -42,6 +48,11 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+.timer-task-item img {
+  max-height: 3.5rem;
+  max-width: 3.5rem;
+  cursor: pointer;
 }
 
 .timer-task-item button {

@@ -23,8 +23,6 @@ const ListItems = (props) => {
   const sortedMappedList = (tasks) => {
     return sortedTasks.map(task => (
       <ListItem 
-        // item={item}
-        // key={item.id}
         value={value}
         task={task}
         tasks={tasks}
@@ -47,8 +45,6 @@ const ListItems = (props) => {
   const mappedList = (tasks) => {
     return tasks.map(task => (
       <ListItem 
-        // item={item}
-        // key={item.id}
         value={value}
         task={task}
         tasks={tasks}

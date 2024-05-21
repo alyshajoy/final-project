@@ -9,7 +9,8 @@ import Footer from "../home/Footer";
 
 const focusIcon = "focustask ico.png";
 
-const FocusTimer = () => {
+const FocusTimer = (props) => {
+
   const {
     pomodoro,
     executing,
@@ -59,7 +60,7 @@ const FocusTimer = () => {
   // useEffect(() => updateExecute(executing), [executing, startAnimate] );
 
   return (
-    <div className="container">
+    <div className="focus-timer-container">
       <h1>Focus Timer</h1>
       {pomodoro === 0 ? (
         <SetPomodoro />
@@ -141,7 +142,6 @@ const FocusTimer = () => {
         </>
       )}
       <Footer />
-      {console.log(userInfo)}
     </div>
   );
 };

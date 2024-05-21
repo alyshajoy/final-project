@@ -5,7 +5,6 @@
 }
 
 .pomodoro {
-  padding: 70px 0;
   height: 100%;
 }
 
@@ -111,6 +110,8 @@
   cursor: pointer;
   height: 8%;
   width: 8%;
+  min-height: 40px;
+  min-width: 40px;
 }
 
 .timer-task-label {
