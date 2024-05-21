@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import RemoveTask from "./buttons/RemoveTask";
-import Checkbox from "./buttons/Checkbox";
-import '../styles/CSS/ListItems.css';
-import { ReactComponent as UpdateButton } from '../assets/UpdateButton.svg';
+import RemoveTask from "./RemoveTask";
+import Checkbox from "./Checkbox";
+import '../../styles/CSS/ListItems.css';
+import { ReactComponent as UpdateButton } from '../../assets/taskspage_icons/UpdateButton.svg';
+import ListItemTimer from "./ListItemTimer";
 
 const ListItem = (props) => {
 
@@ -60,7 +61,7 @@ const ListItem = (props) => {
           {task.title} 
         </div>
       }
-      
+      <div><ListItemTimer title={task.title}/></div>
       <div className="remove-task"><RemoveTask handleDelete={handleDelete} id={task.id}/></div>
       
      
