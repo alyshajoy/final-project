@@ -2,8 +2,8 @@ CREATE OR REPLACE FUNCTION check_completed_tasks() RETURNS TRIGGER AS $$
 DECLARE
     task_count INTEGER;
 BEGIN
-    SELECT COUNT(*) INTO task_count FROM tasks WHERE user_id = NEW.user_id;
-    IF task_count >= 5 THEN
+    SELECT COUNT(*) INTO task_count FROM tasks WHERE user_id = NEW.user_id AND completed = true;
+    IF task_count >= 3 THEN
         -- Check if badge ID 1 is not already active
         IF NOT EXISTS (SELECT 1 FROM user_badges WHERE id = 1 AND status = true) THEN
             -- Send notification for badge ID 1
