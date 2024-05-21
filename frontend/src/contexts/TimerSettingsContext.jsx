@@ -29,7 +29,6 @@ const TimerSettingsContextProvider = (props) => {
   // Function used to select tasks to focus
   const newFocusTask = async(task) => {
     await setFocusTask(task);
-    await viewTaskModal();
   }
 
   // Fetch all user timer information

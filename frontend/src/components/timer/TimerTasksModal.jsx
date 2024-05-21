@@ -83,6 +83,11 @@ const handleComplete = (id) => {
   });
 };
 
+const clearModal = async(task) => {
+  await newFocusTask(task);
+  await viewTaskModal();
+}
+
 
 const taskmodalmap = timerTasks.map((el, index) => (
   <li key={index}>
@@ -92,7 +97,7 @@ const taskmodalmap = timerTasks.map((el, index) => (
         <img
                 src={require(`../../assets/homepage_icons/${focusIcon}`)}
                 alt="Focus task icon"
-                onClick={e => newFocusTask(el.title)}
+                onClick={e => clearModal(el.title)}
               />
       </div>
         
