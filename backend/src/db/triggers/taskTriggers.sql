@@ -3,7 +3,7 @@ DECLARE
     completed_count INTEGER;
 BEGIN
     SELECT COUNT(*) INTO completed_count FROM tasks WHERE user_id = NEW.user_id AND completed = TRUE;
-    IF completed_count >= 10 THEN
+    IF completed_count >= 2 THEN
         -- Check if badge ID 3 is not already active
         IF NOT EXISTS (SELECT 1 FROM user_badges WHERE id = 1 AND status = true) THEN
             -- Send notification for badge ID 1
