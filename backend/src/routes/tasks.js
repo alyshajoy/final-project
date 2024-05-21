@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
 //Post
 //Post - Add
 router.post('/', (req,res) => {
-console.log('req.body', req.body);
 
 const newTask = req.body.task;
 
