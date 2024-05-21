@@ -5,6 +5,8 @@ import Checkbox from "./Checkbox";
 import '../../styles/CSS/ListItems.css';
 import { ReactComponent as UpdateButton } from '../../assets/taskspage_icons/UpdateButton.svg';
 import ListItemTimer from "./ListItemTimer";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 const ListItem = (props) => {
 
@@ -21,8 +23,22 @@ const ListItem = (props) => {
     setComplete,
     sortedTasks,
     checkedTasks,
-    setCheckedTasks
+    setCheckedTasks,
+    id
   } = props;
+
+  const {
+    attributes, 
+    listeners, 
+    setNodeRef, 
+    transform, 
+    transition
+  } = useSortable({id});
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  }
 
   const [edit, setEdit] = useState(false);
   const [editValue, setEditValue] = useState(task.title);
@@ -41,7 +57,7 @@ const ListItem = (props) => {
 
 
   return (
-    <div className="list-item-container">
+    <div className="list-item-container" style={style} {...attributes} {...listeners} ref={setNodeRef}>
       <div><Checkbox handleComplete={handleComplete} id={task.id} task={task} checkedTasks={checkedTasks} setCheckedTasks={setCheckedTasks}/></div>
       {edit 
       ? <div className="edit-form-div-container">

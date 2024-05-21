@@ -34,10 +34,10 @@ const ListItemTimer = (props) => {
   };
 
     // Use useEffect to log the pomodoro state whenever it changes
-    useEffect(() => {
-      console.log('pomodoro', pomodoro);
-      console.log('focus task', focusTask);
-    }, [pomodoro]);
+    // useEffect(() => {
+    //   console.log('pomodoro', pomodoro);
+    //   console.log('focus task', focusTask);
+    // }, [pomodoro]);
 
   return (
     <>

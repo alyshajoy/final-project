@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import {DndContext} from '@dnd-kit/core';
+import {SortableContext} from '@dnd-kit/sortable';
 import ListHeader from "./ListHeader";
-import ListFooter from "./ListFooter";
 import Footer from "../home/Footer";
 import ListItems from "./ListItems";
 import { ReactComponent as AddButton } from '../../assets/taskspage_icons/addButton.svg';
@@ -215,6 +216,7 @@ const ListContainer = () => {
       }
       
       <div>
+      
         <ListItems 
         handleDelete={handleDelete} 
         tasks={tasks} 
@@ -232,6 +234,7 @@ const ListContainer = () => {
         setCheckedTasks={setCheckedTasks}
         />
         
+    
       </div>
       <div>
         <Footer />
