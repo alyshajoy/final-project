@@ -1,6 +1,5 @@
 import { createContext, useCallback, useState, useRef } from "react";
 
-
 export const TimerSettingsContext = createContext()
 
 const TimerSettingsContextProvider = (props) => {
@@ -28,8 +27,9 @@ const TimerSettingsContextProvider = (props) => {
   }
 
   // Function used to select tasks to focus
-  const newFocusTask = (task) => {
-    setFocusTask(task);
+  const newFocusTask = async(task) => {
+    await setFocusTask(task);
+    await viewTaskModal();
   }
 
   // Fetch all user timer information

@@ -60,7 +60,7 @@ const FocusTimer = (props) => {
   // useEffect(() => updateExecute(executing), [executing, startAnimate] );
 
   return (
-    <div className="container">
+    <div className="focus-timer-container">
       <h1>Focus Timer</h1>
       {pomodoro === 0 ? (
         <SetPomodoro />
@@ -142,7 +142,6 @@ const FocusTimer = (props) => {
         </>
       )}
       <Footer />
-      {console.log(userInfo)}
     </div>
   );
 };
