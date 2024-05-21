@@ -36,6 +36,10 @@ const ListContainer = () => {
   const [checkedTasks, setCheckedTasks] = useState({});
 
   const handleAdd = () => {
+
+    if (!value || value.length < 3) {
+      return alert('Task must be at least 3 characters');
+    }
     
   const newTask = {
     user_id: 1,
