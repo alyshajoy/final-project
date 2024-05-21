@@ -52,6 +52,7 @@ const SetPomodoro = () => {
         <div className="timer-description">
           <h4 className="pomodoro-headers">Set Focus Timer</h4>
         </div>
+        <hr className="focus-timer-hr"/>
         <div className="timer-setting-bubble">
           <button className="decrement-button" onClick={() => decrement('shortbreak')}>-</button>
           <p className="timer-set" name="shortbreak" value={newTimer.shortbreak}>{newTimer.shortbreak}</p>
@@ -60,6 +61,7 @@ const SetPomodoro = () => {
         <div className="timer-description">
           <h4 className="pomodoro-headers">Set Shortbreak Timer</h4>
         </div>
+        <hr className="focus-timer-hr"/>
         <div className="timer-setting-bubble">
           <button className="decrement-button" onClick={() => decrement('longbreak')}>-</button>
           <p className="timer-set" name="longbreak" value={newTimer.longbreak}>{newTimer.longbreak}</p>
@@ -68,6 +70,7 @@ const SetPomodoro = () => {
         <div className="timer-description">
           <h4 className="pomodoro-headers">Set Longbreak Timer</h4>
         </div>      
+        <hr className="focus-timer-hr"/>
       {newTimer.work > 0 && newTimer.shortbreak > 0 && newTimer.longbreak > 0 ?
       <div className="set-timer-button-wrapper">
         <TimerButton activeClass={"set-timer-button"} title="Set Timer" _callback={handleSubmit} />

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { TimerSettingsContext } from "../../contexts/TimerSettingsContext";
 import '../../styles/CSS/TimerTasksModal.css'
-import Checkbox from "../buttons/Checkbox";
+import Checkbox from "../Tasks/Checkbox.jsx";
 
 const TimerTasksModal = () => {
 

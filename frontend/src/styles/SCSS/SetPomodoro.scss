@@ -12,7 +12,7 @@ $blueOpaque : rgba(0, 56, 69, 0.28);
 }
 
 html {
-  // @include vertical-gradient-topdown(#ffffff, $pinkOpaque);
+  @include vertical-gradient-topdown(#ffffff, $pinkOpaque);
 
 }
 
@@ -22,10 +22,13 @@ html {
   align-items: center;
 }
 
+
 .pomodoro {
-  padding: 70px 0;
+  // padding: 70px 0;
   // @include vertical-gradient-topdown(#ffffff, $pinkOpaque);
-  height: 100%
+  height: 100%;
+  padding-bottom: 50px;
+
 }
 
 .timer-labels {
@@ -39,12 +42,9 @@ html {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border-color: $pinkOpaque;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 45px;
   margin-left: 5%;
   margin-right: 5%;
+  
 }
 
 .timer-setting-bubble button{
@@ -89,6 +89,7 @@ html {
 .set-timer-button-wrapper {
   display: flex;
   justify-content: center;
+  margin-top: 30px
 }
 
 .time-wrapper {

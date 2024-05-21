@@ -1,6 +1,5 @@
 import { createContext, useCallback, useState, useRef } from "react";
 
-
 export const TimerSettingsContext = createContext()
 
 const TimerSettingsContextProvider = (props) => {

@@ -1,8 +1,8 @@
 INSERT INTO calendar_events (user_id, title, date, start_time, end_time, all_day, description, location, recurrence_pattern, recurrence_end_date)
 VALUES
-(1, 'Project Deadline', '2024-05-21', '2024-05-21T10:00:00.000Z', '2024-05-21T11:00:00.000Z', false, '', '', '', null),
-(1, 'Doctor Appt', '2024-05-22', '2024-05-22T15:00:00.000Z', '2024-05-22T16:00:00.000Z', false, '', '', '', null),
-(1, 'Lunch with Mentor', '2024-05-23', '2024-05-23T12:30:00.000Z', '2024-05-23T14:00:00.000Z', false, '', '', '', null),
+(1, 'Project Due', '2024-05-21', '2024-05-21T10:00:00.000Z', '2024-05-21T11:00:00.000Z', false, '', '', '', null),
+(1, 'Doc Appt', '2024-05-22', '2024-05-22T15:00:00.000Z', '2024-05-22T16:00:00.000Z', false, '', '', '', null),
+(1, 'Lunch with Liz', '2024-05-23', '2024-05-23T12:30:00.000Z', '2024-05-23T14:00:00.000Z', false, '', '', '', null),
 (1, 'Fitness Class', '2024-05-18', '2024-05-18T10:00:00.000Z', '2024-05-18T11:00:00.000Z', false, '', '', '', null),
 (1, 'Dentist Appt', '2024-05-03', '2024-05-03T14:00:00.000Z', '2024-05-03T15:00:00.000Z', false, '', '', '', null),
 (1, 'Jer''s Bday Party', '2024-05-25', '2024-05-25T19:00:00.000Z', '2024-05-25T23:00:00.000Z', false, '', '', '', null),
