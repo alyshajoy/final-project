@@ -68,6 +68,13 @@ function CalendarView({ events, selectedDate, setSelectedDate, setSelectedStartT
     // Specific handling for the Month view (dayGridMonth)
     if (viewType === 'dayGridMonth') {
       // For Month view, show only the event time
+      if (eventInfo.event.allDay) {
+        return (
+          <div className='all-day-event-time'>
+            All Day
+          </div>
+        )
+      }
       return (
         <div className="custom-event-time-only">
           {eventInfo.event.start.toLocaleTimeString([], { timeZone: 'UTC', hourCycle: 'h23', hour: 'numeric', minute: '2-digit', hour12: true })}
