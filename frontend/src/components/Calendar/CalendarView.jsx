@@ -70,7 +70,7 @@ function CalendarView({ events, selectedDate, setSelectedDate, setSelectedStartT
       // For Month view, show only the event time
       return (
         <div className="custom-event-time-only">
-          {eventInfo.event.start.toLocaleTimeString([], { hourCycle: 'h23', hour: 'numeric', minute: '2-digit', hour12: true })}
+          {eventInfo.event.start.toLocaleTimeString([], { timeZone: 'UTC', hourCycle: 'h23', hour: 'numeric', minute: '2-digit', hour12: true })}
         </div>
       );
     }

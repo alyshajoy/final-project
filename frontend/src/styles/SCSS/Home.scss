@@ -16,7 +16,7 @@ body, html {
   // padding: 20px;
   padding-bottom: 0px;
   margin-bottom: 0px;
-  // max-height: 700px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -50,6 +50,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin-top: 40px;
 }
 
 .feature-list-item {
@@ -92,6 +93,7 @@ body, html {
   color: white;
   text-align: center;
   padding: 20px;
+  padding-bottom: 70px;
   font-size: 14px;
   width: calc(100% + 3rem);
   margin-left: -3rem;
