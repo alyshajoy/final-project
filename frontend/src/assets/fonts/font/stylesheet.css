@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Freestyle Script Std';
+    src: url('FreestyleScriptStd.eot');
+    src: local('Freestyle Script Std Medium'), local('FreestyleScriptStd'),
+        url('FreestyleScriptStd.eot?#iefix') format('embedded-opentype'),
+        url('FreestyleScriptStd.woff2') format('woff2'),
+        url('FreestyleScriptStd.woff') format('woff'),
+        url('FreestyleScriptStd.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+

@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Freestyle Script Std';
+  src: url('../../assets/fonts/font/FreestyleScriptStd.eot');
+  src: url('../../assets/fonts/font/FreestyleScriptStd.eot?#iefix') format('embedded-opentype'),
+      url('../../assets/fonts/font/FreestyleScriptStd.woff2') format('woff2'),
+      url('../../assets/fonts/font/FreestyleScriptStd.woff') format('woff'),
+      url('../../assets/fonts/font/FreestyleScriptStd.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
 body, html {
   margin: 0;
   padding: 0;
@@ -29,11 +41,11 @@ body, html {
   margin-top: 10px;
 
   h1 {
-    margin-top: -25px;
+    margin-top: -5px;
     margin-bottom: -15px;
     font-size: 80px;
     color: black;
-    font-family: 'Freestyle Script';
+    font-family: 'Freestyle Script Std';
   }
 
   p {
